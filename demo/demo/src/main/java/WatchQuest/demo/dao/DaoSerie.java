@@ -61,7 +61,12 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, SerieTv> {
 
     @Override
     public SerieTv readById(Long id) {
-
+        String query = "SELECT * FROM serie WHERE id = ?";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, String.valueOf(id));
+        for (Entry<Long,Map<String,String>> coppia : result.entrySet()) {
+           return context.getBean(SerieTv.class, coppia);
+        }
+        return null;
     }
 
 }
