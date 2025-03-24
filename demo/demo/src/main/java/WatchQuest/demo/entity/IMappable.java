@@ -14,13 +14,10 @@ public interface IMappable {
             if(m.getName().startsWith("set") && m.getParameterCount() == 1){
                 
                 String nomeProprieta = m.getName().substring(3); 
-                
                 nomeProprieta = Character.toLowerCase(nomeProprieta.charAt(0)) + nomeProprieta.substring(1);
                 
                 if(map.containsKey(nomeProprieta)){
-                    
                     String valoreAssociato = map.get(nomeProprieta); 
-                    
                     if(valoreAssociato == null){
                         continue;
                     }

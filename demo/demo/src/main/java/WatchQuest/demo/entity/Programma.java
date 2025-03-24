@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Data
 @ToString(callSuper = true)
-public class Programma {
+public class Programma extends GenericEntity{
 
     private String titolo;
     private String descrizione;

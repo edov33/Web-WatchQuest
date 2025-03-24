@@ -1,6 +1,7 @@
 package WatchQuest.demo.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import lombok.Data;
 import lombok.ToString;
@@ -15,5 +16,7 @@ public class Utente extends GenericEntity{
     private String email;
     private String lingua;
     private boolean abbonamento;
+    private List<Quiz> quiz;
+    private List<Programma> programma;
     
 }
