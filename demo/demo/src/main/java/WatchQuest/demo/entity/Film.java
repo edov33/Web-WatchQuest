@@ -5,6 +5,6 @@ import lombok.ToString;
 
 @Data
 @ToString(callSuper = true)
-public class Film extends Prodotto {
+public class Film extends Programma {
     private int durata;
 }

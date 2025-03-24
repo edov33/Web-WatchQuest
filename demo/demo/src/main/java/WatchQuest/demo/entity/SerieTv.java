@@ -5,7 +5,7 @@ import lombok.ToString;
 
 @Data
 @ToString(callSuper = true)
-public class SerieTv extends Prodotto {
+public class SerieTv extends Programma {
     private String episodi;
     private String stagioni;
 }
