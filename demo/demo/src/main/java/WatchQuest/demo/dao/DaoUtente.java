@@ -15,7 +15,7 @@ public abstract class DaoUtente implements IDao{
     
     private final DatabaseMySql databaseMySql;
     private final ApplicationContext context;
-    private final DaoSerie daoSerie;
+    //private final DaoSerie daoSerie;
     private final DaoFilm daoFilm;
     
 
