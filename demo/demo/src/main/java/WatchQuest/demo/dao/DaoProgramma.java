@@ -14,7 +14,7 @@ public abstract class DaoProgramma {
     private DatabaseMySql databaseMySql;
 
     public Long createProgramma(Programma e){
-        String query = "INSERT INTO persone (titolo,descrizione,genere,anno_pubblicazione,classificazione,rating,cast,regista,lingua_originale) values(?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Programma (titolo,descrizione,genere,anno_pubblicazione,classificazione,rating,cast,regista,lingua_originale) values(?,?,?,?,?,?,?,?,?)";
         return databaseMySql.executeDML(query, e.getTitolo(), e.getDescrizione(),e.getGenere(),String.valueOf(e.getAnnoPubblicazione()), e.getClassificazione(), String.valueOf(e.getRating()), 
                                             e.getCast(), e.getRegista(), e.getLinguaOriginale() );
     }
