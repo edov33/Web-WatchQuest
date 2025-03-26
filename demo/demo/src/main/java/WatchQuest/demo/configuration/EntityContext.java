@@ -7,9 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import WatchQuest.demo.entity.Film;
-import WatchQuest.demo.entity.Programma;
 import WatchQuest.demo.entity.Quiz;
-import WatchQuest.demo.entity.SerieTv;
+import WatchQuest.demo.entity.Serie;
 import WatchQuest.demo.entity.Utente;
 
 @Configuration
@@ -45,8 +44,8 @@ public class EntityContext {
 
     @Bean
     @Scope("prototype")
-    public SerieTv serie(Map<String, String> mappa) {
-        SerieTv serieTv = new SerieTv();
+    public Serie serie(Map<String, String> mappa) {
+        Serie serieTv = new Serie();
         serieTv.fromMap(mappa);
         return serieTv;
     }

@@ -1,5 +1,6 @@
 package WatchQuest.demo.dao;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -43,9 +44,9 @@ public class DaoQuiz implements IDao<Long, Quiz> {
     @Override
     public void update(Quiz q) {
         String comando = "UPDATE quiz SET domanda = ?, opzione_giusta = ?, id_programma = ?,"
-                + " punteggio = ?, usata  = ?";
+                + " punteggio = ?, usata = ? WHERE id = ?";
         databaseMySql.executeDML(comando, q.getDomanda(), q.getRisposta(), String.valueOf(q.getProgramma().getId()),
-                String.valueOf(q.getPunteggio()), String.valueOf(q.isGiaFatte()));
+                String.valueOf(q.getPunteggio()), String.valueOf(q.isGiaFatte()), String.valueOf(q.getId()));
     }
 
     @Override
@@ -59,8 +60,7 @@ public class DaoQuiz implements IDao<Long, Quiz> {
         String query = "SELECT * FROM quiz WHERE id = ?";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, String.valueOf(id));
         for (Entry<Long,Map<String,String>> coppia : result.entrySet()) {
-            Quiz q = context.getBean(Quiz.class, coppia);
-            return q;
+            return context.getBean(Quiz.class, coppia);
         }
         return null;
     }

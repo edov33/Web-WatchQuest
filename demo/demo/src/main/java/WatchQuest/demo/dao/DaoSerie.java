@@ -9,24 +9,24 @@ import org.springframework.stereotype.Service;
 
 import WatchQuest.demo.database.DatabaseMySql;
 import WatchQuest.demo.entity.GenericEntity;
-import WatchQuest.demo.entity.SerieTv;
+import WatchQuest.demo.entity.Serie;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Service
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class DaoSerie extends DaoProgramma implements IDao<Long, SerieTv> {
+public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
 
     private final DatabaseMySql databaseMySql;
     private final ApplicationContext context;
 
     @Override
-    public Long create(SerieTv e) {
-        Long id = super.createProgramma(e);
+    public Long create(Serie s) {
+        Long id = super.createProgramma(s);
         String query = "INSERT INTO serie (stagioni, episodi, id_programma) values(?,?,?)";
         if (id != null) {
-            return databaseMySql.executeDML(query, String.valueOf(e.getStagioni()), String.valueOf(e.getEpisodi()),
+            return databaseMySql.executeDML(query, String.valueOf(s.getStagioni()), String.valueOf(s.getEpisodi()),
                     String.valueOf(id));
         }
         return null;
@@ -34,37 +34,36 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, SerieTv> {
 
     @Override
     public Map<Long, GenericEntity> read() {
-        String query = "SELECT * FROM serie JOIN programma ON serie.id_programma = programma.id";
+        String query = "SELECT p.*, s.stagioni, s.episodi FROM serie s JOIN programma p ON s.id_programma = p.id";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query);
         Map<Long, GenericEntity> ris = new HashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
-            SerieTv s = context.getBean(SerieTv.class, coppia.getValue());
-            ris.put(coppia.getKey(), s);
+            ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
         return ris;
     }
 
     @Override
-    public void update(SerieTv e) {
-        super.updateProgramma(e);
-        String query = "UPDATE serie SET stagioni=?, episodi=? WHERE id=?";
-        databaseMySql.executeDML(query, String.valueOf(e.getStagioni()), String.valueOf(e.getEpisodi()),
-                String.valueOf(e.getId()));
+    public void update(Serie s) {
+        super.updateProgramma(s);
+        String query = "UPDATE serie SET stagioni=?, episodi=? WHERE id_programma=?";
+        databaseMySql.executeDML(query, String.valueOf(s.getStagioni()), String.valueOf(s.getEpisodi()),
+                String.valueOf(s.getId()));
     }
 
     @Override
     public void delete(Long id) {
-        // *String query = "DELETE FROM serie WHERE id = ?";
-        // databaseMySql.executeDML(query, String.valueOf(id));
         super.delete(id);
     }
 
     @Override
-    public SerieTv readById(Long id) {
+    public Serie readById(Long id) {
         String query = "SELECT * FROM serie WHERE id = ?";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, String.valueOf(id));
-        for (Entry<Long,Map<String,String>> coppia : result.entrySet()) {
-           return context.getBean(SerieTv.class, coppia);
+        if (result.size() == 1) {
+            for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+                return context.getBean(Serie.class, coppia);
+            }
         }
         return null;
     }

@@ -10,10 +10,10 @@ public class Programma extends GenericEntity{
     private String titolo;
     private String descrizione;
     private String genere;
-    private int annoPubblicazione;
+    private int anno_pubblicazione;
     private String classificazione;
     private String cast;
     private double rating;
     private String regista;
-    private String linguaOriginale;
+    private String lingua_originale;
 }
