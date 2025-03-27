@@ -28,18 +28,18 @@
             </div>
             
             <div id="otherlinks-box">
-                <h6 class="otherlinks"><a href="/aboutus" class="text-decoration-none">About Us</a></h6>
-                <h6 class="otherlinks"><a href="/joinus" class="text-decoration-none">Join Us</a></h6>
+                <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
+                <h6 class="otherlinks"><a href="/joinus" id="joinus" class="text-decoration-none">Join Us</a></h6>
                 <h6 class="otherlinks"><a href="/faq" class="text-decoration-none">FAQ</a></h6>
                 <img id="profile-icon" src="/immagini/profile-icon-no-bg.png">
             </div>
         </header>
         <nav id="navBar">
-                <button class="nav-option"><i class="bi bi-house nav-icon"></i><h2 class="nav-link">Home</h2></button>
-                <button class="nav-option"><i class="bi bi-heart  nav-icon"></i><h2 class="nav-link">My Lists</h2></button>
-                <button class="nav-option"><i class="bi bi-newspaper  nav-icon"></i><h2 class="nav-link">News</h2></button>
-                <button class="nav-option"><i class="bi bi-question-diamond  nav-icon"></i><h2 class="nav-link">Quiz</h2></button>
-                <button class="nav-option"><i class="bi bi-gear  nav-icon"></i><h2 class="nav-link">Settings</h2></button>
+            <button class="nav-option"><i class="bi bi-house nav-icon"></i><h2 class="nav-link"><a href="/home">Home</a></h2></button>
+            <button class="nav-option"><i class="bi bi-heart  nav-icon"></i><h2 class="nav-link"><a href="/myLists">My Lists</a></h2></button>
+            <button class="nav-option"><i class="bi bi-newspaper  nav-icon"></i><h2 class="nav-link"><a href="/news">News</a></h2></button>
+            <button class="nav-option"><i class="bi bi-question-diamond  nav-icon"></i><h2 class="nav-link"><a href="/quiz">Quiz</a></h2></button>
+            <button class="nav-option"><i class="bi bi-gear  nav-icon"></i><h2 class="nav-link"><a href="/settings">Settings</a></h2></button>
         </nav>
         <main>
             <div id="adv-search">
@@ -64,7 +64,7 @@
             </div>
             <div id="login-pop">
                 <form>
-                    <input type="hidden" id="session" value="jack">
+                    <input type="hidden" id="session" value="">
                     <label class="login-lb"> Username:
                         <input type="text" class="login">
                     </label>
@@ -73,7 +73,7 @@
                     </label>
                     <div id="login-bgroup">
                         <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
-                        <button type="button" id="signup-b" class="btn btn-primary login-b">Sign Up</button>
+                        <a href="/registrazione"><button type="button" id="signup-b" class="btn btn-primary login-b">Sign Up</button></a>
                     </div>
                     
                 </form>

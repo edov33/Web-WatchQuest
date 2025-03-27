@@ -31,4 +31,29 @@ public class AppController {
         return "faq";
     }
 
+    @GetMapping("/myLists")
+    public String myLists() {
+        return "mylists";
+    }
+    
+    @GetMapping("/news")
+    public String news() {
+        return "news";
+    }
+
+    @GetMapping("/quiz")
+    public String quiz() {
+        return "quiz";
+    }
+    
+    @GetMapping("/settings")
+    public String settings() {
+        return "settings";
+    }
+
+    @GetMapping("/registrazione")
+    public String registrazione() {
+        return "registrazione";
+    }
+
 }

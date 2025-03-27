@@ -89,6 +89,9 @@ header {
     color: white;
     text-decoration-line: none;
 }
+.otherlinks > a {
+    color: white;
+}
 #profile-icon {
     width: 20%;
     height: 20%;
