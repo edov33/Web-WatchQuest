@@ -10,13 +10,16 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class Utente extends GenericEntity{
     
-    private String nome, cognome, username;
+    private String nome;
+    private String cognome;
+    private String username;
     private LocalDate data_nascita;
     private String password;
     private String email;
     private String lingua;
-    private boolean abbonamento;
     private List<Quiz> quiz;
-    private List<Programma> programma;
+    private List<Serie> serie;
+    private List<Film> film;
+
     
 }

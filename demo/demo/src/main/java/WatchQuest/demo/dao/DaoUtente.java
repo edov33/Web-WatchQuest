@@ -80,10 +80,10 @@ public class DaoUtente implements IDao<Long, Utente> {
 
     @Override
     public Utente readById(Long id) {
-        String query = "SELECT * FROM utente WHERE id = ?";
+        String query = "SELECT u.* FROM utente u WHERE id = ?";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, String.valueOf(id));
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
-            return context.getBean(Utente.class, coppia);
+            return context.getBean(Utente.class, coppia.getValue());
         }
         return null;
     }
@@ -100,6 +100,67 @@ public class DaoUtente implements IDao<Long, Utente> {
             if (e != null) {
                 ris.put(e.getId(), e);
             }
+        }
+        return ris;
+    }
+
+    // metodo che filtra gli utenti per nominativo
+    public Map<Long, GenericEntity> readUtenteByNominativo(String nome, String cognome) {
+        String query = "SELECT u.* FROM utente u WHERE nome LIKE ? AND cognome LIKE ?";
+        Map<Long, GenericEntity> ris = new HashMap<>();
+        nome = (nome != null && !nome.isEmpty()) ? "%" + nome + "%" : "%";
+        cognome = (cognome != null && !cognome.isEmpty()) ? "%" + cognome + "%" : "%";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, nome, cognome);
+        for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+            ris.put(coppia.getKey(), context.getBean(Utente.class, coppia.getValue()));
+        }
+        return ris;
+    }
+
+    // metodo che filtra gli utenti per nome
+    public Map<Long, GenericEntity> readUtenteByNome(String nome) {
+        String query = "SELECT u.* FROM utente u WHERE u.nome LIKE ?";
+        nome = (nome != null && !nome.isEmpty()) ? "%" + nome + "%" : "%";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, nome);
+        Map<Long, GenericEntity> ris = new HashMap<>();
+        for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+            ris.put(coppia.getKey(), context.getBean(Utente.class, coppia.getValue()));
+        }
+        return ris;
+    }
+
+    // metodo che filtra gli utenti per cognome
+    public Map<Long, GenericEntity> readUtenteByCognome(String cognome) {
+        String query = "SELECT u.* FROM utente u WHERE u.cognome LIKE ?";
+        cognome = (cognome != null && !cognome.isEmpty()) ? "%" + cognome + "%" : "%";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, cognome);
+        Map<Long, GenericEntity> ris = new HashMap<>();
+        for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+            ris.put(coppia.getKey(), context.getBean(Utente.class, coppia.getValue()));
+        }
+        return ris;
+    }
+
+    // metodo che filtra gli utenti per username
+    public Map<Long, GenericEntity> readUtenteByUsername(String username) {
+        String query = "SELECT u.* FROM utente u WHERE u.username LIKE ?";
+        username = (username != null && !username.isEmpty()) ? "%" + username + "%" : "%";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, username);
+        Map<Long, GenericEntity> ris = new HashMap<>();
+        for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+            ris.put(coppia.getKey(), context.getBean(Utente.class, coppia.getValue()));
+        }
+        return ris;
+    }
+    
+    // metodo che filtra gli utenti per email
+    public Map<Long, GenericEntity> readUtenteByEmail(String email) {
+        String query = "SELECT u.* FROM utente u WHERE u.email LIKE ?";
+        email = (email != null && !email.isEmpty()) ? "%" + email + "%" : "%";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, email);
+        Map<Long, GenericEntity> ris = new HashMap<>();
+        for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+            ris.put(coppia.getKey(), context.getBean(Utente.class, coppia.getValue()));
         }
         return ris;
     }

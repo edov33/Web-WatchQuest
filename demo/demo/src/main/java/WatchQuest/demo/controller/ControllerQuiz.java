@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import WatchQuest.demo.service.ServiceQuiz;
 
 @Controller
-@RequestMapping("quiz")
+@RequestMapping("/quiz")
 public class ControllerQuiz {
         
     @Autowired
@@ -29,13 +29,13 @@ public class ControllerQuiz {
     @PostMapping("/modifica")
     public String modificaQuiz(@RequestParam Map<String, String> parametri) {
         serviceQuiz.update(parametri);
-        return "redirect:/home";
+        return "redirect:/quiz/all";
     }
 
     @PostMapping("/inserisci")
     public String inserisciQuiz(@RequestParam Map<String, String> parametri) {
         serviceQuiz.save(parametri);
-        return "redirect:/home";
+        return "redirect:/quiz/all";
     }
 
     @GetMapping("/elimina")
@@ -43,6 +43,36 @@ public class ControllerQuiz {
         if (idQuiz != 0) {
             serviceQuiz.delete(idQuiz);
         }
-        return "redirect:/home";
+        return "redirect:/quiz/all";
+    }
+
+    @GetMapping("/byGenere")
+    public String quizByGenere(@RequestParam String genere, Model model) {
+        model.addAttribute("lista", serviceQuiz.findQuizByGenere(genere));
+        return "quiz";
+    }
+
+    @GetMapping("/rand")
+    public String quizRand(Model model) {
+        model.addAttribute("lista", serviceQuiz.findQuizRandNum());
+        return "quiz";
+    }
+
+    @GetMapping("/randByGenere")
+    public String quizRandByGenere(@RequestParam String genere, Model model) {
+        model.addAttribute("lista", serviceQuiz.findQuizRandByGenere(genere));
+        return "quiz";
+    }
+    
+    @GetMapping("/nuove")
+    public String quizNuoviByUtente(@RequestParam Long idUtente, Model model) {
+        model.addAttribute("lista", serviceQuiz.findQuizNuoviByUtente(idUtente));
+        return "quiz";
+    }
+    
+    @GetMapping("/nuovi")
+    public String quizNuovi(@RequestParam Long idUtente, Model model) {
+        model.addAttribute("lista", serviceQuiz.findQuizNuoviByUtente(idUtente));
+        return "quiz";
     }
 }

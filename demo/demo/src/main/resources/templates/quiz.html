@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/quiz.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="button-container">
+        <a href="/home"> <button>home</button></a>
+        <button onclick="document.getElementById('inserisci').style.display='flex'">Inserisci quiz</button>
+    </div>
+    <table>
+        <thead>
+            <th> domande casuali </th>
+            <th> tutte domande di un genere</th>
+            <th> domande casuali per genere </th>
+            <th> nuove domande per id </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <form id="search-form" action="/quiz/rand" method="get" style="display: flex;">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+                <td>
+                    <form id="search-form" action="/quiz/byGenere" method="get" style="display: flex;">
+                        <input type="text" id="search-genere" name="genere" placeholder="Inserisci genere...">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+                <td>
+                    <form id="search-form" action="/quiz/randByGenere" method="get" style="display: flex;">
+                        <input type="text" id="search-genere" name="genere" placeholder="Inserisci genere...">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+                <td> <form id="search-form" action="/quiz/nuove" method="get" style="display: flex;">
+                    <input type="number" id="search-idUtente" name="idUtente" placeholder="Inserisci idUtente...">
+                    <input type="submit" value="Cerca">
+                </form></td>
+            </tr>
+        </tbody>
+    <table>
+
+        <thead>
+            <th>id</th>
+            <th>domanda</th>
+            <th>risposta</th>
+            <th>genere</th>
+            <th>modifica</th>
+            <th>elimina</th>
+            <tbody>
+                <tr th:each="quiz : ${lista}">
+                    <td th:text="${quiz.id}"></td>
+                    <td th:text="${quiz.domanda}"></td>
+                    <td th:text="${quiz.risposta}"></td>
+                    <td th:text="${quiz.genere}"></td>
+    
+                    <td><button th:attr="
+                        data-modifica-id = ${quiz.id},
+                        data-modifica-domanda = ${quiz.domanda},
+                        data-modifica-risposta = ${quiz.risposta},
+                        data-modifica-genere = ${quiz.genere}" onclick="modificaQuiz(this)">Modifica</button>
+                    </td>
+    
+                    <td> <a th:href="|/quiz/elimina?idQuiz=${quiz.id}|"><button>Elimina</button></a></td>
+                    
+                </tr>
+            </tbody>
+        </thead>
+    </table>
+    <div id=contenuto>
+        <div class="modal" id="inserisci" style="display:none;">
+            <div id="modal-add" class="modal-content">
+                <span onclick="document.getElementById('inserisci').style.display='none'"
+                    style="cursor:pointer;">&times;</span>
+                <h4>Inserisci nuova quiz</h4>
+                <form action="/quiz/inserisci" method="post">
+                    <label for="domanda">domanda</label>
+                    <input type="text" name="domanda" id="domanda"> <br>
+                    <label for="risposta">opzione giusta</label>
+                    <input type="text" name="risposta" id="risposta"> <br>
+                    <label for="genere">genere</label>
+                    <input type="text" name="genere" id="genere"> <br>
+                    <input type="submit" value="Aggiungi">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="form-modifica" hidden>
+        <form action="/quiz/modifica" method="post">
+            <label for="modifica-id">Id</label>
+            <input type="number" name="id" id="modifica-id" readonly> <br>
+            <label for="modifica-domanda">domanda</label>
+            <input type="text" name="domanda" id="modifica-domanda"> <br>
+            <label for="modifica-risposta">opzione giusta</label>
+            <input type="text" name="risposta" id="modifica-risposta"> <br>
+            <label for="modifica-genere">genere</label>
+            <input type="text" name="genere" id="modifica-genere"> <br>
+            <input type="submit" value="modifica">
+        </form>
+    </div>
+</body>
+
+</html>

@@ -27,10 +27,6 @@ public class EntityContext {
     public Quiz quiz(Map<String, String> mappa) {
         Quiz quiz = new Quiz();
         quiz.fromMap(mappa);
-        // if(mappa.containsKey("id_programma")){
-        //     quiz.setProgramma(new Programma());
-        //     quiz.getProgramma().setId(Long.parseLong(mappa.get("id_programma")));
-        // }
         return quiz;
     }
     

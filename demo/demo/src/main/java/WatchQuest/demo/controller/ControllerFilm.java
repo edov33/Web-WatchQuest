@@ -29,13 +29,13 @@ public class ControllerFilm {
     @PostMapping("/modifica")
     public String modificaFilm(@RequestParam Map<String, String> parametri) {
         serviceFilm.update(parametri);
-        return "redirect:/home";
+        return "redirect:/film/all";
     }
 
     @PostMapping("/inserisci")
     public String inserisciFilm(@RequestParam Map<String, String> parametri) {
         serviceFilm.save(parametri);
-        return "redirect:/home";
+        return "redirect:/film/all";
     }
 
     @GetMapping("/elimina")
@@ -43,15 +43,72 @@ public class ControllerFilm {
         if (idFilm != 0) {
             serviceFilm.delete(idFilm);
         }
-        return "redirect:/home";
+        return "redirect:/film/all";
     }
 
-    // sopra ok
-    // sotto tentativi per visualizzare film in base all'utente
+    @GetMapping("/byTitolo")
+    public String filmByTitolo(@RequestParam String titolo, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByTitolo(titolo));
+        return "film";
+    }
 
+    @GetMapping("/byGenere")
+    public String filmByGenere(@RequestParam String genere, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByGenere(genere));
+        return "film";
+    }
+    
+    @GetMapping("/byRating")
+    public String filmByRating(@RequestParam String voto, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByRating(voto));
+        return "film";
+    }
+    
+    @GetMapping("/byAnno")
+    public String filmByAnno(@RequestParam String anno, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByAnno(anno));
+        return "film";
+    }
+    
+    @GetMapping("/byAttore")
+    public String filmByAttore(@RequestParam String attore, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByAttore(attore));
+        return "film";
+    }
+    
     @GetMapping("/byUtente")
     public String allUtente(@RequestParam Long id, Model model) {
         model.addAttribute("lista", serviceFilm.findFilmByUtente(id));
+        return "filmUtente";
+    }
+    
+    @GetMapping("/genereOneUtente")
+    public String genereUtente(@RequestParam Long id, @RequestParam String genere, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByGenereAndUtente(genere, id));
+        return "filmUtente";
+    }
+    
+    @GetMapping("/titoloOneUtente")
+    public String titoloUtente(@RequestParam Long id, @RequestParam String titolo, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByTitoloAndUtente(titolo, id));
+        return "filmUtente";
+    }
+    
+    @GetMapping("/ratingOneUtente")
+    public String ratingUtente(@RequestParam Long id, @RequestParam String rating, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByRatingAndUtente(rating, id));
+        return "filmUtente";
+    }
+    
+    @GetMapping("/annoOneUtente")
+    public String annoUtente(@RequestParam Long id, @RequestParam String anno, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByAnnoAndUtente(anno, id));
+        return "filmUtente";
+    }
+    
+    @GetMapping("/attoreOneUtente")
+    public String attoreUtente(@RequestParam Long id, @RequestParam String attore, Model model) {
+        model.addAttribute("lista", serviceFilm.findFilmByAttoreAndUtente(attore, id));
         return "filmUtente";
     }
 }
