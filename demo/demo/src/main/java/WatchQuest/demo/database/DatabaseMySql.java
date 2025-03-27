@@ -164,7 +164,6 @@ public class DatabaseMySql implements IDatabase {
             return -2L;
         } finally {
             close(ps, rs);
-            closeConnection();
         }
         return id;
     }
@@ -194,7 +193,6 @@ public class DatabaseMySql implements IDatabase {
             e.printStackTrace();
         } finally {
             close(ps, rs);
-            closeConnection();
         }
         return result;
     }

@@ -22,7 +22,7 @@ public class ControllerUtente {
     @GetMapping("/all")
     public String allUtente(Model model) {
         model.addAttribute("lista", serviceUtente.findAll());
-        return "utente";
+        return "user";
     }
     
     @PostMapping("/modifica")
@@ -60,31 +60,31 @@ public class ControllerUtente {
     @GetMapping("/byNome")
     public String utenteByNome(@RequestParam String nome, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByNome(nome));
-        return "utente";
+        return "user";
     }
     
     @GetMapping("/byCognome")
     public String utenteByCognome(@RequestParam String cognome, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByCognome(cognome));
-        return "utente";
+        return "user";
     }
     
     @GetMapping("/byNominativo")
     public String utenteByNominativo(@RequestParam String nome, @RequestParam String cognome, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByNominativo(nome, cognome));
-        return "utente";
+        return "user";
     }
     
     @GetMapping("/byUsername")
     public String utenteByUsername(@RequestParam String username, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByUsername(username));
-        return "utente";
+        return "user";
     }
     
     @GetMapping("/byEmail")
     public String utenteByEmail(@RequestParam String email, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByEmail(email));
-        return "utente";
+        return "user";
     }
 
 

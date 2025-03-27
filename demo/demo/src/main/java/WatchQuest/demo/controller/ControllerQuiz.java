@@ -23,7 +23,7 @@ public class ControllerQuiz {
     @GetMapping("/all")
     public String allQuiz(Model model) {
         model.addAttribute("lista", serviceQuiz.findAll());
-        return "quiz";
+        return "quizTest";
     }
 
     @PostMapping("/modifica")
@@ -49,30 +49,30 @@ public class ControllerQuiz {
     @GetMapping("/byGenere")
     public String quizByGenere(@RequestParam String genere, Model model) {
         model.addAttribute("lista", serviceQuiz.findQuizByGenere(genere));
-        return "quiz";
+        return "quizTest";
     }
 
     @GetMapping("/rand")
     public String quizRand(Model model) {
         model.addAttribute("lista", serviceQuiz.findQuizRandNum());
-        return "quiz";
+        return "quizTest";
     }
 
     @GetMapping("/randByGenere")
     public String quizRandByGenere(@RequestParam String genere, Model model) {
         model.addAttribute("lista", serviceQuiz.findQuizRandByGenere(genere));
-        return "quiz";
+        return "quizTest";
     }
     
     @GetMapping("/nuove")
     public String quizNuoviByUtente(@RequestParam Long idUtente, Model model) {
         model.addAttribute("lista", serviceQuiz.findQuizNuoviByUtente(idUtente));
-        return "quiz";
+        return "quizTest";
     }
     
     @GetMapping("/nuovi")
     public String quizNuovi(@RequestParam Long idUtente, Model model) {
         model.addAttribute("lista", serviceQuiz.findQuizNuoviByUtente(idUtente));
-        return "quiz";
+        return "quizTest";
     }
 }
