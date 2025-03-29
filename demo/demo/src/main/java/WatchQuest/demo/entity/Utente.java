@@ -17,6 +17,7 @@ public class Utente extends GenericEntity{
     private String password;
     private String email;
     private String lingua;
+    private String foto_profilo;
     private List<Quiz> quiz;
     private List<Serie> serie;
     private List<Film> film;

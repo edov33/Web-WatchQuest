@@ -23,9 +23,9 @@ public class DaoUtente implements IDao<Long, Utente> {
 
     @Override
     public Long create(Utente u) {
-        String comando = "INSERT INTO utente (nome, cognome, data_nascita, username, password, email, lingua) VALUES (?,?,?,?,?,?,?)";
+        String comando = "INSERT INTO utente (nome, cognome, data_nascita, username, password, email, foto_profilo, lingua) VALUES (?,?,?,?,?,?,?,?)";
         return databaseMySql.executeDML(comando, u.getNome(), u.getCognome(), String.valueOf(u.getData_nascita()),
-                u.getUsername(), u.getPassword(), u.getEmail(), u.getLingua());
+                u.getUsername(), u.getPassword(), u.getEmail(), u.getFoto_profilo(), u.getLingua());
     }
 
     @Override
@@ -43,7 +43,7 @@ public class DaoUtente implements IDao<Long, Utente> {
     public void update(Utente u) {
         String comando = "UPDATE utente SET nome = ?, cognome = ?, data_nascita = ?, username = ?, password = ?, email = ?, lingua = ? WHERE id = ?";
         databaseMySql.executeDML(comando, u.getNome(), u.getCognome(), String.valueOf(u.getData_nascita()),
-                u.getUsername(), u.getPassword(), u.getEmail(), u.getLingua(), String.valueOf(u.getId()));
+                u.getUsername(), u.getPassword(), u.getEmail(), u.getFoto_profilo(), u.getLingua(), String.valueOf(u.getId()));
     }
 
     @Override

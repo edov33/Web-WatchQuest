@@ -31,14 +31,13 @@ profileIcon.addEventListener("click", showLogin);
 var signUpButton = document.getElementById("signup-b");
 var loginButton = document.getElementById("login-b");
 var loginButtonLbl = document.getElementById("login-b-lb");
-// var loggato = "";
+
 document.addEventListener("DOMContentLoaded",
     function replaceLoginBut() {
         if (document.getElementById("session").value != "") {
             loginButton.innerHTML = "Log Out";
             signUpButton.style.visibility = "hidden";
-            // sessionStorage.setItem("loggato", "ok");
-            // loggato = "loggato";
+
         }
     }
 );
@@ -55,13 +54,6 @@ function showAdvSearch() {
     }
 }
 advSrcButton.addEventListener("click", showAdvSearch);
-
-// var session = document.getElementById("session");
-// session.value = sessionStorage.getItem("loggato");
-// function setSession(){
-//     session.value = loggato;
-// }
-// setSession();
 
 
 

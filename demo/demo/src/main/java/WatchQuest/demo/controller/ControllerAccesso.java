@@ -36,7 +36,7 @@ public class ControllerAccesso {
             // se u = null non ho un utente con quel nome cognome e email
             if (u == null) {
                 serviceUtente.save(datiForm);
-                return "redirect:/utente/profilo";
+                return "redirect:/home";
             } else {
                 // ho già quel trio insieme
                 model.addAttribute("error", "nome cognome email già inserita");
@@ -51,11 +51,6 @@ public class ControllerAccesso {
         }
     }
 
-    @PostMapping("/controllo-sessione")
-    public String controllo(Model model, HttpSession session) {
-        model.addAttribute("loggato", session.getId());
-        return "";
-    }
 
     @PostMapping("/attempt")
     public String login(@RequestParam String username, @RequestParam String password, Model model,
@@ -85,23 +80,8 @@ public class ControllerAccesso {
 
         // System.out.println("\n-------sto entrato come " +
         // session.getAttribute("ruolo") + "--------------\n");
-        return "home";
+        return "redirect:/home";
     }
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res) {
-        HttpSession session = req.getSession(false);
 
-        if (session == null) {
-            // valid session doesn't exist
-            // do something like send the user to a login screen
-        }
-
-        if (session.getAttribute("username") == null) {
-            // no username in session
-            // user probably hasn't logged in properly
-        }
-
-        // now let's pretend to log the user out for good measure
-        session.invalidate();
-    }
 }
