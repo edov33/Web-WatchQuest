@@ -1,150 +1,178 @@
 <!DOCTYPE html>
 <html lang="it">
-    <head>
-        <link rel="icon" type="image/ico" href="/immagini/favicon.ico">
-        <title>WatchQuest</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initialscale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href="/css/general_styles.css">
-        <link rel="stylesheet" href="/css/media.css">
-    </head>
-    <body>
-        <header>
-            <button id="menu-button" onclick="showNav()" type="button">
-                <img id="menu-option" class="menu-icon" src="/immagini/menu-icon.png">
-            </button>
-            <img src="/immagini/watchquest-logo.png" id="watchquest" class="img-fluid">
-            <h1 id="nome-progetto">WatchQuest</h1>
-            <form id="search-form">
-                <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
-                    <datalist id="cronologia">
-                        <option value="Beccatevi sto trapezioh"></option>
-                    </datalist>
-            </form>
-            <div id="search-b-div">
-                <button class="search-b"><i class="bi bi-search"></i></button>
-                <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
-            </div>
-            
-            <div id="otherlinks-box">
-                <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
-                <h6 class="otherlinks"><a href="/joinus" id="joinus" class="text-decoration-none">Join Us</a></h6>
-                <h6 class="otherlinks"><a href="/faq" class="text-decoration-none">FAQ</a></h6>
-                <img id="profile-icon" src="/immagini/profile-icon-no-bg.png">
-            </div>
-        </header>
+
+<head>
+    <link rel="icon" type="image/ico" href="/immagini/favicon.ico">
+    <title>WatchQuest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/general_styles.css">
+    <link rel="stylesheet" href="/css/media.css">
+</head>
+
+<body>
+    <header>
+        <button id="menu-button" onclick="showNav()" type="button">
+            <img id="menu-option" class="menu-icon" src="/immagini/menu-icon.png">
+        </button>
+        <img src="/immagini/watchquest-logo.png" id="watchquest" class="img-fluid">
+        <h1 id="nome-progetto">WatchQuest</h1>
+        <form id="search-form">
+            <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
+            <datalist id="cronologia">
+                <option value="Beccatevi sto trapezioh"></option>
+            </datalist>
+        </form>
+        <div id="search-b-div">
+            <button class="search-b"><i class="bi bi-search"></i></button>
+            <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
+        </div>
+
+        <div id="otherlinks-box">
+            <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
+            <h6 class="otherlinks"><a href="/joinus" id="joinus" class="text-decoration-none">Join Us</a></h6>
+            <h6 class="otherlinks"><a href="/faq" class="text-decoration-none">FAQ</a></h6> <img id="profile-icon"
+                src="/immagini/profile-icon-no-bg.png">
+        </div>
         <nav id="navBar">
-            <button onclick='window.location.href="/home"' class="nav-option"><i class="bi bi-house nav-icon"></i><h2 class="nav-link">Home</h2></button>
-            <button onclick='window.location.href="/myLists"' class="nav-option"><i class="bi bi-heart  nav-icon"></i><h2 class="nav-link">My Lists</h2></button>
-            <button onclick='window.location.href="/news"' class="nav-option"><i class="bi bi-newspaper  nav-icon"></i><h2 class="nav-link">News</h2></button>
-            <button onclick='window.location.href="/quiz"' class="nav-option"><i class="bi bi-question-diamond  nav-icon"></i><h2 class="nav-link">Quiz</h2></button>
-            <button onclick='window.location.href="/settings"' class="nav-option"><i class="bi bi-gear  nav-icon"></i><h2 class="nav-link">Settings</h2></button>
+            <button onclick='window.location.href="/home"' id="home-nav" class="nav-option"><i
+                    class="bi bi-house nav-icon"></i>
+                <h2 class="nav-link">Home</h2>
+            </button>
+            <button onclick='window.location.href="/myLists"' id="mylists-nav" class="nav-option"><i
+                    class="bi bi-heart  nav-icon"></i>
+                <h2 class="nav-link">My Lists</h2>
+            </button>
+            <button onclick='window.location.href="/news"' id="news-nav" class="nav-option"><i
+                    class="bi bi-newspaper  nav-icon"></i>
+                <h2 class="nav-link">News</h2>
+            </button>
+            <button onclick='window.location.href="/quiz"' id="quiz-nav" class="nav-option"><i
+                    class="bi bi-question-diamond  nav-icon"></i>
+                <h2 class="nav-link">Quiz</h2>
+            </button>
+            <button onclick='window.location.href="/settings"' id="settings-nav" class="nav-option"><i
+                    class="bi bi-gear  nav-icon"></i>
+                <h2 class="nav-link">Settings</h2>
+            </button>
         </nav>
-        <main>
-            <div id="adv-search">
-                <form id="adv-src-form">
-                    <label id="find-by">Find by:
-                        <label>Film</label>
-                        <input id="fb-film" type="radio" name="find-by" value="film" class="fb-radio-opt">
-                        <label>Actor</label>
-                        <input id="fb-actor" type="radio" name="find-by" value="actor" class="fb-radio-opt">
-                    </label>
-                    <label class="adv-select-lbl">Categoria: 
-                        <select id="categoria" class="adv-select">
-                            <option value=""></option>
-                        </select>
-                    </label>
-                    <label class="adv-select-lbl">Genere:
-                        <select id="genere" class="adv-select">
-                            <option value=""></option>
-                        </select>
-                    </label>
-                </form>
-            </div>
-            <div id="login-pop">
-                <form>
-                    <input type="hidden" id="session" value="">
-                    <label class="login-lb"> Username:
-                        <input type="text" class="login">
-                    </label>
-                    <label class="login-lb"> Password:
-                        <input type="password" class="login">
-                    </label>
-                    <div id="login-bgroup">
-                        <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
-                        <button type="button" id="signup-b" class="btn btn-primary login-b">Sign Up</button>
+        <div id="adv-search">
+            <form id="adv-src-form">
+                <label id="find-by">Find by:
+                    <label>Film</label>
+                    <input id="fb-film" type="radio" name="find-by" value="film" class="fb-radio-opt">
+                    <label>Actor</label>
+                    <input id="fb-actor" type="radio" name="find-by" value="actor" class="fb-radio-opt">
+                </label>
+                <label class="adv-select-lbl">Categoria:
+                    <select id="categoria" class="adv-select">
+                        <option value=""></option>
+                    </select>
+                </label>
+                <label class="adv-select-lbl">Genere:
+                    <select id="genere" class="adv-select">
+                        <option value=""></option>
+                    </select>
+                </label>
+            </form>
+        </div>
+        <div id="login-pop">
+            <form action="/login/attempt" method="post" th:action="@{/login/attempt}">
+                <input type="hidden" id="session" th:value="${loggato}">
+                <label class="login-lb"> Username:
+                    <input type="text" class="login" name="username">
+                </label>
+                <label class="login-lb"> Password:
+                    <input type="password" class="login" name="password">
+                </label>
+                <div id="login-bgroup">
+                    <button type="submit" id="login-b" class="btn btn-primary login-b">Login</button>
+                    <a href="/registrazione"><button type="button" id="signup-b" class="btn btn-primary login-b">Sign
+                            Up</button></a>
+                </div>
+
+            </form>
+        </div>
+    </header>
+    <main>
+        <article>
+            <section id="sezione1">
+                <div id="cover-div">
+                    <button id="like" onclick="fillHeart()"><i id="like-icon" class="bi bi-heart"></i></button>
+                </div>
+                <div id="info-media">
+                    <h4 class="nome-media" th:text="${titolo}">NOME FILM</h4>
+                    <h6 class="info-media" th:text="${durata}">Durata</h6>
+                    <h6 class="info-media" th:text="${anno}">Anno</h6>
+                    <h6 class="info-media" th:text="${genere}">Generi</h6>
+                </div>
+                <div id="more-info">
+                    <div id="trama-div">
+                        <h5>Trama</h5>
+                        <h6 id="trama">Durante un assalto terroristico al
+                            Teatro dell'Opera di Kiev, un agente della CIA, il "Protagonista", partecipa
+                            sotto copertura a un'operazione russa per salvare un agente compromesso e
+                            recuperare un oggetto non identificato rubato. Dopo avere salvato l'agente e
+                            recuperato l'oggetto, il Protagonista invia parte della sua squadra attraverso
+                            un'uscita segreta e ritorna sulla scena dell'assalto, venendo salvato da un
+                            uomo mascherato, con un filo rosso sullo zaino, che uccide l'uomo che lo
+                            stava minacciando sparando un proiettile "invertito", ovvero facendolo
+                            rientrare nell'arma. Il Protagonista si unisce nuovamente ai russi che,
+                            resisi conto di essere stati ingannati, lo torturano; l'uomo resiste all'
+                            interrogatorio ed approfitta di un momento di disattenzione per inghiottire
+                            una pillola avvelenata e suicidarsi.</h6><button id="wiki-link" onclick="showWikiPage()"><i
+                                class="bi bi-wikipedia"></i></button>
                     </div>
-                    
-                </form>
-            </div>
-            <article>
-                <section id="sezione1">
-                    <div id="cover-div">
-                        <img id="cover" src="/immagini/locandina-test.jpeg">
-                        <button id="like" onclick="fillHeart()"><i id="like-icon" class="bi bi-heart"></i></button>
-                    </div>
-                    <div id="info-media">
-                        <h4>NOME FILM</h4>
-                        <h5>Durata - Anno</h5>
-                        <h6>Generi</h6>
-                    </div>
-                    <div id="more-info">
-                        <div id="trama-div"><h5>Trama</h5><h6 id="trama">Durante un assalto terroristico al
-                             Teatro dell'Opera di Kiev, un agente della CIA, il "Protagonista", partecipa 
-                             sotto copertura a un'operazione russa per salvare un agente compromesso e 
-                             recuperare un oggetto non identificato rubato. Dopo avere salvato l'agente e 
-                             recuperato l'oggetto, il Protagonista invia parte della sua squadra attraverso
-                              un'uscita segreta e ritorna sulla scena dell'assalto, venendo salvato da un 
-                              uomo mascherato, con un filo rosso sullo zaino, che uccide l'uomo che lo 
-                              stava minacciando sparando un proiettile "invertito", ovvero facendolo 
-                              rientrare nell'arma. Il Protagonista si unisce nuovamente ai russi che, 
-                              resisi conto di essere stati ingannati, lo torturano; l'uomo resiste all'
-                              interrogatorio ed approfitta di un momento di disattenzione per inghiottire 
-                              una pillola avvelenata e suicidarsi.</h6><button id="wiki-link"><i class="bi bi-wikipedia"></i></button></div>
-                        <iframe id="trailer"
-                        src="https://www.youtube.com/embed/L3pk_TBkihU?si=MrV7bzD1TzEvr7Q-" 
-                        title="YouTube video player" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
-                        picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+                    <iframe id="trailer" src="https://www.youtube.com/embed/L3pk_TBkihU?si=MrV7bzD1TzEvr7Q-"
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+                        picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen></iframe>
-                    </div>
-                    <div id="commenti-div">
-                        <div id="sez-commenti">
-                            <h5 id="">Commenti:</h5>
-                            <h6 style="font-weight: lighter;">UtenteTrapezioh66: Non ho ancora capito chi spara a chi</h6>
-                        </div>
-                    </div>
-                </section>
-                <section>
-                    <h3>CAST</h3>
-                    <div class="actors">
-                        <figure class="actor">
-                            <img class="actor-img">
-                            <caption class="actor-info">Info attore</caption>
-                        </figure>
-                    </div>
-                </section>
-            </article>
-        </main>
-        <footer id="footer" class="bd-footer py-4 py-md-5 mt-5">
-            <div>
-                <div id="contatti">
-                    Contatti:
-                    <br>+39 3346895395
-                    <br>watchquest@gmail.com
-                    <br>Milano, Via Roma 5
                 </div>
-                <div id="canaliSocial">
-                    Canali social:
-                    <br><i class="bi bi-facebook social_img"></i><h5 class="social-link">WatchQuest</h5>
-                    <br><i class="bi bi-instagram social_img"></i><h5 class="social-link">@watchquest</h5>
-                    <br><i class="bi bi-youtube social_img"></i><h5 class="social-link">WatchQuest</h5>
+                <div id="sez-commenti">
+                    <h5 id="">Commenti:</h5>
+                    <h6 style="font-weight: lighter;">UtenteTrapezioh66:&nbsp; Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Et vero, corrupti excepturi quae, aperiam distinctio inventore eaque quod
+                        quidem minima odit accusantium. Quod repellendus voluptatibus reprehenderit iusto dolore minus
+                        odit!</h6>
                 </div>
-            </div>
-        </footer>
-    </body>
-    <script src="/js/generalscripts.js"></script>
-    <script src="/js/media.js"></script>
+            </section>
+            <section id="sez-cast">
+                <h3>CAST</h3>
+                <div class="actors">
+                    <figure class="actor">
+                        <img class="actor-img" src="https://picsum.photos/100/150">
+                        <caption class="actor-info">Info attore</caption>
+                    </figure>
+                    <figure class="actor">
+                        <img class="actor-img" src="https://picsum.photos/100/150">
+                        <caption class="actor-info">Info attore</caption>
+                    </figure>
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer class="bd-footer py-4 py-md-5 mt-5">
+        <div id="contatti">
+            Contatti:
+            <br>+39 3346895395
+            <br>watchquest@gmail.com
+            <br>Milano, Via Roma 5
+        </div>
+        <div id="canaliSocial">
+            Canali social:
+            <br><i class="bi bi-facebook social_img"></i>
+            <h5 class="social-link">WatchQuest</h5>
+            <br><i class="bi bi-instagram social_img"></i>
+            <h5 class="social-link">@watchquest</h5>
+            <br><i class="bi bi-youtube social_img"></i>
+            <h5 class="social-link">WatchQuest</h5>
+        </div>
+    </footer>
+</body>
+<script src="/js/generalscripts.js"></script>
+<script src="/js/media.js"></script>
+
 </html>

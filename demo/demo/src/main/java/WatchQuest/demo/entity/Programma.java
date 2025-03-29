@@ -16,4 +16,5 @@ public class Programma extends GenericEntity{
     private double rating;
     private String regista;
     private String lingua_originale;
+    private String url;
 }

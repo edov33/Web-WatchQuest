@@ -65,6 +65,17 @@ public class DaoFilm extends DaoProgramma implements IDao<Long, Film> {
         }
         return null;
     }
+    
+    //metodo che restituisce 5 film
+    public Map<Long, GenericEntity> read5() {
+        String query = "SELECT p.*, f.durata FROM film f JOIN programma p ON f.id_programma = p.id ORDER BY rand() LIMIT 5";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query);
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
+        for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+            ris.put(coppia.getKey(), context.getBean(Film.class, coppia.getValue()));
+        }
+        return ris;
+    }
 
     // metodo che restituisce i film visti da un utente
     public Map<Long, GenericEntity> readFilmByUtente(Long idUtente) {

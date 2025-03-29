@@ -1,17 +1,37 @@
+/*GLOBAL*/
 body {
     background-image: url("/immagini/teatro.png");
     background-size: cover;
 }
-#banner-div {
-    position: absolute;
-    width: 100%;
-    top: 10.3%;
-    left: 0px;
-    z-index: -1;
+
+/*MAIN*/
+.tendenza {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+    display: inline;
 }
-#banner {
-    width: 100%;
-    height: 20vw;
+
+.tendenza .card {
+    margin-left: 20px;
+    width: 10vw;
+    min-width: 100px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.1em;
+    background-color: black;
+    color: white;
 }
+
+.media-name {
+    font-size: 9em;
+}
+
+.media-link {
+    width: 10vw;
+}
+
 
 /* <link rel="stylesheet" href="../static/css/home.css">

@@ -1,0 +1,38 @@
+/*GLOBAL*/
+body {
+    background-image: url("../immagini/teatro.png");
+    background-size: 100%;
+}
+
+/*MAIN*/
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#about-us {
+    margin-top: 30px;
+    width: 80vw;
+    height: 90vw;
+    border-width: 4px;
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(49, 49, 49);
+    color: white;
+    text-align: center;
+}
+#about-us-heading {
+    font-size: 1.5em;
+}
+#about-us-subheading {
+    font-size: 1em;
+    font-weight: lighter;
+}
+#about-us-content {
+    font-weight: lighter;
+    font-size: 1em;
+}
+hr {
+    color: rgb(227, 227, 227);
+}

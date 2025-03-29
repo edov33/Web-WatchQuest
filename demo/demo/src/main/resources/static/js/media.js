@@ -7,3 +7,8 @@ function fillHeart() {
         likeIcon.classList.replace("bi-heart", "bi-heart-fill"); 
     }
 }
+//WIKI LINK
+var wikiButton=document.getElementById("wiki-link");
+function showWikiPage() {
+    window.location.assign("https://en.wikipedia.org/wiki/Tenet_(film)");
+}

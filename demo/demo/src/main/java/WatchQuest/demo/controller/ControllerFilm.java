@@ -75,6 +75,12 @@ public class ControllerFilm {
         return "adminPages/allFilm.html";
     }
     
+    @GetMapping("/tendenze")
+    public String filmTendenze(@RequestParam String attore, Model model) {
+        model.addAttribute("listaFilm", serviceFilm.find5());
+        return "/home";
+    }
+    
 
 
 
