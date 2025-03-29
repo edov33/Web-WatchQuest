@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <link rel="icon" type="image/ico" href="/immagini/favicon.ico">
+    <title>WatchQuest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initialscale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/general_styles.css">
+    <script src="/js/controlli.js"></script>
+</head>
+
+<body>
+    <header>
+        <button id="menu-button" onclick="showNav()" type="button">
+            <img id="menu-option" class="menu-icon" src="/immagini/menu-icon.png">
+        </button>
+        <img src="/immagini/watchquest-logo.png" id="watchquest" class="img-fluid">
+        <h1 id="nome-progetto">WatchQuest</h1>
+        <form id="search-form">
+            <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
+            <datalist id="cronologia">
+                <option value="Beccatevi sto trapezioh"></option>
+            </datalist>
+        </form>
+        <div id="search-b-div">
+            <button class="search-b"><i class="bi bi-search"></i></button>
+            <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
+        </div>
+
+        <div id="otherlinks-box">
+            <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
+            <h6 class="otherlinks"><a href="/joinus" id="joinus" class="text-decoration-none">Join Us</a></h6>
+            <h6 class="otherlinks"><a href="/faq" class="text-decoration-none">FAQ</a></h6>
+            <img id="profile-icon" src="/immagini/profile-icon-no-bg.png">
+        </div>
+    </header>
+    <h1>siamo in info utenti</h1>
+    <h6>lista utenti</h6>
+    <button onclick="document.getElementById('inserisci').style.display='flex'">Inserisci utente</button>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>nome</th>
+            <th>cognome</th>
+            <th>data_nascita</th>
+            <th>username</th>
+            <th>password</th>
+            <th>email</th>
+            <th>lingua</th>
+            <th>modifica</th>
+            <th>elimina</th>
+            <th>programmi</th>
+            <th>quiz nuovi</th>
+        </thead>
+
+        <tbody>
+            <tr:block th:each="utente : ${listaUtenti}">
+                <tr>
+                    <td th:text="${utente.id}"></td>
+                    <td th:text="${utente.nome}"></td>
+                    <td th:text="${utente.cognome}"></td>
+                    <td th:text="${utente.data_nascita}"></td>
+                    <td th:text="${utente.username}"></td>
+                    <td th:text="${utente.password}"></td>
+                    <td th:text="${utente.email}"></td>
+                    <td th:text="${utente.lingua}"></td>
+
+                    <td><button th:attr="
+                    data-modifica-id = ${utente.id},
+                    data-modifica-nome = ${utente.nome},
+                    data-modifica-cognome = ${utente.cognome},
+                    data-modifica-data_nascita = ${utente.data_nascita},
+                    data-modifica-username = ${utente.username},
+                    data-modifica-password = ${utente.password},
+                    data-modifica-email = ${utente.email},
+                    data-modifica-lingua = ${utente.lingua}"
+                            onclick="document.getElementById('modifica').style.display='flex' ; modificaUtente(this)">Modifica</button>
+                    </td>
+
+                    <td> <a th:href="|/admin/eliminaUtente?idUtente=${utente.id}|"><button>Elimina</button></a></td>
+                    <td> <a th:href="|/utente/filmDettagliUtente?idUtente=${utente.id}|"><button>Programmi</button></a>
+                    </td>
+                    <td> <a th:href="|/quiz/nuovi?idUtente=${utente.id}|"><button>Quiz</button></a></td>
+                </tr>
+            </tr:block>
+        </tbody>
+    </table>
+
+    <div>
+        <a href="/admin/serie"><button>Serie</button></a>
+        <a href="/admin/film"><button>Film</button></a>
+    </div>
+
+    <div id=contenuto>
+        <div class="modal" id="inserisci" style="display:none;">
+            <div id="modal-add" class="modal-content">
+                <span onclick="document.getElementById('inserisci').style.display='none'"
+                    style="cursor:pointer;">&times;</span>
+                <h4>Inserisci nuovo utente</h4>
+                <form action="/admin/inserisci" method="post">
+                    <label for="nome">nome</label>
+                    <input type="text" name="nome" id="nome"> <br>
+                    <label for="cognome">cognome</label>
+                    <input type="text" name="cognome" id="cognome"> <br>
+                    <label for="data_nascita">data_nascita</label>
+                    <input type="date" name="data_nascita" id="data_nascita"> <br>
+                    <label for="username">username</label>
+                    <input type="text" name="username" id="username"> <br>
+                    <label for="password">password</label>
+                    <input type="password" name="password" id="password"> <br>
+                    <label for="email">email</label>
+                    <input type="email" name="email" id="email"> <br>
+                    <label for="lingua">lingua</label>
+                    <input type="text" name="lingua" id="lingua"> <br>
+
+                    <br>
+                    <input type="submit" value="Aggiungi">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="form-modifica" hidden>
+        <div class="modal" id="modifica" style="display:none;">
+            <div id="modal-add" class="modal-content">
+                <span onclick="document.getElementById('modifica').style.display='none'"
+                    style="cursor:pointer;">&times;</span>
+                <h4>Modifica utente</h4>
+                <form action="/admin/modifica" method="post">
+                    <label for="modifica-id">Id</label>
+                    <input type="number" name="id" id="modifica-id" readonly> <br>
+                    <label for="modifica-nome">nome</label>
+                    <input type="text" name="nome" id="modifica-nome"> <br>
+                    <label for="modifica-cognome">cognome</label>
+                    <input type="text" name="cognome" id="modifica-cognome"> <br>
+                    <label for="modifica-data_nascita">data_nascita</label>
+                    <input type="date" name="data_nascita" id="modifica-data_nascita"> <br>
+                    <label for="modifica-username">username</label>
+                    <input type="text" name="username" id="modifica-username"> <br>
+                    <label for="modifica-password">password</label>
+                    <input type="password" name="password" id="modifica-password"> <br>
+                    <label for="modifica-email">email</label>
+                    <input type="email" name="email" id="modifica-email"> <br>
+                    <label for="modifica-lingua">lingua</label>
+                    <input type="text" name="lingua" id="modifica-lingua"> <br>
+
+                    <input type="submit" value="modifica">
+                </form>
+            </div>
+        </div>
+    </div>
+    <nav id="navBar">
+        <button onclick='window.location.href="/home"' class="nav-option"><i class="bi bi-house nav-icon"></i>
+            <h2 class="nav-link">Home</h2>
+        </button>
+        <button onclick='window.location.href="/myLists"' class="nav-option"><i class="bi bi-heart  nav-icon"></i>
+            <h2 class="nav-link">My Lists</h2>
+        </button>
+        <button onclick='window.location.href="/news"' class="nav-option"><i class="bi bi-newspaper  nav-icon"></i>
+            <h2 class="nav-link">News</h2>
+        </button>
+        <button onclick='window.location.href="/quiz"' class="nav-option"><i
+                class="bi bi-question-diamond  nav-icon"></i>
+            <h2 class="nav-link">Quiz</h2>
+        </button>
+        <button onclick='window.location.href="/settings"' class="nav-option"><i class="bi bi-gear  nav-icon"></i>
+            <h2 class="nav-link">Settings</h2>
+        </button>
+    </nav>
+    <main>
+        <div id="adv-search">
+            <form id="adv-src-form">
+                <label id="find-by">Find by:
+                    <label>Film</label>
+                    <input id="fb-film" type="radio" name="find-by" value="film" class="fb-radio-opt">
+                    <label>Actor</label>
+                    <input id="fb-actor" type="radio" name="find-by" value="actor" class="fb-radio-opt">
+                </label>
+                <label class="adv-select-lbl">Categoria:
+                    <select id="categoria" class="adv-select">
+                        <option value=""></option>
+                    </select>
+                </label>
+                <label class="adv-select-lbl">Genere:
+                    <select id="genere" class="adv-select">
+                        <option value=""></option>
+                    </select>
+                </label>
+            </form>
+        </div>
+        <div id="login-pop">
+            <form>
+                <input type="hidden" id="session" value="">
+                <label class="login-lb"> Username:
+                    <input type="text" class="login">
+                </label>
+                <label class="login-lb"> Password:
+                    <input type="password" class="login">
+                </label>
+                <div id="login-bgroup">
+                    <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
+                    <a href="/registrazione"><button type="button" id="signup-b" class="btn btn-primary login-b">Sign
+                            Up</button></a>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    <!-- <footer>
+        <div>
+            <div id="contatti">
+                Contatti:
+                <br>+39 3346895395
+                <br>watchquest@gmail.com
+                <br>Milano, Via Roma 5
+            </div>
+            <div id="canaliSocial">
+                Canali social:
+                <br><i class="bi bi-facebook social_img"></i>
+                <h5 class="social-link">WatchQuest</h5>
+                <br><i class="bi bi-instagram social_img"></i>
+                <h5 class="social-link">@watchquest</h5>
+                <br><i class="bi bi-youtube social_img"></i>
+                <h5 class="social-link">WatchQuest</h5>
+            </div>
+        </div>
+    </footer> -->
+</body>
+<script src="/js/generalscripts.js"></script>
+
+</html>

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -170,7 +171,7 @@ public class DatabaseMySql implements IDatabase {
 
     @Override
     public Map<Long, Map<String, String>> executeDQL(String query, String... parametri) {
-        Map<Long, Map<String, String>> result = new HashMap<>();
+        Map<Long, Map<String, String>> result = new LinkedHashMap<>();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -182,7 +183,7 @@ public class DatabaseMySql implements IDatabase {
             Map<String, String> mappaProprietà;
             int columnCount = rs.getMetaData().getColumnCount();
             while (rs.next()) {
-                mappaProprietà = new HashMap<>();
+                mappaProprietà = new LinkedHashMap<>();
                 for (int i = 1; i <= columnCount; i++) {
                     mappaProprietà.put(rs.getMetaData().getColumnName(i),
                             rs.getString(i));

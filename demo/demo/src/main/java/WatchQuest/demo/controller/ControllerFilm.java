@@ -1,6 +1,5 @@
 package WatchQuest.demo.controller;
 
-
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,8 @@ public class ControllerFilm {
 
     @GetMapping("/all")
     public String allFilm(Model model) {
-        model.addAttribute("lista", serviceFilm.findAll());
-        return "film";
+        model.addAttribute("listaFilm", serviceFilm.findAll());
+        return "adminPages/allFilm.html";
     }
 
     @PostMapping("/modifica")
@@ -48,67 +47,72 @@ public class ControllerFilm {
 
     @GetMapping("/byTitolo")
     public String filmByTitolo(@RequestParam String titolo, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByTitolo(titolo));
-        return "film";
+        model.addAttribute("listaFilm", serviceFilm.findFilmByTitolo(titolo));
+        return "adminPages/allFilm.html";
     }
 
     @GetMapping("/byGenere")
     public String filmByGenere(@RequestParam String genere, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByGenere(genere));
-        return "film";
+        model.addAttribute("listaFilm", serviceFilm.findFilmByGenere(genere));
+        return "adminPages/allFilm.html";
     }
-    
+
     @GetMapping("/byRating")
     public String filmByRating(@RequestParam String voto, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByRating(voto));
-        return "film";
+        model.addAttribute("listaFilm", serviceFilm.findFilmByRating(voto));
+        return "adminPages/allFilm.html";
     }
-    
+
     @GetMapping("/byAnno")
     public String filmByAnno(@RequestParam String anno, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByAnno(anno));
-        return "film";
+        model.addAttribute("listaFilm", serviceFilm.findFilmByAnno(anno));
+        return "adminPages/allFilm.html";
     }
-    
+
     @GetMapping("/byAttore")
     public String filmByAttore(@RequestParam String attore, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByAttore(attore));
-        return "film";
+        model.addAttribute("listaFilm", serviceFilm.findFilmByAttore(attore));
+        return "adminPages/allFilm.html";
     }
     
+
+
+
+
+    //----- per ora non utilizzati -----
     @GetMapping("/byUtente")
     public String allUtente(@RequestParam Long id, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByUtente(id));
+        model.addAttribute("listaFilm", serviceFilm.findFilmByUtente(id));
         return "filmUtente";
     }
-    
+
     @GetMapping("/genereOneUtente")
     public String genereUtente(@RequestParam Long id, @RequestParam String genere, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByGenereAndUtente(genere, id));
+        model.addAttribute("listaFilm", serviceFilm.findFilmByGenereAndUtente(genere, id));
         return "filmUtente";
     }
-    
+
     @GetMapping("/titoloOneUtente")
     public String titoloUtente(@RequestParam Long id, @RequestParam String titolo, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByTitoloAndUtente(titolo, id));
+        model.addAttribute("listaFilm", serviceFilm.findFilmByTitoloAndUtente(titolo, id));
         return "filmUtente";
     }
-    
+
     @GetMapping("/ratingOneUtente")
     public String ratingUtente(@RequestParam Long id, @RequestParam String rating, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByRatingAndUtente(rating, id));
+        model.addAttribute("listaFilm", serviceFilm.findFilmByRatingAndUtente(rating, id));
         return "filmUtente";
     }
-    
+
     @GetMapping("/annoOneUtente")
     public String annoUtente(@RequestParam Long id, @RequestParam String anno, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByAnnoAndUtente(anno, id));
+        model.addAttribute("listaFilm", serviceFilm.findFilmByAnnoAndUtente(anno, id));
         return "filmUtente";
     }
-    
+
     @GetMapping("/attoreOneUtente")
     public String attoreUtente(@RequestParam Long id, @RequestParam String attore, Model model) {
-        model.addAttribute("lista", serviceFilm.findFilmByAttoreAndUtente(attore, id));
+        model.addAttribute("listaFilm", serviceFilm.findFilmByAttoreAndUtente(attore, id));
         return "filmUtente";
     }
 }

@@ -34,65 +34,12 @@
                 <img id="profile-icon" src="/immagini/profile-icon-no-bg.png">
             </div>
         </header>
-        <h1>siamo in my list</h1>
-        <table>
 
-            <thead>
-                <th>titolo</th>
-                <th>descrizione</th>
-                <th>genere</th>
-                <th>anno pubblicazione</th>
-                <th>classificazione</th>
-                <th>rating</th>
-                <th>cast</th>
-                <th>regista</th>
-                <th>durata</th>
-            </thead>
-    
-            <tbody>
-                <tr th:each="film : ${listaFilm}">
-                    <td th:text="${film.titolo}"></td>
-                    <td th:text="${film.descrizione}"></td>
-                    <td th:text="${film.genere}"></td>
-                    <td th:text="${film.anno_pubblicazione}"></td>
-                    <td th:text="${film.classificazione}"></td>
-                    <td th:text="${film.rating}"></td>
-                    <td th:text="${film.cast}"></td>
-                    <td th:text="${film.regista}"></td>
-                    <td th:text="${film.durata}"></td>
-                </tr>
-            </tbody>
-        </table>
-        <table>
-
-            <thead>
-                <th>titolo</th>
-                <th>descrizione</th>
-                <th>genere</th>
-                <th>anno pubblicazione</th>
-                <th>classificazione</th>
-                <th>rating</th>
-                <th>cast</th>
-                <th>regista</th>
-                <th>episodi</th>
-                <th>stagioni</th>
-            </thead>
-    
-            <tbody>
-                <tr th:each="serie : ${listaSerie}">
-                    <td th:text="${serie.titolo}"></td>
-                    <td th:text="${serie.descrizione}"></td>
-                    <td th:text="${serie.genere}"></td>
-                    <td th:text="${serie.anno_pubblicazione}"></td>
-                    <td th:text="${serie.classificazione}"></td>
-                    <td th:text="${serie.rating}"></td>
-                    <td th:text="${serie.cast}"></td>
-                    <td th:text="${serie.regista}"></td>
-                    <td th:text="${serie.episodi}"></td>
-                    <td th:text="${serie.stagioni}"></td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- messaggio di errore -->
+        <span th:text="${error}"></span>
+        <a href="/home"> <button>home</button></a>
+        <a href="/registrazione"> <button>torna alla registrazione</button></a>
+        
         <nav id="navBar">
             <button onclick='window.location.href="/home"' class="nav-option"><i class="bi bi-house nav-icon"></i><h2 class="nav-link">Home</h2></button>
             <button onclick='window.location.href="/myLists"' class="nav-option"><i class="bi bi-heart  nav-icon"></i><h2 class="nav-link">My Lists</h2></button>
@@ -137,6 +84,7 @@
                 </form>
             </div>
         </main>
+
         <footer>
             <div>
                 <div id="contatti">

@@ -94,7 +94,6 @@
                     data-modifica-email = ${utente.email},
                     data-modifica-lingua = ${utente.lingua}" onclick="modificaUtente(this)">Modifica</button>
                     </td>
-                    <!-- data-modifica-abbonamento = ${utente.abbonamento}" -->
 
                     <td> <a th:href="|/utente/elimina?idUtente=${utente.id}|"><button>Elimina</button></a></td>
                     <td> <a th:href="|/utente/filmDettagliUtente?idUtente=${utente.id}|"><button>Programmi</button></a></td>
@@ -126,8 +125,7 @@
                     <input type="email" name="email" id="email"> <br>
                     <label for="lingua">lingua</label>
                     <input type="text" name="lingua" id="lingua"> <br>
-                    <!-- <label for="abbonamento">abbonamento</label>
-                    <input type="checkbox" name="abbonamento" id="abbonamento"> <br> -->
+
                     <br>
                     <input type="submit" value="Aggiungi">
                 </form>
@@ -136,7 +134,6 @@
     </div>
 
     <div id="form-modifica" hidden>
-        <!-- th:object="${utente}" -->
         <form action="/utente/modifica" method="post">
             <label for="modifica-id">Id</label>
             <input type="number" name="id" id="modifica-id" readonly> <br>
@@ -154,16 +151,7 @@
             <input type="email" name="email" id="modifica-email"> <br>
             <label for="modifica-lingua">lingua</label>
             <input type="text" name="lingua" id="modifica-lingua"> <br>
-            <!-- <label for="modifica-abbonamento">abbonamento</label>
-            <input type="checkbox" name="abbonamento" id="modifica-abbonamento"> <br> -->
-            <!-- <p>
-                abbonato
-            </p>
-            <label for="modifica-abbonamento-si">si</label>
-            <input type="radio" name="abbonamento" id="abbonamento" value="1"> <br>
-            <label for="modifica-abbonamento-no">no</label>
-            <input type="radio" name="abbonamento" id="abbonamento" value="0"> <br> -->
-            <!-- th:field="*{modifica-abbonamento}" -->
+
             <input type="submit" value="modifica">
         </form>
     </div>

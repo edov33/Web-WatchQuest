@@ -21,8 +21,8 @@ public class ControllerSerie {
 
     @GetMapping("/all")
     public String allSerie(Model model) {
-        model.addAttribute("lista", serviceSerie.findAll());
-        return "serie";
+        model.addAttribute("listaSerie", serviceSerie.findAll());
+        return "adminPages/allSerie.html";
     }
 
     @PostMapping("/modifica")
@@ -47,61 +47,64 @@ public class ControllerSerie {
 
     @GetMapping("/byTitolo")
     public String serieByTitolo(@RequestParam String titolo, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByTitolo(titolo));
-        return "serie";
+        model.addAttribute("listaSerie", serviceSerie.findSerieByTitolo(titolo));
+        return "adminPages/allSerie.html";
     }
 
     @GetMapping("/byGenere")
     public String serieByGenere(@RequestParam String genere, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByGenere(genere));
-        return "serie";
+        model.addAttribute("listaSerie", serviceSerie.findSerieByGenere(genere));
+        return "adminPages/allSerie.html";
     }
 
     @GetMapping("/byRating")
     public String serieByRating(@RequestParam String voto, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByRating(voto));
-        return "serie";
+        model.addAttribute("listaSerie", serviceSerie.findSerieByRating(voto));
+        return "adminPages/allSerie.html";
     }
 
     @GetMapping("/byAnno")
     public String serieByAnno(@RequestParam String anno, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByAnno(anno));
-        return "serie";
+        model.addAttribute("listaSerie", serviceSerie.findSerieByAnno(anno));
+        return "adminPages/allSerie.html";
     }
 
     @GetMapping("/byAttore")
     public String serieByAttore(@RequestParam String attore, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByAttore(attore));
-        return "serie";
+        model.addAttribute("listaSerie", serviceSerie.findSerieByAttore(attore));
+        return "adminPages/allSerie.html";
     }
 
+
+
+    //----- per ora non utilizzati -----
     @GetMapping("/genereOneUtente")
     public String genereUtente(@RequestParam Long id, @RequestParam String genere, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByGenereAndUtente(genere, id));
+        model.addAttribute("listaSerie", serviceSerie.findSerieByGenereAndUtente(genere, id));
         return "serieUtente";
     }
 
     @GetMapping("/titoloOneUtente")
     public String titoloUtente(@RequestParam Long id, @RequestParam String titolo, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByTitoloAndUtente(titolo, id));
+        model.addAttribute("listaSerie", serviceSerie.findSerieByTitoloAndUtente(titolo, id));
         return "serieUtente";
     }
 
     @GetMapping("/ratingOneUtente")
     public String ratingUtente(@RequestParam Long id, @RequestParam String rating, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByRatingAndUtente(rating, id));
+        model.addAttribute("listaSerie", serviceSerie.findSerieByRatingAndUtente(rating, id));
         return "serieUtente";
     }
 
     @GetMapping("/annoOneUtente")
     public String annoUtente(@RequestParam Long id, @RequestParam String anno, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByAnnoAndUtente(anno, id));
+        model.addAttribute("listaSerie", serviceSerie.findSerieByAnnoAndUtente(anno, id));
         return "serieUtente";
     }
 
     @GetMapping("/attoreOneUtente")
     public String attoreUtente(@RequestParam Long id, @RequestParam String attore, Model model) {
-        model.addAttribute("lista", serviceSerie.findSerieByAttoreAndUtente(attore, id));
+        model.addAttribute("listaSerie", serviceSerie.findSerieByAttoreAndUtente(attore, id));
         return "serieUtente";
     }
 

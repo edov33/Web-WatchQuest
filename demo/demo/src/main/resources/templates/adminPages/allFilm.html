@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <link rel="icon" type="image/ico" href="/immagini/favicon.ico">
+    <title>WatchQuest</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initialscale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/general_styles.css">
+    <script src="/js/controlli.js"></script>
+</head>
+
+<body>
+    <header>
+        <button id="menu-button" onclick="showNav()" type="button">
+            <img id="menu-option" class="menu-icon" src="/immagini/menu-icon.png">
+        </button>
+        <img src="/immagini/watchquest-logo.png" id="watchquest" class="img-fluid">
+        <h1 id="nome-progetto">WatchQuest</h1>
+        <form id="search-form">
+            <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
+            <datalist id="cronologia">
+                <option value="Beccatevi sto trapezioh"></option>
+            </datalist>
+        </form>
+        <div id="search-b-div">
+            <button class="search-b"><i class="bi bi-search"></i></button>
+            <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
+        </div>
+
+        <div id="otherlinks-box">
+            <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
+            <h6 class="otherlinks"><a href="/joinus" id="joinus" class="text-decoration-none">Join Us</a></h6>
+            <h6 class="otherlinks"><a href="/faq" class="text-decoration-none">FAQ</a></h6>
+            <img id="profile-icon" src="/immagini/profile-icon-no-bg.png">
+        </div>
+    </header>
+    <h1>siamo in all film</h1>
+    <div class="button-container">
+        <a href="/home"> <button>home</button></a>
+        <button onclick="document.getElementById('inserisci').style.display='flex'">Inserisci film</button>
+    </div>
+    <table>
+        <thead>
+            <th> cerca per titolo</th>
+            <th> cerca per genere</th>
+            <th> cerca per rating</th>
+            <th> cerca per anno</th>
+            <th> cerca per attore</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <form id="cerca-form" action="/film/byTitolo" method="get" style="display: flex;">
+                        <input type="text" id="cerca-titolo" name="titolo" placeholder="Inserisci titolo...">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+                <td>
+                    <form id="cerca-form" action="/film/byGenere" method="get" style="display: flex;">
+                        <input type="text" id="cerca-genere" name="genere" placeholder="Inserisci genere...">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+                <td>
+                    <form id="cerca-form" action="/film/byRating" method="get" style="display: flex;">
+                        <input type="number" step="0.1" id="cerca-rating" name="voto" placeholder="Inserisci rating...">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+                <td>
+                    <form id="cerca-form" action="/film/byAnno" method="get" style="display: flex;">
+                        <input type="number" id="cerca-anno" name="anno" placeholder="Inserisci anno...">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+                <td>
+                    <form id="cerca-form" action="/film/byAttore" method="get" style="display: flex;">
+                        <input type="text" id="cerca-attore" name="attore" placeholder="Inserisci attore...">
+                        <input type="submit" value="Cerca">
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <th>titolo</th>
+            <th>descrizione</th>
+            <th>genere</th>
+            <th>anno uscita</th>
+            <th>classificazione</th>
+            <th>rating</th>
+            <th>cast</th>
+            <th>regista</th>
+            <th>lingua originale</th>
+            <th>durata</th>
+            <th>modifica</th>
+            <th>elimina</th>
+
+
+        </thead>
+        <tbody>
+            <tr:block th:each="film : ${listaFilm}">
+                <tr>
+                    <td th:text="${film.titolo}"></td>
+                    <td th:text="${film.descrizione}"></td>
+                    <td th:text="${film.genere}"></td>
+                    <td th:text="${film.anno_pubblicazione}"></td>
+                    <td th:text="${film.classificazione}"></td>
+                    <td th:text="${film.rating}"></td>
+                    <td th:text="${film.cast}"></td>
+                    <td th:text="${film.regista}"></td>
+                    <td th:text="${film.lingua_originale}"></td>
+                    <td th:text="${film.durata}"></td>
+
+                    <td><button th:attr="
+                    data-modifica-id = ${film.id},
+                    data-modifica-titolo = ${film.titolo},
+                    data-modifica-descrizione = ${film.descrizione},
+                    data-modifica-genere = ${film.genere},
+                    data-modifica-anno_pubblicazione = ${film.anno_pubblicazione},
+                    data-modifica-classificazione = ${film.classificazione},
+                    data-modifica-rating = ${film.rating},
+                    data-modifica-cast = ${film.cast},
+                    data-modifica-regista = ${film.regista},
+                    data-modifica-lingua_originale = ${film.lingua_originale},
+                    data-modifica-durata = ${film.durata}"
+                            onclick="document.getElementById('modifica').style.display='flex' ;modificaFilm(this)">Modifica</button>
+
+                    </td> <!-- bottone modifica -->
+                    <td> <a th:href="|/film/elimina?idFilm=${film.id}|"><button>Elimina</button></a></td>
+
+            </tr:block>
+        </tbody>
+    </table>
+
+    <div id=contenuto>
+        <div class="modal" id="inserisci" style="display:none;">
+            <div id="modal-add" class="modal-content">
+                <span onclick="document.getElementById('inserisci').style.display='none'"
+                    style="cursor:pointer;">&times;</span>
+                <h4>Inserisci nuova film</h4>
+                <form action="/film/inserisci" method="post">
+                    <label for="titolo">titolo</label>
+                    <input type="text" name="titolo" id="titolo"> <br>
+                    <label for="descrizione">descrizione</label>
+                    <input type="text" name="descrizione" id="descrizione"> <br>
+                    <label for="genere">genere</label>
+                    <input type="text" name="genere" id="genere"> <br>
+                    <label for="anno_pubblicazione">anno pubblicazione</label>
+                    <input type="number" name="anno_pubblicazione" id="anno_pubblicazione"> <br>
+                    <label for="classificazione">classificazione</label>
+                    <input type="text" name="classificazione" id="classificazione"> <br>
+                    <label for="rating">rating</label>
+                    <input type="text" name="rating" id="rating"> <br>
+                    <label for="cast">cast</label>
+                    <input type="text" name="cast" id="cast"> <br>
+                    <label for="regista">regista</label>
+                    <input type="text" name="regista" id="regista"> <br>
+                    <label for="lingua_originale">lingua originale</label>
+                    <input type="text" name="lingua_originale" id="lingua_originale"> <br>
+                    <label for="durata">durata</label>
+                    <input type="number" name="durata" id="durata"> <br>
+
+
+                    <br>
+                    <input type="submit" value="Aggiungi">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="form-modifica" hidden>
+        <div class="modal" id="modifica" style="display:none;">
+            <div id="modal-add" class="modal-content">
+                <span onclick="document.getElementById('modifica').style.display='none'"
+                    style="cursor:pointer;">&times;</span>
+                <form action="/film/modifica" method="post">
+                    <label for="modifica-id">Id</label>
+                    <input type="number" name="id" id="modifica-id" readonly> <br>
+                    <label for="modifica-titolo">titolo</label>
+                    <input type="text" name="titolo" id="modifica-titolo"> <br>
+                    <label for="modifica-descrizione">descrizione</label>
+                    <input type="text" name="descrizione" id="modifica-descrizione"> <br>
+                    <label for="modifica-genere">genere</label>
+                    <input type="text" name="genere" id="modifica-genere"> <br>
+                    <label for="modifica-anno_pubblicazione">anno pubblicazione</label>
+                    <input type="number" name="anno_pubblicazione" id="modifica-anno_pubblicazione"> <br>
+                    <label for="modifica-classificazione">classificazione</label>
+                    <input type="text" name="classificazione" id="modifica-classificazione"> <br>
+                    <label for="modifica-rating">rating</label>
+                    <input type="text" name="rating" id="modifica-rating"> <br>
+                    <label for="modifica-cast">cast</label>
+                    <input type="text" name="cast" id="modifica-cast"> <br>
+                    <label for="modifica-regista">regista</label>
+                    <input type="text" name="regista" id="modifica-regista"> <br>
+                    <label for="modifica-lingua_originale">lingua originale</label>
+                    <input type="text" name="lingua_originale" id="modifica-lingua_originale"> <br>
+                    <label for="modifica-durata">durata</label>
+                    <input type="number" name="durata" id="modifica-durata"> <br>
+                    <input type="submit" value="modifica">
+                </form>
+            </div>
+
+            <nav id="navBar">
+                <button onclick='window.location.href="/home"' class="nav-option"><i class="bi bi-house nav-icon"></i>
+                    <h2 class="nav-link">Home</h2>
+                </button>
+                <button onclick='window.location.href="/myLists"' class="nav-option"><i
+                        class="bi bi-heart  nav-icon"></i>
+                    <h2 class="nav-link">My Lists</h2>
+                </button>
+                <button onclick='window.location.href="/news"' class="nav-option"><i
+                        class="bi bi-newspaper  nav-icon"></i>
+                    <h2 class="nav-link">News</h2>
+                </button>
+                <button onclick='window.location.href="/quiz"' class="nav-option"><i
+                        class="bi bi-question-diamond  nav-icon"></i>
+                    <h2 class="nav-link">Quiz</h2>
+                </button>
+                <button onclick='window.location.href="/settings"' class="nav-option"><i
+                        class="bi bi-gear  nav-icon"></i>
+                    <h2 class="nav-link">Settings</h2>
+                </button>
+            </nav>
+            <main>
+                <div id="adv-search">
+                    <form id="adv-src-form">
+                        <label id="find-by">Find by:
+                            <label>Film</label>
+                            <input id="fb-film" type="radio" name="find-by" value="film" class="fb-radio-opt">
+                            <label>Actor</label>
+                            <input id="fb-actor" type="radio" name="find-by" value="actor" class="fb-radio-opt">
+                        </label>
+                        <label class="adv-select-lbl">Categoria:
+                            <select id="categoria" class="adv-select">
+                                <option value=""></option>
+                            </select>
+                        </label>
+                        <label class="adv-select-lbl">Genere:
+                            <select id="genere" class="adv-select">
+                                <option value=""></option>
+                            </select>
+                        </label>
+                    </form>
+                </div>
+                <div id="login-pop">
+                    <form>
+                        <input type="hidden" id="session" value="">
+                        <label class="login-lb"> Username:
+                            <input type="text" class="login">
+                        </label>
+                        <label class="login-lb"> Password:
+                            <input type="password" class="login">
+                        </label>
+                        <div id="login-bgroup">
+                            <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
+                            <a href="/registrazione"><button type="button" id="signup-b"
+                                    class="btn btn-primary login-b">Sign
+                                    Up</button></a>
+                        </div>
+
+                    </form>
+                </div>
+            </main>
+            <!-- <footer>
+        <div>
+            <div id="contatti">
+                Contatti:
+                <br>+39 3346895395
+                <br>watchquest@gmail.com
+                <br>Milano, Via Roma 5
+            </div>
+            <div id="canaliSocial">
+                Canali social:
+                <br><i class="bi bi-facebook social_img"></i>
+                <h5 class="social-link">WatchQuest</h5>
+                <br><i class="bi bi-instagram social_img"></i>
+                <h5 class="social-link">@watchquest</h5>
+                <br><i class="bi bi-youtube social_img"></i>
+                <h5 class="social-link">WatchQuest</h5>
+            </div>
+        </div>
+    </footer> -->
+</body>
+<script src="/js/generalscripts.js"></script>
+
+</html>

@@ -24,7 +24,7 @@ public class ControllerUtente {
         model.addAttribute("lista", serviceUtente.findAll());
         return "user";
     }
-    
+
     @PostMapping("/modifica")
     public String modificaUtente(@RequestParam Map<String, String> parametri) {
         serviceUtente.update(parametri);
@@ -45,12 +45,20 @@ public class ControllerUtente {
         return "redirect:/utente/all";
     }
 
+    
+
+    @GetMapping("/profilo")
+    public String profilo(Model model) {
+        // model.addAttribute("lista", serviceUtente.findAllProgrammiUtente());
+        return "home";
+    }
+
     @GetMapping("/filmUtente")
     public String allFilmUtente(Model model) {
         model.addAttribute("lista", serviceUtente.findAllProgrammiUtente());
         return "filmOneUtente";
     }
-    
+
     @GetMapping("/serieUtente")
     public String allSerieUtente(Model model) {
         model.addAttribute("lista", serviceUtente.findAllProgrammiUtente());
@@ -62,38 +70,35 @@ public class ControllerUtente {
         model.addAttribute("lista", serviceUtente.findUtenteByNome(nome));
         return "user";
     }
-    
+
     @GetMapping("/byCognome")
     public String utenteByCognome(@RequestParam String cognome, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByCognome(cognome));
         return "user";
     }
-    
+
     @GetMapping("/byNominativo")
     public String utenteByNominativo(@RequestParam String nome, @RequestParam String cognome, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByNominativo(nome, cognome));
         return "user";
     }
-    
+
     @GetMapping("/byUsername")
     public String utenteByUsername(@RequestParam String username, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByUsername(username));
         return "user";
     }
-    
+
     @GetMapping("/byEmail")
     public String utenteByEmail(@RequestParam String email, Model model) {
         model.addAttribute("lista", serviceUtente.findUtenteByEmail(email));
         return "user";
     }
 
-
-
-        
     // -------------------------------------------
     @GetMapping("/dettagliUtente")
     public String dettagliUtente(@RequestParam Long idUtente, Model model) {
-        // Utente u  = serviceUtente.findById(idUtente);
+        // Utente u = serviceUtente.findById(idUtente);
         // model.addAttribute("utente", u);
         model.addAttribute("lista", serviceUtente.findById(idUtente));
         return "dettagliUtente";

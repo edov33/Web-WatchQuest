@@ -61,18 +61,19 @@
                     </label>
                 </form>
             </div>
+
             <div id="login-pop">
-                <form>
-                    <input type="hidden" id="session" value="">
+                <form action="/login/attempt" method="post">
                     <label class="login-lb"> Username:
-                        <input type="text" class="login">
+                        <input type="text" class="login" name="username">
                     </label>
                     <label class="login-lb"> Password:
-                        <input type="password" class="login">
+                        <input type="password" class="login" name="password">
                     </label>
                     <div id="login-bgroup">
-                        <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
+                        <button type="submit" id="login-b" class="btn btn-primary login-b">Login</button>
                         <a href="/registrazione"><button type="button" id="signup-b" class="btn btn-primary login-b">Sign Up</button></a>
+                        <a href="/login/logout"><button type="button" id="logout-b" class="btn btn-primary login-b" hidden>Logout</button></a>
                     </div>
                     
                 </form>

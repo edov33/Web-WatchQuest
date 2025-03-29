@@ -1,6 +1,5 @@
 package WatchQuest.demo.dao;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -73,9 +72,9 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
     public Map<Long, GenericEntity> readSerieByUtente(Long idUtente) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id "
                 + "JOIN utente_programma up ON p.id = up.id_programma JOIN utente u ON up.id_utente = u.id "
-                + "WHERE u.id = ?"; 
+                + "WHERE u.id = ? ORDER BY p.titolo ASC"; 
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, String.valueOf(idUtente));
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
@@ -85,60 +84,60 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
     // metodo che restituisce le serie filtrate per titolo
     public Map<Long, GenericEntity> readSerieByTitolo(String titolo) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id"
-                + " WHERE p.titolo LIKE ?";
+                + " WHERE p.titolo LIKE ? ORDER BY p.titolo ASC";
         titolo = (titolo != null && !titolo.isEmpty()) ? "%" + titolo + "%" : "%";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, titolo);
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
         return ris;
     }
 
-    // metodo che restituisce le serie siltrate per genere
+    // metodo che restituisce le serie filtrate per genere
     public Map<Long, GenericEntity> readSerieByGenere(String genere) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id"
-                + " WHERE p.genere LIKE ?";
+                + " WHERE p.genere LIKE ? ORDER BY p.titolo ASC";
         genere = (genere != null && !genere.isEmpty()) ? "%" + genere + "%" : "%";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, genere);
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
         return ris;
     }
 
-    // metodo che restituisce le serie siltrate per rating
+    // metodo che restituisce le serie filtrate per rating
     public Map<Long, GenericEntity> readSerieByRating(String voto) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id"
-                + " WHERE p.rating > ?";
+                + " WHERE p.rating > ? ORDER BY p.titolo ASC";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, voto);
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
         return ris;
     }
 
-    // metodo che restituisce le serie siltrate per anno pubblicazione
+    // metodo che restituisce le serie filtrate per anno pubblicazione
     public Map<Long, GenericEntity> readSerieByAnno(String anno) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id"
-                + " WHERE p.anno_pubblicazione > ?";
+                + " WHERE p.anno_pubblicazione > ? ORDER BY p.titolo ASC";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, anno);
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
         return ris;
     }
 
-    // metodo che restituisce le serie siltrate per attore
+    // metodo che restituisce le serie filtrate per attore
     public Map<Long, GenericEntity> readSerieByAttore(String attore) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id"
-                + " WHERE p.cast LIKE ?";
+                + " WHERE p.cast LIKE ? ORDER BY p.titolo ASC";
         attore = (attore != null && !attore.isEmpty()) ? "%" + attore + "%" : "%";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, attore);
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
@@ -151,10 +150,10 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
     public Map<Long, GenericEntity> readSerieByTitoloAndUtente(String titolo, Long idUtente) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id " +
                 "JOIN utente_programma up ON p.id = up.id_programma JOIN utente u ON up.id_utente = u.id" +
-                " WHERE p.titolo LIKE ? AND u.id = ?";
+                " WHERE p.titolo LIKE ? AND u.id = ? ORDER BY p.titolo ASC";
         titolo = (titolo != null && !titolo.isEmpty()) ? "%" + titolo + "%" : "%";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, titolo, String.valueOf(idUtente));
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
@@ -165,10 +164,10 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
     public Map<Long, GenericEntity> readSerieByGenereAndUtente(String genere, Long idUtente) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id " +
                 "JOIN utente_programma up ON p.id = up.id_programma JOIN utente u ON up.id_utente = u.id" +
-                " WHERE p.genere LIKE ? AND u.id = ?";
+                " WHERE p.genere LIKE ? AND u.id = ? ORDER BY p.titolo ASC";
         genere = (genere != null && !genere.isEmpty()) ? "%" + genere + "%" : "%";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, genere, String.valueOf(idUtente));
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
@@ -179,9 +178,9 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
     public Map<Long, GenericEntity> readSerieByRatingAndUtente(String voto, Long idUtente) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id " +
                 "JOIN utente_programma up ON p.id = up.id_programma JOIN utente u ON up.id_utente = u.id" +
-                " WHERE p.rating > ? AND u.id = ?";
+                " WHERE p.rating > ? AND u.id = ? ORDER BY p.titolo ASC";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, voto, String.valueOf(idUtente));
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
@@ -192,9 +191,9 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
     public Map<Long, GenericEntity> readSerieByAnnoAndUtente(String anno, Long idUtente) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id " +
                 "JOIN utente_programma up ON p.id = up.id_programma JOIN utente u ON up.id_utente = u.id" +
-                " WHERE p.anno_pubblicazione > ? AND u.id = ?";
+                " WHERE p.anno_pubblicazione > ? AND u.id = ? ORDER BY p.titolo ASC";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, anno, String.valueOf(idUtente));
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }
@@ -205,10 +204,10 @@ public class DaoSerie extends DaoProgramma implements IDao<Long, Serie> {
     public Map<Long, GenericEntity> readSerieByAttoreAndUtente(String attore, Long idUtente) {
         String query = "SELECT p.*, s.episodi, s.stagioni FROM serie s JOIN programma p ON s.id_programma = p.id " +
                 "JOIN utente_programma up ON p.id = up.id_programma JOIN utente u ON up.id_utente = u.id" +
-                " WHERE p.cast LIKE ? AND u.id = ?";
+                " WHERE p.cast LIKE ? AND u.id = ? ORDER BY p.titolo ASC";
         attore = (attore != null && !attore.isEmpty()) ? "%" + attore + "%" : "%";
         Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, attore, String.valueOf(idUtente));
-        Map<Long, GenericEntity> ris = new HashMap<>();
+        Map<Long, GenericEntity> ris = new LinkedHashMap<>();
         for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
             ris.put(coppia.getKey(), context.getBean(Serie.class, coppia.getValue()));
         }

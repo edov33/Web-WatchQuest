@@ -19,6 +19,7 @@ header, nav, footer {
     font-size: 2vw;
 }
 
+
 /*HEADER*/
 header {
     height: 10%;
@@ -293,6 +294,16 @@ h5 {
     box-shadow: none;
 }
 
+#prova{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+#faq{
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
 
 
 

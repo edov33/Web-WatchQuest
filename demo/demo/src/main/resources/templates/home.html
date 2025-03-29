@@ -35,6 +35,7 @@
                 <img id="profile-icon" src="/immagini/profile-icon-no-bg.png">
             </div>
         </header>
+        
         <nav id="navBar">
             <button onclick='window.location.href="/home"' class="nav-option"><i class="bi bi-house nav-icon"></i><h2 class="nav-link">Home</h2></button>
             <button onclick='window.location.href="/myLists"' class="nav-option"><i class="bi bi-heart  nav-icon"></i><h2 class="nav-link">My Lists</h2></button>
@@ -42,6 +43,7 @@
             <button onclick='window.location.href="/quiz"' class="nav-option"><i class="bi bi-question-diamond  nav-icon"></i><h2 class="nav-link">Quiz</h2></button>
             <button onclick='window.location.href="/settings"' class="nav-option"><i class="bi bi-gear  nav-icon"></i><h2 class="nav-link">Settings</h2></button>
         </nav>
+        <h1 id="prova">Siamo nella home</h1>
         <main>
             <div id="adv-search">
                 <form id="adv-src-form">
@@ -63,23 +65,27 @@
                     </label>
                 </form>
             </div>
+
             <div id="login-pop">
-                <form>
-                    <input type="hidden" id="session" value="">
+                <form action="/login/attempt" method="post" th:action="@{/login/attempt}">
+                    <input type="hidden" id="session" th:value="${loggato}">
                     <label class="login-lb"> Username:
-                        <input type="text" class="login">
+                        <input type="text" class="login" name="username">
                     </label>
                     <label class="login-lb"> Password:
-                        <input type="password" class="login">
+                        <input type="password" class="login" name="password">
                     </label>
                     <div id="login-bgroup">
-                        <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
+                        <button type="submit" id="login-b" class="btn btn-primary login-b">Login</button>
                         <a href="/registrazione"><button type="button" id="signup-b" class="btn btn-primary login-b">Sign Up</button></a>
+                        <!-- <a href="/login/logout"><button type="button" id="logout-b" class="btn btn-primary login-b" hidden>Logout</button></a> -->
                     </div>
                     
                 </form>
             </div>
+            
         </main>
+        
         <footer>
             <div>
                 <div id="contatti">

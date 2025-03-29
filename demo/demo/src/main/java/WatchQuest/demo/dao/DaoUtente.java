@@ -1,5 +1,6 @@
 package WatchQuest.demo.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -25,7 +26,7 @@ public class DaoUtente implements IDao<Long, Utente> {
         String comando = "INSERT INTO utente (nome, cognome, data_nascita, username, password, email, lingua) VALUES (?,?,?,?,?,?,?)";
         return databaseMySql.executeDML(comando, u.getNome(), u.getCognome(), String.valueOf(u.getData_nascita()),
                 u.getUsername(), u.getPassword(), u.getEmail(), u.getLingua());
-    }// , abbonamento, ?, String.valueOf(u.isAbbonamento())
+    }
 
     @Override
     public Map<Long, GenericEntity> read() {
@@ -43,12 +44,37 @@ public class DaoUtente implements IDao<Long, Utente> {
         String comando = "UPDATE utente SET nome = ?, cognome = ?, data_nascita = ?, username = ?, password = ?, email = ?, lingua = ? WHERE id = ?";
         databaseMySql.executeDML(comando, u.getNome(), u.getCognome(), String.valueOf(u.getData_nascita()),
                 u.getUsername(), u.getPassword(), u.getEmail(), u.getLingua(), String.valueOf(u.getId()));
-    }// , abbonamento = ? , String.valueOf(u.isAbbonamento())
+    }
 
     @Override
     public void delete(Long id) {
         String comando = "DELETE FROM utente WHERE id = ?";
         databaseMySql.executeDML(comando, String.valueOf(id));
+    }
+
+    // metodo che cerca se esiste già un utente
+    public Utente cercaUtente(Map<String, String> datiForm) {
+        Utente u = null;
+        String query = "SELECT * FROM utente u WHERE nome = ? AND cognome = ? AND email = ?";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, datiForm.get("nome"),
+                datiForm.get("cognome"), datiForm.get("email"));
+        if (result.size() == 1) {
+            for (Entry<Long, Map<String, String>> coppia : result.entrySet()) {
+                return context.getBean(Utente.class, coppia.getValue());
+            }
+        }
+        return u;
+    }
+
+    // metodo che controlla se quello user esiste già
+    public Utente readByUserAndPass(String username, String password) {
+        String query = "SELECT u.id FROM utente u WHERE u.username = ? AND u.password = ?";
+        Map<Long, Map<String, String>> result = databaseMySql.executeDQL(query, username, password);
+        Long id = null;
+        if (result.size() == 1) {
+            id = Long.parseLong(new ArrayList<>(result.values()).get(0).get("id"));
+        }
+        return readById(id);
     }
 
     // associazione utente - programma
@@ -74,9 +100,6 @@ public class DaoUtente implements IDao<Long, Utente> {
         String query = "DELETE FROM utente_quiz WHERE id_utente = ? AND id_quiz = ?";
         databaseMySql.executeDML(query, String.valueOf(idUtente), String.valueOf(idQuiz));
     }
-
-    // sopra ok
-    // sotto tentativi per visualizzare film in base all'utente
 
     @Override
     public Utente readById(Long id) {
@@ -152,7 +175,7 @@ public class DaoUtente implements IDao<Long, Utente> {
         }
         return ris;
     }
-    
+
     // metodo che filtra gli utenti per email
     public Map<Long, GenericEntity> readUtenteByEmail(String email) {
         String query = "SELECT u.* FROM utente u WHERE u.email LIKE ?";

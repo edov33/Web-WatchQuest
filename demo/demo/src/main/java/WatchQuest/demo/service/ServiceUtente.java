@@ -31,6 +31,16 @@ public class ServiceUtente extends GenericService<Long, Utente, DaoUtente> {
     public Long save(Map<String, String> mappa) {
         return getDao().create(construct(mappa));
     }
+    
+    //metodo che cerca se c'è già l'utente per nome cognome e email
+    public Utente findUtente(Map<String, String> datiForm){
+        return getDao().cercaUtente(datiForm);
+    }
+
+    //metodo che cerca un utente per username e password
+    public Utente findByUserAndPass(String username, String password){
+        return getDao().readByUserAndPass(username, password);
+    }
 
     // metodo che restituisce film e serie viste dall'utente
     public List<Programma> findProgrammaByUtente(Long idUtente) {
@@ -42,6 +52,7 @@ public class ServiceUtente extends GenericService<Long, Utente, DaoUtente> {
         return programmi;
     }
 
+    //metodo che restituisce l'utente con i suoi programmi visti
     public Utente findAllProgrammiUnUtente(Long idUtente) {
         Utente u = getDao().readById(idUtente);
         u.setFilm(findFilmByUtente(u.getId()));
@@ -49,6 +60,7 @@ public class ServiceUtente extends GenericService<Long, Utente, DaoUtente> {
         return u;
     }
 
+    //metodo che restituisce tutti gli utenti con i programmi visti
     public List<Utente> findAllProgrammiUtente() {
         Map<Long, GenericEntity> result = getDao().read();
         List<Utente> lista = new ArrayList<>();

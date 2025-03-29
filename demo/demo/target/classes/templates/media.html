@@ -8,6 +8,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <link rel="stylesheet" href="/css/general_styles.css">
+        <link rel="stylesheet" href="/css/media.css">
     </head>
     <body>
         <header>
@@ -39,7 +40,8 @@
             <button onclick='window.location.href="/myLists"' class="nav-option"><i class="bi bi-heart  nav-icon"></i><h2 class="nav-link">My Lists</h2></button>
             <button onclick='window.location.href="/news"' class="nav-option"><i class="bi bi-newspaper  nav-icon"></i><h2 class="nav-link">News</h2></button>
             <button onclick='window.location.href="/quiz"' class="nav-option"><i class="bi bi-question-diamond  nav-icon"></i><h2 class="nav-link">Quiz</h2></button>
-            <button onclick='window.location.href="/settings"' class="nav-option"><i class="bi bi-gear  nav-icon"></i><h2 class="nav-link">Settings</h2></button>  </nav>
+            <button onclick='window.location.href="/settings"' class="nav-option"><i class="bi bi-gear  nav-icon"></i><h2 class="nav-link">Settings</h2></button>
+        </nav>
         <main>
             <div id="adv-search">
                 <form id="adv-src-form">
@@ -72,13 +74,61 @@
                     </label>
                     <div id="login-bgroup">
                         <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
-                        <a href="/registrazione"><button type="button" id="signup-b" class="btn btn-primary login-b">Sign Up</button></a>
+                        <button type="button" id="signup-b" class="btn btn-primary login-b">Sign Up</button>
                     </div>
                     
                 </form>
             </div>
+            <article>
+                <section id="sezione1">
+                    <div id="cover-div">
+                        <img id="cover" src="/immagini/locandina-test.jpeg">
+                        <button id="like" onclick="fillHeart()"><i id="like-icon" class="bi bi-heart"></i></button>
+                    </div>
+                    <div id="info-media">
+                        <h4>NOME FILM</h4>
+                        <h5>Durata - Anno</h5>
+                        <h6>Generi</h6>
+                    </div>
+                    <div id="more-info">
+                        <div id="trama-div"><h5>Trama</h5><h6 id="trama">Durante un assalto terroristico al
+                             Teatro dell'Opera di Kiev, un agente della CIA, il "Protagonista", partecipa 
+                             sotto copertura a un'operazione russa per salvare un agente compromesso e 
+                             recuperare un oggetto non identificato rubato. Dopo avere salvato l'agente e 
+                             recuperato l'oggetto, il Protagonista invia parte della sua squadra attraverso
+                              un'uscita segreta e ritorna sulla scena dell'assalto, venendo salvato da un 
+                              uomo mascherato, con un filo rosso sullo zaino, che uccide l'uomo che lo 
+                              stava minacciando sparando un proiettile "invertito", ovvero facendolo 
+                              rientrare nell'arma. Il Protagonista si unisce nuovamente ai russi che, 
+                              resisi conto di essere stati ingannati, lo torturano; l'uomo resiste all'
+                              interrogatorio ed approfitta di un momento di disattenzione per inghiottire 
+                              una pillola avvelenata e suicidarsi.</h6><button id="wiki-link"><i class="bi bi-wikipedia"></i></button></div>
+                        <iframe id="trailer"
+                        src="https://www.youtube.com/embed/L3pk_TBkihU?si=MrV7bzD1TzEvr7Q-" 
+                        title="YouTube video player" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+                        picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen></iframe>
+                    </div>
+                    <div id="commenti-div">
+                        <div id="sez-commenti">
+                            <h5 id="">Commenti:</h5>
+                            <h6 style="font-weight: lighter;">UtenteTrapezioh66: Non ho ancora capito chi spara a chi</h6>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h3>CAST</h3>
+                    <div class="actors">
+                        <figure class="actor">
+                            <img class="actor-img">
+                            <caption class="actor-info">Info attore</caption>
+                        </figure>
+                    </div>
+                </section>
+            </article>
         </main>
-        <footer>
+        <footer id="footer" class="bd-footer py-4 py-md-5 mt-5">
             <div>
                 <div id="contatti">
                     Contatti:
@@ -96,4 +146,5 @@
         </footer>
     </body>
     <script src="/js/generalscripts.js"></script>
+    <script src="/js/media.js"></script>
 </html>

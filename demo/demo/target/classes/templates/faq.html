@@ -78,6 +78,65 @@
                 </form>
             </div>
         </main>
+        <!-- Sezione FAQ -->
+        <section id="faq">
+            <h2>Domande Frequenti</h2>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer1')">1. Cos'è WatchQuest?</h3>
+                <p id="answer1" class="faq-answer">WatchQuest è una piattaforma interattiva dove puoi tenere traccia delle tue serie tv e film preferiti. Metti alla prova le tue conoscenze con quiz divertenti e stimolanti!</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer2')">2. Come posso iniziare a usare WatchQuest?</h3>
+                <p id="answer2" class="faq-answer">Per iniziare, basta registrarti al sito creando un account. Una volta loggato, potrai cliccare sul cuore per inserire un prodotto nella tua personale lista dei preferiti!</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer3')">3. Posso cercare film per genere o per attore?</h3>
+                <p id="answer3" class="faq-answer">Sì, puoi utilizzare il filtro di ricerca per selezionare il genere o gli attori, per trovare i film che più ti interessano.</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer4')">4. Come posso vedere i dettagli di un film?</h3>
+                <p id="answer4" class="faq-answer">Basta cliccare sul titolo del film per visualizzare informazioni dettagliate come trama, attori, regista e valutazione.</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer5')">5. È possibile sfidare un amico nei quiz?</h3>
+                <p id="answer5" class="faq-answer">Al momento non è prevista una funzionalità di sfida diretta tra amici, ma puoi condividere il tuo punteggio finale sui social per vedere se i tuoi amici riescono a batterti!</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer6')">6. Come posso aggiungere un quiz personalizzato?</h3>
+                <p id="answer6" class="faq-answer">Attualmente, l'aggiunta di quiz personalizzati non è supportata, ma stiamo lavorando per implementare questa funzionalità nelle future versioni del sito. Resta sintonizzato per gli aggiornamenti!</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer7')">7. È possibile partecipare a quiz su film e serie TV di generi specifici?</h3>
+                <p id="answer7" class="faq-answer">Sì, i quiz sono suddivisi per categorie e generi! Puoi scegliere di fare un quiz su film d'azione, serie comiche, drammi, o anche quiz tematici su specifiche saghe cinematografiche.</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer8')">8. WatchQuest è disponibile solo in Italia?</h3>
+                <p id="answer8" class="faq-answer">No, WatchQuest è disponibile in diversi paesi. Puoi consultare film e serie da tutto il mondo.</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer9')">9. I miei dati personali sono al sicuro?</h3>
+                <p id="answer9" class="faq-answer">Sì, la tua privacy è importante per noi. I dati personali vengono trattati secondo le normative sulla privacy e non vengono mai condivisi con terze parti senza il tuo consenso.</p>
+            </div>
+            <div class="faq-item">
+                <h3 onclick="toggleAnswer('answer10')">10. WatchQuest è presente sui vari social?</h3>
+                <p id="answer10" class="faq-answer">Assolutamente sì! Ci trovate su Facebook, Instagram e Youtube. Seguiteci e supportateci con l'#hastag #watchquest</p>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Script per gestire il toggle delle risposte
+    <script>
+        function toggleAnswer(answerId) {
+            var answerElement = document.getElementById(answerId);
+            if (answerElement.style.display === "none" || answerElement.style.display === "") {
+                answerElement.style.display = "block";
+            } else {
+                answerElement.style.display = "none";
+            }
+        }
+    </script> -->
+        
         <footer>
             <div>
                 <div id="contatti">
