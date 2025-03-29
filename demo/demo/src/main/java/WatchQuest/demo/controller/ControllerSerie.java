@@ -75,9 +75,16 @@ public class ControllerSerie {
         return "adminPages/allSerie.html";
     }
 
-
-
+    
+    
+    
     //----- per ora non utilizzati -----
+    @GetMapping("/tendenze")
+    public String filmTendenze(@RequestParam String attore, Model model) {
+        model.addAttribute("listaFilm", serviceSerie.find8());
+        return "/home";
+    }
+    
     @GetMapping("/genereOneUtente")
     public String genereUtente(@RequestParam Long id, @RequestParam String genere, Model model) {
         model.addAttribute("listaSerie", serviceSerie.findSerieByGenereAndUtente(genere, id));

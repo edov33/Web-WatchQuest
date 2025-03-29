@@ -17,4 +17,6 @@ public class Programma extends GenericEntity{
     private String regista;
     private String lingua_originale;
     private String url;
+    private String trailer;
+    private String wiki;
 }

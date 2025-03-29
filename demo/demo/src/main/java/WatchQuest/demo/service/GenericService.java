@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
 import WatchQuest.demo.dao.IDao;
+import WatchQuest.demo.entity.Film;
 import WatchQuest.demo.entity.GenericEntity;
 import lombok.Getter;
 
@@ -52,5 +53,15 @@ public abstract class GenericService<TipoID, E extends GenericEntity, D extends 
     public void delete(TipoID id) {
         dao.delete(id);
     }
+
+    // metodo per migliorare il codice
+    public List<E> ritornaLista(Map<Long, GenericEntity> result) {
+        List<E> lista = new ArrayList<>();
+        for (GenericEntity e : result.values()) {
+            lista.add((E) e);
+        }
+        return lista;
+    }
+    
 
 }

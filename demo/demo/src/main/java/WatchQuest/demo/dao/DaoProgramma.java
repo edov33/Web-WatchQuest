@@ -15,17 +15,17 @@ public abstract class DaoProgramma {
     private DatabaseMySql databaseMySql;
 
     public Long createProgramma(Programma p) {
-        String query = "INSERT INTO Programma (titolo,descrizione,genere,anno_pubblicazione,classificazione,rating,cast,regista,lingua_originale) values(?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO Programma (titolo,descrizione,genere,anno_pubblicazione,classificazione,rating,cast,regista,lingua_originale,url,trailer,wiki) values(?,?,?,?,?,?,?,?,?,?,?,?)";
         return databaseMySql.executeDML(query, p.getTitolo(), p.getDescrizione(), p.getGenere(),
                 String.valueOf(p.getAnno_pubblicazione()), p.getClassificazione(), String.valueOf(p.getRating()),
-                p.getCast(), p.getRegista(), p.getLingua_originale());
+                p.getCast(), p.getRegista(), p.getLingua_originale(), p.getUrl());
     }
 
     public void updateProgramma(Programma p) {
-        String query = "UPDATE Programma SET titolo=?, descrizione=?, genere=?, anno_pubblicazione=?, classificazione=?, rating=?, cast=?, regista=?, lingua_originale=? WHERE id = ?";
+        String query = "UPDATE Programma SET titolo=?, descrizione=?, genere=?, anno_pubblicazione=?, classificazione=?, rating=?, cast=?, regista=?, lingua_originale=?, url=?, trailer=?, wiki=? WHERE id = ?";
         databaseMySql.executeDML(query, p.getTitolo(), p.getDescrizione(), p.getGenere(),
                 String.valueOf(p.getAnno_pubblicazione()), p.getClassificazione(), String.valueOf(p.getRating()),
-                p.getCast(), p.getRegista(), p.getLingua_originale(), String.valueOf(p.getId()));
+                p.getCast(), p.getRegista(), p.getLingua_originale(), p.getUrl(), String.valueOf(p.getId()));
     }
 
     public void delete(Long id) {

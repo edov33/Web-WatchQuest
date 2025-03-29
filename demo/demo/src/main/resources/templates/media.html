@@ -100,7 +100,7 @@
     <main>
         <article>
             <section id="sezione1">
-                <div id="cover-div">
+                <div id="cover-div" th:style="|background-image: ${image};|">
                     <button id="like" onclick="fillHeart()"><i id="like-icon" class="bi bi-heart"></i></button>
                 </div>
                 <div id="info-media">
@@ -112,22 +112,10 @@
                 <div id="more-info">
                     <div id="trama-div">
                         <h5>Trama</h5>
-                        <h6 id="trama">Durante un assalto terroristico al
-                            Teatro dell'Opera di Kiev, un agente della CIA, il "Protagonista", partecipa
-                            sotto copertura a un'operazione russa per salvare un agente compromesso e
-                            recuperare un oggetto non identificato rubato. Dopo avere salvato l'agente e
-                            recuperato l'oggetto, il Protagonista invia parte della sua squadra attraverso
-                            un'uscita segreta e ritorna sulla scena dell'assalto, venendo salvato da un
-                            uomo mascherato, con un filo rosso sullo zaino, che uccide l'uomo che lo
-                            stava minacciando sparando un proiettile "invertito", ovvero facendolo
-                            rientrare nell'arma. Il Protagonista si unisce nuovamente ai russi che,
-                            resisi conto di essere stati ingannati, lo torturano; l'uomo resiste all'
-                            interrogatorio ed approfitta di un momento di disattenzione per inghiottire
-                            una pillola avvelenata e suicidarsi.</h6><button id="wiki-link" onclick="showWikiPage()"><i
-                                class="bi bi-wikipedia"></i></button>
+                        <h6 id="trama" th:text="${descrizione}">descrizione</h6>
+                        <a th:href="|${wiki}|"><button id="wiki-link"><i class="bi bi-wikipedia"></i></button></a>
                     </div>
-                    <iframe id="trailer" src="https://www.youtube.com/embed/L3pk_TBkihU?si=MrV7bzD1TzEvr7Q-"
-                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+                    <iframe id="trailer" th:src="|${trailer}|" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
                         picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
                         allowfullscreen></iframe>
                 </div>

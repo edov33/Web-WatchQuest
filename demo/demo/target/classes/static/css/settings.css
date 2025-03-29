@@ -1,0 +1,101 @@
+/*GLOBAL*/
+body {
+    background-image: url("../immagini/teatro.png");
+    background-size: 100%;
+}
+
+/*MAIN*/
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#settings-table {
+    background-color: black;
+    width: 80vw;
+    height: 90vw;
+    color: white;
+    border-radius: 5%;
+    outline: 1px solid rgb(97, 97, 97);
+    text-align: center;
+}
+#settings-table:first-child {
+    height: 135vw;
+}
+#info-profilo {
+    height: 55vh;
+    padding-bottom: 0px;
+}
+#cust-ban-col {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#custom-banner {
+    position: absolute;
+    top: 10%;
+    left: 10vw;
+    width: 80vw;
+    height: 45vw;
+    max-height: 100px;
+    border-top-left-radius: 10%;
+    border-top-right-radius: 10%;
+}
+#img-profilo {
+    width: 20vw;
+}
+.edit-area {
+    width: 50%;
+    background-color: black;
+    border-width: 0px 0px 1px;
+    border-color: rgba(103, 103, 103, 0.578);
+    color: white;
+}
+.edit-area:focus {
+    outline: none
+}
+.edit-area::placeholder {
+    color: gray;
+}
+.edit-data {
+    all: unset;
+    background-color: rgb(0, 157, 255);
+    border-radius: 7%;
+    width: 80%;
+    margin-right: 2px;
+}
+.button-column {
+    width: 20%;
+}
+.form-control {
+    width: 90%;
+    background-color: black;
+    color: gray;
+}
+
+.banner-pencil {
+    position: absolute;
+    top: 0%;
+}
+.reset-data {
+    all: unset;
+    position: relative;
+    left: 120%;
+    width: 80%;
+    border-radius: 7%;
+    background-color: rgb(0, 157, 255);
+}
+
+/*FOOTER*/
+#footer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    font-size: 2vw;
+    position: sticky;
+    bottom: 0%;
+    background-color: black;
+}

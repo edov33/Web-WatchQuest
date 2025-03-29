@@ -74,18 +74,15 @@ public class ControllerFilm {
         model.addAttribute("listaFilm", serviceFilm.findFilmByAttore(attore));
         return "adminPages/allFilm.html";
     }
-    
+
+    // ----- per ora non utilizzati -----
+
     @GetMapping("/tendenze")
     public String filmTendenze(@RequestParam String attore, Model model) {
-        model.addAttribute("listaFilm", serviceFilm.find5());
+        model.addAttribute("listaFilm", serviceFilm.find8());
         return "/home";
     }
-    
 
-
-
-
-    //----- per ora non utilizzati -----
     @GetMapping("/byUtente")
     public String allUtente(@RequestParam Long id, Model model) {
         model.addAttribute("listaFilm", serviceFilm.findFilmByUtente(id));

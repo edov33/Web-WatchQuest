@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import WatchQuest.demo.service.ServiceFilm;
+import WatchQuest.demo.service.ServiceSerie;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -15,6 +16,9 @@ public class AppController {
     @Autowired
     private ServiceFilm serviceFilm;
 
+    @Autowired
+    private ServiceSerie serviceSerie;
+
     @GetMapping("/test")
     public String test() {
         return "main";
@@ -22,7 +26,8 @@ public class AppController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        model.addAttribute("film", serviceFilm.findById(3L));
+        model.addAttribute("listaFilm", serviceFilm.find8());
+        model.addAttribute("listaSerie", serviceSerie.find8());
         return "home";
     }
 
@@ -73,11 +78,17 @@ public class AppController {
     }
 
     @GetMapping("/media")
-    public String media(@RequestParam String titolo,@RequestParam String durata,@RequestParam String genere,@RequestParam String anno, Model model) {
+    public String media(@RequestParam String titolo, @RequestParam String wiki, @RequestParam String trailer,
+            @RequestParam String descrizione, @RequestParam String durata, @RequestParam String image,
+            @RequestParam String genere, @RequestParam String anno, Model model) {
         model.addAttribute("titolo", titolo);
         model.addAttribute("durata", durata);
         model.addAttribute("genere", genere);
         model.addAttribute("anno", anno);
+        model.addAttribute("descrizione", descrizione);
+        model.addAttribute("wiki", wiki);
+        model.addAttribute("trailer", trailer);
+        model.addAttribute("image", image);
         return "media";
     }
 

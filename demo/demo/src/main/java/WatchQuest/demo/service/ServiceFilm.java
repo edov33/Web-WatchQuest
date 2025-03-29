@@ -22,18 +22,9 @@ public class ServiceFilm extends GenericService<Long, Film, DaoFilm> {
         return getDao().create(construct(mappa));
     }
 
-    // metodo per migliorare il codice
-    private List<Film> ritornaLista(Map<Long, GenericEntity> result) {
-        List<Film> lista = new ArrayList<>();
-        for (GenericEntity e : result.values()) {
-            lista.add((Film) e);
-        }
-        return lista;
-    }
-
-    // metodo che restituisce 5 film
-    public List<Film> find5() {
-        return ritornaLista(getDao().read5());
+    // metodo che restituisce 8 film
+    public List<Film> find8() {
+        return ritornaLista(getDao().read8());
     }
 
     // metodo che restituisce i film per id dell'utente

@@ -103,26 +103,23 @@
         </div>
         <div class="tendenza">
             <h3>FILM DI TENDENZA</h3>
-            <div class="card" >
-                <img src="https://picsum.photos/300/300" class="card-img-top" alt="...">
-                <div class="card-body" th:object="${film}">
-                    <h5 class="media-name" th:text="${film.titolo}">Film 1</h5>
-                    <a th:href="|/media?titolo=${film.titolo}&durata=${film.durata}&genere=${film.genere}&anno=${film.anno_pubblicazione}|" class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
-                </div>
-                <img src="https://picsum.photos/300/300" class="card-img-top" alt="...">
+            <div class="card" th:each="film : ${listaFilm}">
+                <img th:src="${film.url}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="media-name">Film 2</h5>
-                    <a href="/media" class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
+                    <h5 class="media-name" th:text="${film.titolo}">nome film</h5>
+                    <a th:href="|/media?titolo=${film.titolo}&durata=${film.durata}&genere=${film.genere}&anno=${film.anno_pubblicazione}&descrizione=${film.descrizione}&wiki=${film.wiki}&trailer=${film.trailer}&image=${film.url}|"
+                        class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
                 </div>
             </div>
         </div>
         <div class="tendenza">
             <h3>SERIE DI TENDENZA</h3>
-            <div class="card">
-                <img src="https://picsum.photos/300/300" class="card-img-top" alt="...">
+            <div class="card" th:each="serie : ${listaSerie}">
+                <img th:src="${serie.url}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="media-name">Card title</h5>
-                    <a href="media.html" class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
+                    <h5 class="media-name" th:text="${serie.titolo}">nome serie</h5>
+                    <a th:href="|/media?titolo=${serie.titolo}&durata=${serie.stagioni}&genere=${serie.genere}&anno=${serie.anno_pubblicazione}&descrizione=${serie.descrizione}&wiki=${serie.wiki}&trailer=${serie.trailer}&image=${serie.url}|"
+                        class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
                 </div>
             </div>
         </div>
