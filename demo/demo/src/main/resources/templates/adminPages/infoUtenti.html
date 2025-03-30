@@ -183,8 +183,8 @@
                     style="cursor:pointer;">&times;</span>
                 <h4>Modifica utente</h4>
                 <form action="/admin/modifica" method="post">
-                    <label for="modifica-id">Id</label>
-                    <input type="number" name="id" id="modifica-id" readonly> <br>
+                    <label for="modifica-id" hidden>Id</label>
+                    <input type="number" name="id" hidden id="modifica-id" readonly> <br>
                     <label for="modifica-nome">nome</label>
                     <input type="text" name="nome" id="modifica-nome"> <br>
                     <label for="modifica-cognome">cognome</label>

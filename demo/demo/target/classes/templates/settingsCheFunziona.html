@@ -100,75 +100,38 @@
             </form>
         </div>
     </header>
-    <main th:object="${utente}">
-        <button th:attr="
-                    data-modifica-id = ${utente.id},
-                    data-modifica-nome = ${utente.nome},
-                    data-modifica-cognome = ${utente.cognome},
-                    data-modifica-data_nascita = ${utente.data_nascita},
-                    data-modifica-username = ${utente.username},
-                    data-modifica-password = ${utente.password},
-                    data-modifica-email = ${utente.email},
-                    data-modifica-lingua = ${utente.lingua}"
-            onclick="document.getElementById('modifica').style.display='flex' ; modificaUtente(this)">Modifica</button>
-        <!-- <form>
-
+    <main>
+        <form>
             <table id="settings-table">
-
                 <tbody>
-
-                    <tr id="info-profilo">
+                    <tr>
+                        <caption id="cust-ban-col"><img id="custom-banner" src="https://picsum.photos/400/100">
+                        </caption>
+                    </tr>
+                    <tr id="info-profilo" th:object="${utente}">
                         <td class="profilo"><img id="img-profilo" th:src="${utente.foto_profilo}"></td>
+                        <td class="profilo" th:text="${utente.username}">NOME UTENTE</td>
                     </tr>
                     <tr>
 
-                        <td>Nome</td>
-                        <td class="profilo" th:text="${utente.cognome}">NOME UTENTE</td>
-                        
+                        <td class="edit-info"> Edit Username: </td>
+                        <td><input type="text" name="username" class="edit-area" placeholder="Username"></td>
+                        <td class="button-column">
+                            </a><button type="submit" class="edit-data"><i class="bi bi-pencil-fill"></i></button>
+                        </td>
                     </tr>
                     <tr>
-                        <th>Cognome</th>
-                        <td class="profilo" th:text="${utente.nome}">NOME UTENTE</td>
-
+                        <td class="edit-info"> Edit Password: </td>
+                        <td><input type="password" class="edit-area" placeholder="*******"></td>
+                        <td class="button-column"><button class="edit-data"><i class="bi bi-pencil-fill"></i></button>
+                        </td>
                     </tr>
-                    <table id="results-table">
-                        <thead>
-                            <th>ID</th>
-                            <th>Data nascita</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Modifica</th>
-                            <th>Elimina</th>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td th:text="${utente.id}"></td>
-                                <td th:text="${utente.nome}"></td>
-                                <td th:text="${utente.cognome}"></td>
-                                <td th:text="${utente.data_nascita}"></td>
-                                <td th:text="${utente.username}"></td>
-                                <td th:text="${utente.email}"></td>
-
-                                <td><button th:attr="
-                                    data-modifica-id = ${utente.id},
-                                    data-modifica-nome = ${utente.nome},
-                                    data-modifica-cognome = ${utente.cognome},
-                                    data-modifica-data_nascita = ${utente.data_nascita},
-                                    data-modifica-username = ${utente.username},
-                                    data-modifica-password = ${utente.password},
-                                    data-modifica-email = ${utente.email},
-                                    data-modifica-lingua = ${utente.lingua}"
-                                        onclick="document.getElementById('modifica').style.display='flex' ; modificaUtente(this)">Modifica</button>
-                                </td>
-
-                                <td><a
-                                        th:href="|/admin/eliminaUtente?idUtente=${utente.id}|"><button>Elimina</button></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                     </tbody></table>
+                    <tr>
+                        <td class="edit-info"> Edit Email </td>
+                        <td><input type="password" class="edit-area" placeholder="*******"></td>
+                        <td class="button-column"><button class="edit-data"><i class="bi bi-pencil-fill"></i></button>
+                        </td>
+                    </tr>
                     <tr id="admin-sez">
                         <td class="edit-info"> Edit Database: </td>
                         <td></td>
@@ -181,35 +144,7 @@
                     </tr>
                 </tbody>
             </table>
-        </form> -->
-        <div id="form-modifica" >
-            <div class="modal" id="modifica" style="display:flex;">
-                <div id="modal-add" class="modal-content">
-                    
-                    <h4>Modifica utente</h4>
-                    <form action="/admin/modifica" method="post">
-                        <label for="modifica-id">Id</label>
-                        <input type="number" name="id" id="modifica-id" readonly> <br>
-                        <label for="modifica-nome">nome</label>
-                        <input type="text" name="nome" id="modifica-nome"> <br>
-                        <label for="modifica-cognome">cognome</label>
-                        <input type="text" name="cognome" id="modifica-cognome"> <br>
-                        <label for="modifica-data_nascita">data_nascita</label>
-                        <input type="date" name="data_nascita" id="modifica-data_nascita"> <br>
-                        <label for="modifica-username">username</label>
-                        <input type="text" name="username" id="modifica-username"> <br>
-                        <label for="modifica-password">password</label>
-                        <input type="password" name="password" id="modifica-password"> <br>
-                        <label for="modifica-email">email</label>
-                        <input type="email" name="email" id="modifica-email"> <br>
-                        <label for="modifica-lingua">lingua</label>
-                        <input type="text" name="lingua" id="modifica-lingua"> <br>
-
-                        <input type="submit" value="modifica">
-                    </form>
-                </div>
-            </div>
-        </div>
+        </form>
     </main>
     <footer class="bd-footer py-4 py-md-5 mt-5">
         <div id="contatti">
@@ -231,7 +166,6 @@
 </body>
 <script src="/js/generalscripts.js"></script>
 <script src="/js/settings.js"></script>
-<script src="/js/controlli.js"></script>
 
 </html>
 

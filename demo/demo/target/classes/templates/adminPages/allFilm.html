@@ -232,9 +232,11 @@
         <div id="contenuto">
             <div class="modal" id="inserisci" style="display:none;">
                 <div id="modal-add" class="modal-content">
-                    <span onclick="document.getElementById('inserisci').style.display='none'"
-                        style="cursor:pointer;">&times;</span>
-                    <h4>Inserisci nuovo film</h4>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <h6 style="margin: 0;">Inserisci nuovo film</h6>
+                        <span onclick="document.getElementById('inserisci').style.display='none'"
+                            style="cursor:pointer; font-size: 20px; margin-left: 10px;">&times;</span>
+                    </div>
                     <form action="/film/inserisci" method="post">
                         <label for="titolo">titolo</label>
                         <input type="text" name="titolo" id="titolo"> <br>
@@ -264,15 +266,18 @@
                 </div>
             </div>
         </div>
-
+        
         <div id="form-modifica">
             <div class="modal" id="modifica" style="display:none;">
                 <div id="modal-add" class="modal-content">
-                    <span onclick="document.getElementById('modifica').style.display='none'"
-                        style="cursor:pointer;">&times;</span>
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <h6 style="margin: 0;">Modifica  film</h6>
+                        <span onclick="document.getElementById('modifica').style.display='none'"
+                            style="cursor:pointer; font-size: 20px; margin-left: 10px;">&times;</span>
+                    </div>
                     <form action="/film/modifica" method="post">
-                        <label for="modifica-id">Id</label>
-                        <input type="number" name="id" id="modifica-id" readonly> <br>
+                        <label for="modifica-id" hidden>Id</label>
+                        <input type="number" name="id" hidden id="modifica-id" readonly> <br>
                         <label for="modifica-titolo">titolo</label>
                         <input type="text" name="titolo" id="modifica-titolo"> <br>
                         <label for="modifica-descrizione">descrizione</label>

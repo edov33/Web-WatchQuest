@@ -11,9 +11,11 @@ main {
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .butt-link {
     text-decoration-line: none;
 }
+
 .ins-button {
     all: unset;
     margin-top: 4px;
@@ -21,47 +23,94 @@ main {
     min-width: 30px;
     height: fit-content;
     text-align: center;
-    border-radius: 10%;
+    border-radius: 5px;
     font-size: 1.2em;
     color: rgb(255, 255, 255);
     background-color: black;
 }
+
 #ins-utente {
     width: 26vw;
 }
+
 table {
     width: 90vw;
-    border-radius: 5%;
+    border-radius: 5px;
     background-color: black;
     color: white;
     outline: 1px solid white;
     margin: 10px;
 }
+
 table td {
     padding: 5px;
 }
+
 #search-table td {
     border-bottom: 1px solid white;
 }
-#search-table tr:last-child td{
+
+#search-table tr:last-child td {
     border-bottom: 0px;
 }
+
 #results-table {
     width: 90vw;
-    border-radius: 5%;
+    border-radius: 5px;
 }
-#results-table td, #results-table th {
+
+#results-table td,
+#results-table th {
     border: 0px solid white;
 }
+
 #results-table thead th {
     border-bottom: 1px solid white;
 }
+
 #results-table th:not(:first-child) {
     border-left: 1px solid white;
 }
+
 #results-table tr td {
     border-top: 1px solid white;
 }
+
 #results-table td:not(:first-child) {
     border-left: 1px solid white;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Per evitare che textarea si estenda troppo */
+.modal-content textarea {
+    resize: vertical;
+    min-height: 40px;
 }
