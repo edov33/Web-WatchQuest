@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import WatchQuest.demo.entity.Utente;
 import WatchQuest.demo.service.ServiceUtente;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/login")
-public class ControllerAccesso {
+public class ControllerLogin {
 
     @Autowired
     private ServiceUtente serviceUtente;

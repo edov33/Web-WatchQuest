@@ -25,89 +25,64 @@ public class AppController {
         return "main";
     }
 
+    private void fotoETasti(Model model, HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            // se è loggato
+            model.addAttribute("loggato", session.getId());
+            Object o = session.getAttribute("utente");
+            if (o instanceof Utente utente) {
+                model.addAttribute("foto", utente.getFoto_profilo());
+            }
+        }
+    }
+
     @GetMapping("/home")
     public String home(Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
-        model.addAttribute("listaFilm", serviceFilm.find8());
+        fotoETasti(model, session);
         model.addAttribute("listaSerie", serviceSerie.find8());
+        model.addAttribute("listaFilm", serviceFilm.find8());
         return "home";
+    }
+
+    @GetMapping("/logout")
+    public String logout(Model model, HttpSession session) {
+        session.invalidate();
+        return "redirect:/home";
     }
 
     @GetMapping("/aboutus")
     public String aboutus(Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
+        fotoETasti(model, session);
         return "aboutus";
     }
 
     @GetMapping("/joinus")
     public String joinus(Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
+        fotoETasti(model, session);
         return "joinus";
     }
 
     @GetMapping("/faq")
     public String faq(Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
+        fotoETasti(model, session);
         return "faq";
-    }
-
-    @GetMapping("/myLists")
-    public String myLists(Model model, HttpSession session) {
-        if (session.getAttribute("ruolo") != null) {
-            if (session.getAttribute("loggato") != null) {
-                model.addAttribute("loggato", session.getId());
-            }
-            return "redirect:/media/utente";
-        } else {
-            return "redirect:/home";
-        }
     }
 
     @GetMapping("/news")
     public String news(Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
-
+        fotoETasti(model, session);
         return "news";
     }
 
     @GetMapping("/quiz")
     public String quiz(Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
+        fotoETasti(model, session);
         return "quiz";
-    }
-
-    @GetMapping("/settings")
-    public String settings(Model model, HttpSession session) {
-        if (session.getAttribute("ruolo") != null) {
-            Object o = session.getAttribute("utente");
-            if (o instanceof Utente utente) {
-                model.addAttribute("utente", utente);
-                if (session.getAttribute("loggato") != null) {
-                    model.addAttribute("loggato", session.getId());
-                }
-                return "settings";
-            }
-        }
-        return "redirect:/home";
     }
 
     @GetMapping("/registrazione")
     public String registrazione(Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
+        fotoETasti(model, session);
         return "registrazione";
     }
 
@@ -115,9 +90,7 @@ public class AppController {
     public String media(@RequestParam String titolo, @RequestParam String wiki, @RequestParam String trailer,
             @RequestParam String descrizione, @RequestParam String durata, @RequestParam String image,
             @RequestParam String genere, @RequestParam String anno, Model model, HttpSession session) {
-        if (session.getAttribute("loggato") != null) {
-            model.addAttribute("loggato", session.getId());
-        }
+        fotoETasti(model, session);
         model.addAttribute("titolo", titolo);
         model.addAttribute("durata", durata);
         model.addAttribute("genere", genere);
@@ -129,10 +102,26 @@ public class AppController {
         return "media";
     }
 
-    // @GetMapping("/error")
-    // public String errore(Model model) {
-    // model.addAttribute("error","Qualcosa non ha funzionato");
-    // return "errore";
-    // }
+    @GetMapping("/myLists")
+    public String myLists(Model model, HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            return "redirect:/media/utente";
+        }
+        return "redirect:/home";
+    }
+
+    @GetMapping("/settings")
+    public String settings(Model model, HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            Object o = session.getAttribute("utente");
+            if (o instanceof Utente utente) {
+                model.addAttribute("utente", utente);
+                model.addAttribute("foto", utente.getFoto_profilo());
+                model.addAttribute("loggato", session.getId());
+                return "settings";
+            }
+        }
+        return "redirect:/home";
+    }
 
 }

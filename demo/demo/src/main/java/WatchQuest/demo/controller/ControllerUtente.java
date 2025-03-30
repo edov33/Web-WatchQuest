@@ -31,6 +31,12 @@ public class ControllerUtente {
         return "redirect:/utente/all";
     }
 
+    @PostMapping("/modificaUsername")
+    public String modificaUsername(@RequestParam Map<String, String> parametri) {
+        serviceUtente.update(parametri);
+        return "redirect:settings";
+    }
+
     @PostMapping("/inserisci")
     public String inserisciUtente(@RequestParam Map<String, String> parametri) {
         serviceUtente.save(parametri);

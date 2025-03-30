@@ -1,0 +1,45 @@
+/*GLOBAL*/
+body {
+    background-image: url("../immagini/teatro.png");
+    background-size: 100%;
+}
+
+/*MAIN*/
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 {
+    color: white;
+}
+#signup-table {
+    width: 90vw;
+    border-radius: 5%;
+    background-color: black;
+    color: white;
+    outline: 1px solid white;
+    margin: 10px;
+}
+#signup-table tr, td {
+    padding: 7px;
+}
+#signup-table input {
+    background-color: rgb(50, 50, 50);
+    border-width: 0px 0px 1px;
+    color: rgb(255, 255, 255);
+}
+#signup-table input::placeholder {
+    color: gray;
+}
+#signup-table input:focus {
+    outline-style: none;
+    box-shadow: none;
+}
+#submit-row {
+    text-align: center;
+}
+#submit-b {
+    border-radius: 5%;
+}

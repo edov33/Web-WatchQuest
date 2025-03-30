@@ -35,9 +35,7 @@ var loginButtonLbl = document.getElementById("login-b-lb");
 document.addEventListener("DOMContentLoaded",
     function replaceLoginBut() {
         if (document.getElementById("session").value != "") {
-            loginButton.innerHTML = "Log Out";
-            signUpButton.style.visibility = "hidden";
-
+            loginButton.style.visibility = "hidden";
         }
     }
 );

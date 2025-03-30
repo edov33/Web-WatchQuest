@@ -11,10 +11,13 @@ main {
     justify-content: center;
     flex-wrap: wrap;
 }
-#back {
+.butt-link {
+    text-decoration-line: none;
+}
+.ins-button {
     all: unset;
     margin-top: 4px;
-    width: 6vw;
+    width: 12vw;
     min-width: 30px;
     height: fit-content;
     text-align: center;
@@ -23,19 +26,8 @@ main {
     color: rgb(255, 255, 255);
     background-color: black;
 }
-.back-page {
-    position: relative;
-    bottom: 90%;
-    font-size: 3.2.4vw;
-}
-#add-film {
-    all: unset;
-    width: 25vw;
-    border-radius: 10%;
-    text-align: center;
-    font-weight: 500;
-    background-color: black;
-    color: white;
+#ins-utente {
+    width: 26vw;
 }
 table {
     width: 90vw;

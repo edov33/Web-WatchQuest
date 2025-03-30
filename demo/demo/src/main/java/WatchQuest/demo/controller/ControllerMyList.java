@@ -22,11 +22,15 @@ public class ControllerMyList {
 
     @GetMapping("/utente")
     public String media(Model model, HttpSession session) {
-        Object o = session.getAttribute("utente");
-        if (o instanceof Utente utente) {
-            model.addAttribute("listaSerie", serviceSerie.findSerieByUtente(utente.getId()));
-            model.addAttribute("listaFilm", serviceFilm.findFilmByUtente(utente.getId()));
-            return "mylists";
+        if (session.getAttribute("loggato") != null) {
+            Object o = session.getAttribute("utente");
+            if (o instanceof Utente utente) {
+                model.addAttribute("listaSerie", serviceSerie.findSerieByUtente(utente.getId()));
+                model.addAttribute("listaFilm", serviceFilm.findFilmByUtente(utente.getId()));
+                model.addAttribute("loggato", session.getId());
+                model.addAttribute("foto", utente.getFoto_profilo());
+                return "mylists";
+            }
         }
         return "home";
     }

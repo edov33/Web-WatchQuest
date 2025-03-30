@@ -41,7 +41,7 @@ public class DaoUtente implements IDao<Long, Utente> {
 
     @Override
     public void update(Utente u) {
-        String comando = "UPDATE utente SET nome = ?, cognome = ?, data_nascita = ?, username = ?, password = ?, email = ?, lingua = ? WHERE id = ?";
+        String comando = "UPDATE utente SET nome = ?, cognome = ?, data_nascita = ?, username = ?, password = ?, email = ?, foto_profilo = ?, lingua = ? WHERE id = ?";
         databaseMySql.executeDML(comando, u.getNome(), u.getCognome(), String.valueOf(u.getData_nascita()),
                 u.getUsername(), u.getPassword(), u.getEmail(), u.getFoto_profilo(), u.getLingua(), String.valueOf(u.getId()));
     }
