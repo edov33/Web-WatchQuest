@@ -32,8 +32,10 @@ public class ControllerUtente {
     }
 
     @PostMapping("/modificaUsername")
-    public String modificaUsername(@RequestParam Map<String, String> parametri) {
-        serviceUtente.update(parametri);
+    public String modificaUsername(@RequestParam String username) {
+        System.out.println("-----------------"+username);
+        // @RequestParam Map<String, String> parametri, 
+        // serviceUtente.update(parametri);
         return "redirect:settings";
     }
 

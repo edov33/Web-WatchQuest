@@ -79,13 +79,13 @@ public class DaoUtente implements IDao<Long, Utente> {
 
     // associazione utente - programma
     public void associaProgramma(Long idUtente, Long idProgramma) {
-        String query = "INSERT INTO utente_progrmma (id_utente, id_programma) VALUES(?,?)";
+        String query = "INSERT INTO utente_programma (id_utente, id_programma) VALUES(?,?)";
         databaseMySql.executeDML(query, String.valueOf(idUtente), String.valueOf(idProgramma));
     }
 
     // dissociazione utente - programma
     public void dissociaProgramma(Long idUtente, Long idProgramma) {
-        String query = "DELETE FROM utente_progrmma WHERE id_utente = ? AND id_programma = ?";
+        String query = "DELETE FROM utente_programma WHERE id_utente = ? AND id_programma = ?";
         databaseMySql.executeDML(query, String.valueOf(idUtente), String.valueOf(idProgramma));
     }
 

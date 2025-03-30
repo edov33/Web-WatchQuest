@@ -1,0 +1,63 @@
+/*GLOBAL*/
+body {
+    background-image: url("../immagini/teatro.png");
+    background-size: cover;
+}
+
+/*MAIN*/
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+section {
+    width: 100vw;
+    height: 50vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+.card {
+    margin-left: 20px;
+    width: 10vw;
+    min-width: 100px;
+    height: fit-content;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.1em;
+    background-color: black;
+    color: white;
+}
+.card img {
+    width: 100px;
+    height: 100px;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.card-body a:first-child {
+    text-decoration: none;
+    color: white;
+}
+.news-title {
+    font-size: 7em;
+}
+.news-link {
+    width: 40px;
+    height: 40px;
+    font-size: 7em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.news-link img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5%;
+}

@@ -41,20 +41,17 @@
             <button onclick='window.location.href="/home"' class="nav-option"><i class="bi bi-house nav-icon"></i>
                 <h2 class="nav-link">Home</h2>
             </button>
-            <button onclick='window.location.href="/myLists"' class="nav-option"><i
-                    class="bi bi-heart  nav-icon"></i>
+            <button onclick='window.location.href="/myLists"' class="nav-option"><i class="bi bi-heart  nav-icon"></i>
                 <h2 class="nav-link">My Lists</h2>
             </button>
-            <button onclick='window.location.href="/news"' class="nav-option"><i
-                    class="bi bi-newspaper  nav-icon"></i>
+            <button onclick='window.location.href="/news"' class="nav-option"><i class="bi bi-newspaper  nav-icon"></i>
                 <h2 class="nav-link">News</h2>
             </button>
             <button onclick='window.location.href="/quiz"' class="nav-option"><i
                     class="bi bi-question-diamond  nav-icon"></i>
                 <h2 class="nav-link">Quiz</h2>
             </button>
-            <button onclick='window.location.href="/settings"' class="nav-option"><i
-                    class="bi bi-gear  nav-icon"></i>
+            <button onclick='window.location.href="/settings"' class="nav-option"><i class="bi bi-gear  nav-icon"></i>
                 <h2 class="nav-link">Settings</h2>
             </button>
         </nav>
@@ -89,8 +86,7 @@
                 </label>
                 <div id="login-bgroup">
                     <button type="button" id="login-b" class="btn btn-primary login-b">Login</button>
-                    <a href="/registrazione"><button type="button" id="signup-b"
-                            class="btn btn-primary login-b">Sign
+                    <a href="/registrazione"><button type="button" id="signup-b" class="btn btn-primary login-b">Sign
                             Up</button></a>
                 </div>
 
@@ -98,106 +94,108 @@
         </div>
     </header>
     <main>
-    <div class="button-container">
-        <a href="/admin/all"> <button id="back"><i class="bi bi-arrow-left-circle-fill back-page"></i></button></a>
-        <button id="add-film" onclick="document.getElementById('inserisci').style.display='flex'">Inserisci serie</button>
-    </div>
-    <table id="search-table">
-        <tbody>
-            <form class="cerca-form" action="/serie/byTitolo" method="get" style="display: flex;">
-                <tr>
-                    <td>
-                        <label for="cerca-titolo">Cerca per titolo:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="cerca-titolo" name="titolo" placeholder="Inserisci titolo...">
-                    </td>
-                    <td>
-                        <input type="submit" value="Cerca">
-                    </td>
-                </tr>
-            </form>
-            <form class="cerca-form" action="/serie/byGenere" method="get" style="display: flex;">
-                <tr>
-                    <td>
-                        <label for="cerca-genere">Cerca per genere:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="cerca-genere" name="genere" placeholder="Inserisci genere...">
-                    </td>
-                    <td>
-                        <input type="submit" value="Cerca">
-                    </td>
-                </tr>
-            </form>
-            <form class="cerca-form" action="/serie/byRating" method="get" style="display: flex;">
-                <tr>
-                    <td>
-                        <label for="cerca-rating">Cerca per rating:</label>
-                    </td>
-                    <td>
-                        <input type="number" step="0.1" id="cerca-rating" name="voto" placeholder="Inserisci rating...">
-                    </td>
-                    <td>
-                        <input type="submit" value="Cerca">
-                    </td>
-                </tr>
-            </form>
-            <form class="cerca-form" action="/serie/byAnno" method="get" style="display: flex;">
-                <tr>
-                    <td>
-                        <label for="cerca-anno">Cerca per anno:</label>
-                    </td>
-                    <td>
-                        <input type="number" id="cerca-anno" name="anno" placeholder="Inserisci anno...">
-                    </td>
-                    <td>
-                        <input type="submit" value="Cerca">
-                    </td>
-                </tr>
-            </form>
-            <form class="cerca-form" action="/serie/byAttore" method="get" style="display: flex;">
-                <tr>
-                    <td>
-                        <label for="cerca-attore">Cerca per attore:</label>
-                    </td>
-                    <td>
-                        <input type="text" id="cerca-attore" name="attore" placeholder="Inserisci attore...">
-                    </td>
-                    <td>
-                        <input type="submit" value="Cerca">
-                    </td>
-                </tr>
-            </form>
-        </tbody>
-    </table>
+        <div class="button-container">
+            <a href="/admin/all"> <button id="back"><i class="bi bi-arrow-left-circle-fill back-page"></i></button></a>
+            <button id="add-film" onclick="document.getElementById('inserisci').style.display='flex'">Inserisci
+                serie</button>
+        </div>
+        <table id="search-table">
+            <tbody>
+                <form class="cerca-form" action="/serie/byTitolo" method="get" style="display: flex;">
+                    <tr>
+                        <td>
+                            <label for="cerca-titolo">Cerca per titolo:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="cerca-titolo" name="titolo" placeholder="Inserisci titolo...">
+                        </td>
+                        <td>
+                            <input type="submit" value="Cerca">
+                        </td>
+                    </tr>
+                </form>
+                <form class="cerca-form" action="/serie/byGenere" method="get" style="display: flex;">
+                    <tr>
+                        <td>
+                            <label for="cerca-genere">Cerca per genere:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="cerca-genere" name="genere" placeholder="Inserisci genere...">
+                        </td>
+                        <td>
+                            <input type="submit" value="Cerca">
+                        </td>
+                    </tr>
+                </form>
+                <form class="cerca-form" action="/serie/byRating" method="get" style="display: flex;">
+                    <tr>
+                        <td>
+                            <label for="cerca-rating">Cerca per rating:</label>
+                        </td>
+                        <td>
+                            <input type="number" step="0.1" id="cerca-rating" name="voto"
+                                placeholder="Inserisci rating...">
+                        </td>
+                        <td>
+                            <input type="submit" value="Cerca">
+                        </td>
+                    </tr>
+                </form>
+                <form class="cerca-form" action="/serie/byAnno" method="get" style="display: flex;">
+                    <tr>
+                        <td>
+                            <label for="cerca-anno">Cerca per anno:</label>
+                        </td>
+                        <td>
+                            <input type="number" id="cerca-anno" name="anno" placeholder="Inserisci anno...">
+                        </td>
+                        <td>
+                            <input type="submit" value="Cerca">
+                        </td>
+                    </tr>
+                </form>
+                <form class="cerca-form" action="/serie/byAttore" method="get" style="display: flex;">
+                    <tr>
+                        <td>
+                            <label for="cerca-attore">Cerca per attore:</label>
+                        </td>
+                        <td>
+                            <input type="text" id="cerca-attore" name="attore" placeholder="Inserisci attore...">
+                        </td>
+                        <td>
+                            <input type="submit" value="Cerca">
+                        </td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
 
-    <table id="results-table">
-        <thead>
-            <th>Titolo</th>
-            <th>Genere</th>
-            <th>Anno uscita</th>
-            <th>Classificazione</th>
-            <th>Rating</th>
-            <th>Cast</th>
-            <th>Lingua originale</th>
-            <th>Episodi</th>
-            <th>Stagioni</th>
-            <th>Modifica</th>
-            <th>Elimina</th>
-        </thead>
-        <tbody>
-            <tr th:each="serie : ${listaSerie}">
-                <td th:text="${serie.titolo}"></td>
-                <td th:text="${serie.genere}"></td>
-                <td th:text="${serie.anno_pubblicazione}"></td>
-                <td th:text="${serie.classificazione}"></td>
-                <td th:text="${serie.rating}"></td>
-                <td th:text="${serie.cast}"></td>
-                <td th:text="${serie.lingua_originale}"></td>
-                <td th:text="${serie.episodi}"></td>
-                <td th:text="${serie.stagioni}"></td>
-                <td><button th:attr="
+        <table id="results-table">
+            <thead>
+                <th>Titolo</th>
+                <th>Genere</th>
+                <th>Anno uscita</th>
+                <th>Classificazione</th>
+                <th>Rating</th>
+                <th>Cast</th>
+                <th>Lingua originale</th>
+                <th>Episodi</th>
+                <th>Stagioni</th>
+                <th>Modifica</th>
+                <th>Elimina</th>
+            </thead>
+            <tbody>
+                <tr th:each="serie : ${listaSerie}">
+                    <td th:text="${serie.titolo}"></td>
+                    <td th:text="${serie.genere}"></td>
+                    <td th:text="${serie.anno_pubblicazione}"></td>
+                    <td th:text="${serie.classificazione}"></td>
+                    <td th:text="${serie.rating}"></td>
+                    <td th:text="${serie.cast}"></td>
+                    <td th:text="${serie.lingua_originale}"></td>
+                    <td th:text="${serie.episodi}"></td>
+                    <td th:text="${serie.stagioni}"></td>
+                    <td><button th:attr="
                     data-modifica-id = ${serie.id},
                     data-modifica-titolo = ${serie.titolo},
                     data-modifica-descrizione = ${serie.descrizione},
@@ -210,101 +208,104 @@
                     data-modifica-lingua_originale = ${serie.lingua_originale},
                     data-modifica-episodi = ${serie.episodi},
                     data-modifica-stagioni = ${serie.stagioni}"
-                        onclick="document.getElementById('modifica').style.display='flex' ; modificaSerie(this)">Modifica</button>
-                </td> <!-- bottone modifica -->
-                <td> <a th:href="|/serie/elimina?idSerie=${serie.id}|"><button>Elimina</button></a></td>
+                            onclick="document.getElementById('modifica').style.display='flex' ; modificaSerie(this)">Modifica</button>
+                    </td> <!-- bottone modifica -->
+                    <td> <a th:href="|/serie/elimina?idSerie=${serie.id}|"><button>Elimina</button></a></td>
 
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
 
-    <div id="contenuto">
-        <div class="modal" id="inserisci" style="display:none;">
-            <div id="modal-add" class="modal-content">
-                <span onclick="document.getElementById('inserisci').style.display='none'"
-                    style="cursor:pointer;">&times;</span>
-                <h4>Inserisci nuova serie</h4>
-                <form action="/serie/inserisci" method="post">
-                    <label for="titolo">titolo</label>
-                    <input type="text" name="titolo" id="titolo"> <br>
-                    <label for="descrizione">descrizione</label>
-                    <input type="text" name="descrizione" id="descrizione"> <br>
-                    <label for="genere">genere</label>
-                    <input type="text" name="genere" id="genere-serie"> <br>
-                    <label for="anno_pubblicazione">anno pubblicazione</label>
-                    <input type="number" name="anno_pubblicazione" id="anno_pubblicazione"> <br>
-                    <label for="classificazione">classificazione</label>
-                    <input type="text" name="classificazione" id="classificazione"> <br>
-                    <label for="rating">rating</label>
-                    <input type="text" name="rating" id="rating"> <br>
-                    <label for="cast">cast</label>
-                    <input type="text" name="cast" id="cast"> <br>
-                    <label for="regista">regista</label>
-                    <input type="text" name="regista" id="regista"> <br>
-                    <label for="lingua_originale">lingua originale</label>
-                    <input type="text" name="lingua_originale" id="lingua_originale"> <br>
-                    <label for="episodi">episodi</label>
-                    <input type="text" name="episodi" id="episodi"> <br>
-                    <label for="stagioni">stagioni</label>
-                    <input type="text" name="stagioni" id="stagioni"> <br>
-                    <br>
-                    <input type="submit" value="Aggiungi">
-                </form>
+        <div id="contenuto">
+            <div class="modal" id="inserisci" style="display:none;">
+                <div id="modal-add" class="modal-content">
+                    <span onclick="document.getElementById('inserisci').style.display='none'"
+                        style="cursor:pointer;">&times;</span>
+                    <h4>Inserisci nuova serie</h4>
+                    <form action="/serie/inserisci" method="post">
+                        <label for="titolo">titolo</label>
+                        <input type="text" name="titolo" id="titolo"> <br>
+                        <label for="descrizione">descrizione</label>
+                        <input type="text" name="descrizione" id="descrizione"> <br>
+                        <label for="genere">genere</label>
+                        <input type="text" name="genere" id="genere-serie"> <br>
+                        <label for="anno_pubblicazione">anno pubblicazione</label>
+                        <input type="number" name="anno_pubblicazione" id="anno_pubblicazione"> <br>
+                        <label for="classificazione">classificazione</label>
+                        <input type="text" name="classificazione" id="classificazione"> <br>
+                        <label for="rating">rating</label>
+                        <input type="text" name="rating" id="rating"> <br>
+                        <label for="cast">cast</label>
+                        <input type="text" name="cast" id="cast"> <br>
+                        <label for="regista">regista</label>
+                        <input type="text" name="regista" id="regista"> <br>
+                        <label for="lingua_originale">lingua originale</label>
+                        <input type="text" name="lingua_originale" id="lingua_originale"> <br>
+                        <label for="episodi">episodi</label>
+                        <input type="text" name="episodi" id="episodi"> <br>
+                        <label for="stagioni">stagioni</label>
+                        <input type="text" name="stagioni" id="stagioni"> <br>
+                        <br>
+                        <input type="submit" value="Aggiungi">
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="form-modifica" hidden>
-        <div class="modal" id="modifica" style="display:none;">
-            <div id="modal-add" class="modal-content">
-                <span onclick="document.getElementById('modifica').style.display='none'"
-                    style="cursor:pointer;">&times;</span>
-                <form action="/serie/modifica" method="post">
-                    <label for="modifica-id">Id</label>
-                    <input type="number" name="id" id="modifica-id" readonly> <br>
-                    <label for="modifica-titolo">titolo</label>
-                    <input type="text" name="titolo" id="modifica-titolo"> <br>
-                    <label for="modifica-descrizione">descrizione</label>
-                    <input type="text" name="descrizione" id="modifica-descrizione"> <br>
-                    <label for="modifica-genere">genere</label>
-                    <input type="text" name="genere" id="modifica-genere"> <br>
-                    <label for="modifica-anno_pubblicazione">anno pubblicazione</label>
-                    <input type="number" name="anno_pubblicazione" id="modifica-anno_pubblicazione"> <br>
-                    <label for="modifica-classificazione">classificazione</label>
-                    <input type="text" name="classificazione" id="modifica-classificazione"> <br>
-                    <label for="modifica-rating">rating</label>
-                    <input type="text" name="rating" id="modifica-rating"> <br>
-                    <label for="modifica-cast">cast</label>
-                    <input type="text" name="cast" id="modifica-cast"> <br>
-                    <label for="modifica-regista">regista</label>
-                    <input type="text" name="regista" id="modifica-regista"> <br>
-                    <label for="modifica-lingua_originale">lingua originale</label>
-                    <input type="text" name="lingua_originale" id="modifica-lingua_originale"> <br>
-                    <label for="modifica-episodi">episodi</label>
-                    <input type="text" name="episodi" id="modifica-episodi"> <br>
-                    <label for="modifica-stagioni">stagioni</label>
-                    <input type="text" name="stagioni" id="modifica-stagioni"> <br>
+        <div id="form-modifica" hidden>
+            <div class="modal" id="modifica" style="display:none;">
+                <div id="modal-add" class="modal-content">
+                    <span onclick="document.getElementById('modifica').style.display='none'"
+                        style="cursor:pointer;">&times;</span>
+                    <form action="/serie/modifica" method="post">
+                        <label for="modifica-id">Id</label>
+                        <input type="number" name="id" id="modifica-id" readonly> <br>
+                        <label for="modifica-titolo">titolo</label>
+                        <input type="text" name="titolo" id="modifica-titolo"> <br>
+                        <label for="modifica-descrizione">descrizione</label>
+                        <input type="text" name="descrizione" id="modifica-descrizione"> <br>
+                        <label for="modifica-genere">genere</label>
+                        <input type="text" name="genere" id="modifica-genere"> <br>
+                        <label for="modifica-anno_pubblicazione">anno pubblicazione</label>
+                        <input type="number" name="anno_pubblicazione" id="modifica-anno_pubblicazione"> <br>
+                        <label for="modifica-classificazione">classificazione</label>
+                        <input type="text" name="classificazione" id="modifica-classificazione"> <br>
+                        <label for="modifica-rating">rating</label>
+                        <input type="text" name="rating" id="modifica-rating"> <br>
+                        <label for="modifica-cast">cast</label>
+                        <input type="text" name="cast" id="modifica-cast"> <br>
+                        <label for="modifica-regista">regista</label>
+                        <input type="text" name="regista" id="modifica-regista"> <br>
+                        <label for="modifica-lingua_originale">lingua originale</label>
+                        <input type="text" name="lingua_originale" id="modifica-lingua_originale"> <br>
+                        <label for="modifica-episodi">episodi</label>
+                        <input type="text" name="episodi" id="modifica-episodi"> <br>
+                        <label for="modifica-stagioni">stagioni</label>
+                        <input type="text" name="stagioni" id="modifica-stagioni"> <br>
 
-                    <input type="submit" value="modifica">
-                </form>
+                        <input type="submit" value="modifica">
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
     </main>
-            <footer class="bd-footer py-4 py-md-5 mt-5">
-                <div id="contatti">
-                    Contatti:
-                    <br>+39 3346895395
-                    <br>watchquest@gmail.com
-                    <br>Milano, Via Roma 5
-                </div>
-                <div id="canaliSocial">
-                    Canali social:
-                    <br><i class="bi bi-facebook social_img"></i><h5 class="social-link">WatchQuest</h5>
-                    <br><i class="bi bi-instagram social_img"></i><h5 class="social-link">@watchquest</h5>
-                    <br><i class="bi bi-youtube social_img"></i><h5 class="social-link">WatchQuest</h5>
-                </div>
-            </footer>
+    <footer class="bd-footer py-4 py-md-5 mt-5">
+        <div id="contatti">
+            Contatti:
+            <br>+39 3346895395
+            <br>watchquest@gmail.com
+            <br>Milano, Via Roma 5
+        </div>
+        <div id="canaliSocial">
+            Canali social:
+            <br><i class="bi bi-facebook social_img"></i>
+            <h5 class="social-link">WatchQuest</h5>
+            <br><i class="bi bi-instagram social_img"></i>
+            <h5 class="social-link">@watchquest</h5>
+            <br><i class="bi bi-youtube social_img"></i>
+            <h5 class="social-link">WatchQuest</h5>
+        </div>
+    </footer>
 </body>
 <script src="/js/generalscripts.js"></script>
 <script src="/js/controlli.js"></script>

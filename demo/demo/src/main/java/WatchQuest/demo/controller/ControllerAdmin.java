@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import WatchQuest.demo.entity.Utente;
 import WatchQuest.demo.service.ServiceFilm;
 import WatchQuest.demo.service.ServiceSerie;
 import WatchQuest.demo.service.ServiceUtente;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/admin")
@@ -25,8 +27,20 @@ public class ControllerAdmin {
     @Autowired
     private ServiceUtente serviceUtente;
 
+    private void fotoETasti(Model model, HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            // se è loggato
+            model.addAttribute("loggato", session.getId());
+            Object o = session.getAttribute("utente");
+            if (o instanceof Utente utente) {
+                model.addAttribute("foto", utente.getFoto_profilo());
+            }
+        }
+    }
+
     @GetMapping("/all")
-    public String allUtente(Model model) {
+    public String allUtente(Model model, HttpSession session) {
+        fotoETasti(model, session);
         model.addAttribute("listaUtenti", serviceUtente.findAll());
         return "adminPages/infoUtenti.html";
     }
@@ -50,22 +64,24 @@ public class ControllerAdmin {
         }
         return "redirect:/admin/all";
     }
-    
+
     @GetMapping("/serie")
-    public String serieUtenti(Model model) {
-        model.addAttribute("listaSerie",serviceSerie.findAll());
+    public String serieUtenti(Model model, HttpSession session) {
+        fotoETasti(model, session);
+        model.addAttribute("listaSerie", serviceSerie.findAll());
         return "adminPages/allSerie.html";
     }
-    
+
     @GetMapping("/film")
-    public String filmUtenti(Model model) {
-        model.addAttribute("listaFilm",serviceFilm.findAll());
+    public String filmUtenti(Model model, HttpSession session) {
+        fotoETasti(model, session);
+        model.addAttribute("listaFilm", serviceFilm.findAll());
         return "adminPages/allFilm.html";
     }
+
     @GetMapping("/all-film")
     public String allFilm() {
         return "adminPages/allFilm.html";
     }
-    
 
 }

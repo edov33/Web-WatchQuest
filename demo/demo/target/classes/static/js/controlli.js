@@ -12,7 +12,6 @@ function controllaPassword() {
 
 function modificaFilm(oggetto) {
     var form = document.getElementById("form-modifica");
-
     form.hidden = false;
 
     var id = document.getElementById("modifica-id");

@@ -104,7 +104,7 @@
         <article>
             <section id="sezione1">
                 <div id="cover-div" th:style="|background-image: ${image};|">
-                    <button id="like" onclick="fillHeart()"><i id="like-icon" class="bi bi-heart"></i></button>
+                <a href="/media/like"><button id="like" onclick="fillHeart()"><i id="like-icon" class="bi bi-heart"></i></button></a>
                 </div>
                 <div id="info-media">
                     <h4 class="nome-media" th:text="${titolo}">NOME FILM</h4>

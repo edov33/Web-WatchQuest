@@ -1,6 +1,5 @@
 package WatchQuest.demo.service;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,14 +30,24 @@ public class ServiceUtente extends GenericService<Long, Utente, DaoUtente> {
     public Long save(Map<String, String> mappa) {
         return getDao().create(construct(mappa));
     }
-    
-    //metodo che cerca se c'è già l'utente per nome cognome e email
-    public Utente findUtente(Map<String, String> datiForm){
+
+    // metodo che associa programma a utente
+    public void associaProgramma(Long idUtente, Long idProg) {
+        getDao().associaProgramma(idUtente, idProg);
+    }
+
+    // metodo che dissocia programma a utente
+    public void dissociaProgramma(Long idUtente, Long idProg) {
+        getDao().dissociaProgramma(idUtente, idProg);
+    }
+
+    // metodo che cerca se c'è già l'utente per nome cognome e email
+    public Utente findUtente(Map<String, String> datiForm) {
         return getDao().cercaUtente(datiForm);
     }
 
-    //metodo che cerca un utente per username e password
-    public Utente findByUserAndPass(String username, String password){
+    // metodo che cerca un utente per username e password
+    public Utente findByUserAndPass(String username, String password) {
         return getDao().readByUserAndPass(username, password);
     }
 
@@ -52,7 +61,7 @@ public class ServiceUtente extends GenericService<Long, Utente, DaoUtente> {
         return programmi;
     }
 
-    //metodo che restituisce l'utente con i suoi programmi visti
+    // metodo che restituisce l'utente con i suoi programmi visti
     public Utente findAllProgrammiUnUtente(Long idUtente) {
         Utente u = getDao().readById(idUtente);
         u.setFilm(findFilmByUtente(u.getId()));
@@ -60,7 +69,7 @@ public class ServiceUtente extends GenericService<Long, Utente, DaoUtente> {
         return u;
     }
 
-    //metodo che restituisce tutti gli utenti con i programmi visti
+    // metodo che restituisce tutti gli utenti con i programmi visti
     public List<Utente> findAllProgrammiUtente() {
         Map<Long, GenericEntity> result = getDao().read();
         List<Utente> lista = new ArrayList<>();

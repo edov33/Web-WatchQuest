@@ -113,13 +113,12 @@
                         <td class="profilo" th:text="${utente.username}">NOME UTENTE</td>
                     </tr>
                     <tr>
-                        <form action="/utente/modificaUsername" method="post">
-                            <td class="edit-info"> Edit Username: </td>
-                            <td><input type="text" name="username" class="edit-area" placeholder="Username"></td>
-                            <td class="button-column">
-                                <button type="submit" class="edit-data"><i class="bi bi-pencil-fill"></i></button>
-                            </td>
-                        </form>
+
+                        <td class="edit-info"> Edit Username: </td>
+                        <td><input type="text" name="username" class="edit-area" placeholder="Username"></td>
+                        <td class="button-column">
+                            </a><button type="submit" class="edit-data"><i class="bi bi-pencil-fill"></i></button>
+                        </td>
                     </tr>
                     <tr>
                         <td class="edit-info"> Edit Password: </td>

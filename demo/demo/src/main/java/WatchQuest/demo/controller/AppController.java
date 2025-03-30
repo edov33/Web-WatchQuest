@@ -89,8 +89,9 @@ public class AppController {
     @GetMapping("/media")
     public String media(@RequestParam String titolo, @RequestParam String wiki, @RequestParam String trailer,
             @RequestParam String descrizione, @RequestParam String durata, @RequestParam String image,
-            @RequestParam String genere, @RequestParam String anno, Model model, HttpSession session) {
+            @RequestParam String genere, @RequestParam String anno, Model model, HttpSession session, @RequestParam String id) {
         fotoETasti(model, session);
+        session.setAttribute("id", id);
         model.addAttribute("titolo", titolo);
         model.addAttribute("durata", durata);
         model.addAttribute("genere", genere);
@@ -109,6 +110,7 @@ public class AppController {
         }
         return "redirect:/home";
     }
+    
 
     @GetMapping("/settings")
     public String settings(Model model, HttpSession session) {

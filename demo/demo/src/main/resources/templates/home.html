@@ -110,7 +110,7 @@
                 <img th:src="${film.url}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="media-name" th:text="${film.titolo}">nome film</h5>
-                    <a th:href="|/media?titolo=${film.titolo}&durata=${film.durata}&genere=${film.genere}&anno=${film.anno_pubblicazione}&descrizione=${film.descrizione}&wiki=${film.wiki}&trailer=${film.trailer}&image=${film.url}|"
+                    <a th:href="|/media?titolo=${film.titolo}&durata=${film.durata}&genere=${film.genere}&anno=${film.anno_pubblicazione}&descrizione=${film.descrizione}&wiki=${film.wiki}&trailer=${film.trailer}&image=${film.url}&id=${film.id}|"
                         class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
                 </div>
             </div>
@@ -121,7 +121,8 @@
                 <img th:src="${serie.url}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="media-name" th:text="${serie.titolo}">nome serie</h5>
-                    <a th:href="|/media?titolo=${serie.titolo}&durata=${serie.stagioni}&genere=${serie.genere}&anno=${serie.anno_pubblicazione}&descrizione=${serie.descrizione}&wiki=${serie.wiki}&trailer=${serie.trailer}&image=${serie.url}|"
+                    <a th:href="|/media?titolo=${serie.titolo}&durata=${serie.stagioni}&genere=${serie.genere}&anno=${serie.anno_pubblicazione}&descrizione=${serie.descrizione}&wiki=${serie.wiki}&trailer=${serie.trailer}&image=${serie.url}&id=${serie.id}|"
+ 
                         class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
                 </div>
             </div>
