@@ -1,0 +1,88 @@
+/*GLOBAL*/
+body {
+    background-image: url("../immagini/teatro-nero.png");
+    background-size: cover;
+}
+
+/*MAIN*/
+main {
+    margin-top: 30vh;
+    margin-bottom: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.card {
+    margin-left: 20px;
+    width: 10vw;
+    min-width: 100px;
+    height: fit-content;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.1em;
+    background-color: black;
+    color: white;
+}
+.card img {
+    width: 100px;
+    height: 100px;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.card-body a:first-child {
+    text-decoration: none;
+    color: white;
+}
+.news-title {
+    font-size: 7em;
+}
+.news-link {
+    width: 40px;
+    height: 40px;
+    font-size: 7em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#domanda {
+    width: 50vw;
+    height: 80vh;
+    position: absolute;
+    top: 25%;
+    left: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    border-radius: 5%;
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+    visibility: hidden;
+}
+.card-butt {
+    all: unset;
+    margin-top: 20px;
+    width: 80%;
+    height: 6vh;
+    border-radius: 5%;
+    background-color: rgb(0, 140, 255);
+    font-size: 13em;
+    text-align: center;
+}
+.quiz-butt {
+    all: unset;
+    width: 50%;
+    border-radius: 5%;
+    background-color: rgb(0, 140, 255);
+}

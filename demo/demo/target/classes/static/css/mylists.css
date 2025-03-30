@@ -1,0 +1,83 @@
+/*GLOBAL*/
+body {
+    background-image: url("../immagini/teatro.png");
+    background-size: cover;
+}
+/*MAIN*/
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+h2 {
+    margin-left: 20px;
+    color: white;
+}
+#statistiche {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+table {
+    width: 200px;
+    margin-left: 40px;
+    border-radius: 5%;
+    outline: 1px solid white;
+    background-color: black;
+    color: white;
+}
+table td, tr {
+    padding: 13px;
+}
+table h3 {
+    font-size: 1em;
+}
+table td:first-child, tr {
+    border-bottom: 1px solid white;
+}
+table td:last-child {
+    border-left: 1px solid white;
+}
+.tendenza {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.tendenza h3 {
+    display: block;
+    width: 100vw;
+}
+.tendenza .card {
+    margin-left: 20px;
+    width: 10vw;
+    min-width: 100px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.1em;
+    background-color: black;
+    color: white;
+}
+.media-name {
+    font-size: 9em;
+}
+.media-link {
+    width: 6vw;
+    font-size: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.card-body a:first-child {
+    text-decoration: none;
+    color: white;
+}

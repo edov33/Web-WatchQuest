@@ -126,17 +126,19 @@
                 <div class="card fav-film" th:each="film : ${listaFilm}">
                     <img th:src="${film.url}" class="card-img-top card-img" alt="...">
                     <div class="card-body">
-                      <a href="media.html"><h5 class="media-name">Card title</h5></a>
+                        <a th:href="|/media?titolo=${film.titolo}&durata=${film.durata}&genere=${film.genere}&anno=${film.anno_pubblicazione}&descrizione=${film.descrizione}&wiki=${film.wiki}&trailer=${film.trailer}&image=${film.url}&id=${film.id}|"><h5 th:text="${film.titolo}" class="media-name">Card title</h5></a>
                       <a class="btn btn-primary media-link"><i class="bi bi-heart-fill like"></i></a>
                     </div>
                 </div>
             </div>
+            </a>
+            
             <div class="tendenza fav-series">
                 <h3>Serie Preferite</h3>
                 <div class="card" th:each="serie : ${listaSerie}">
                     <img th:src="${serie.url}" class="card-img-top card-img" alt="...">
                     <div class="card-body">
-                        <a href="media.html"><h5 class="media-name">Card title</h5></a>
+                        <a th:href="|/media?titolo=${serie.titolo}&durata=${serie.stagioni}&genere=${serie.genere}&anno=${serie.anno_pubblicazione}&descrizione=${serie.descrizione}&wiki=${serie.wiki}&trailer=${serie.trailer}&image=${serie.url}&id=${serie.id}|"><h5 th:text="${serie.titolo}" class="media-name">Card title</h5></a>
                       <a class="btn btn-primary media-link"><i class="bi bi-heart-fill like"></i></a>
                     </div>
                 </div>

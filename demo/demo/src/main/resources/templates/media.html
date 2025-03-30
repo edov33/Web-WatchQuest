@@ -103,25 +103,42 @@
     <main>
         <article>
             <section id="sezione1">
-                <div id="cover-div" th:style="|background-image: ${image};|">
+                <div id="cover-div" th:style="|background-image: url('${image}');|">
                 <a href="/media/like"><button id="like" onclick="fillHeart()"><i id="like-icon" class="bi bi-heart"></i></button></a>
                 </div>
                 <div id="info-media">
-                    <h4 class="nome-media" th:text="${titolo}">NOME FILM</h4>
-                    <h6 class="info-media" th:text="${durata}">Durata</h6>
-                    <h6 class="info-media" th:text="${anno}">Anno</h6>
-                    <h6 class="info-media" th:text="${genere}">Generi</h6>
+                    <table>
+                        <tr>
+                            <th>Titolo:</th>
+                            <th>Durata:</th>
+                            <th>Anno:</th>
+                            <th>Generi:</th>
+                        </tr>
+                        <tr>
+                            <td><h4 class="nome-media" th:text="${titolo}">NOME FILM</h4></td>
+                            <td><h6 class="info-media" th:text="${durata}">Durata</h6></td>
+                            <td><h6 class="info-media" th:text="${anno}">Anno</h6></td>
+                            <td><h6 class="info-media" th:text="${genere}">Generi</h6></td>
+                        </tr>
+                    </table>
+                   
+                    <!-- Titolo: <h4 class="nome-media" th:text="${titolo}">NOME FILM</h4>
+                    Durata: <h6 class="info-media" th:text="${durata}">Durata</h6> -->
+                    <!-- Anno: <h6 class="info-media" th:text="${anno}">Anno</h6>
+                    Generi: <h6 class="info-media" th:text="${genere}">Generi</h6> -->
                 </div>
+                <div> <iframe id="trailer" th:src="|${trailer}|" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+                    picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe></div>
                 <div id="more-info">
+                    
                     <div id="trama-div">
-                        <h5>Trama</h5>
+                        <h5>Descizione</h5>
                         <h6 id="trama" th:text="${descrizione}">descrizione</h6>
                         <a th:href="|${wiki}|"><button id="wiki-link"><i class="bi bi-wikipedia"></i></button></a>
                     </div>
-                    <iframe id="trailer" th:src="|${trailer}|" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
-                        picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen></iframe>
                 </div>
+                
                 <div id="sez-commenti">
                     <h5 id="">Commenti:</h5>
                     <h6 style="font-weight: lighter;">UtenteTrapezioh66:&nbsp; Lorem ipsum dolor sit amet consectetur
@@ -130,7 +147,7 @@
                         odit!</h6>
                 </div>
             </section>
-            <section id="sez-cast">
+            <!-- <section id="sez-cast">
                 <h3>CAST</h3>
                 <div class="actors">
                     <figure class="actor">
@@ -142,7 +159,7 @@
                         <caption class="actor-info">Info attore</caption>
                     </figure>
                 </div>
-            </section>
+            </section> -->
         </article>
     </main>
     <footer class="bd-footer py-4 py-md-5 mt-5">
