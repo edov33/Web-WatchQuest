@@ -1,50 +1,70 @@
-/*GLOBAL*/
-body {
-    background-image: url("../immagini/teatro.png");
-    background-size: cover;
-}
-/*MAIN*/
-.tendenza {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    color: white;
+/* Contenitore per affiancare le due sezioni (titolo + tabella) */
+.table-container {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-}
-.tendenza h3 {
-    display: block;
-    width: 100vw;
-}
-.tendenza .card {
-    margin-left: 20px;
-    width: 150px;
-    min-width: 100px;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.1em;
-    background-color: black;
-    color: white;
-}
-.card-body {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
 }
-.media-name {
-    font-size: 9em;
-}
-.media-link {
-    width: 40px;
-    height: 30px;
-    font-size: 8.5em;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+
+/* Contenitore singolo per ogni sezione (titolo + tabella) */
+.section-container {
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    vertical-align: middle;
+    width: 470px; /* Larghezza adattata al contenuto */
+}
+
+/* Stile per i titoli sopra le tabelle */
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #007bff;
+}
+
+/* Stile base per le tabelle */
+#search-table {
+    border-collapse: collapse;
+    width: 100%;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Stile per le celle */
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Stile per i form dentro le tabelle */
+.cerca-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Stile per gli input */
+input[type="text"], input[type="number"] {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Stile per il pulsante di submit */
+input[type="submit"] {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: #0056b3;
 }

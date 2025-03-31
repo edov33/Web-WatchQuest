@@ -20,9 +20,10 @@ public class AppController {
     @Autowired
     private ServiceSerie serviceSerie;
 
-    @GetMapping("/test")
-    public String test() {
-        return "main";
+    @GetMapping("/ricerca")
+    public String test(Model model, HttpSession session) {
+        fotoETasti(model, session);
+        return "ricerca.html";
     }
 
     private void fotoETasti(Model model, HttpSession session) {

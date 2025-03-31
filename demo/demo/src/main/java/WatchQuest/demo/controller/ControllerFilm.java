@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import WatchQuest.demo.service.ServiceFilm;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/film")
@@ -45,35 +46,93 @@ public class ControllerFilm {
         return "redirect:/film/all";
     }
 
+    public boolean isAdmin(HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            if (session.getAttribute("ruolo").equals("admin")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // pagina admin
     @GetMapping("/byTitolo")
-    public String filmByTitolo(@RequestParam String titolo, Model model) {
-        model.addAttribute("listaFilm", serviceFilm.findFilmByTitolo(titolo));
-        return "adminPages/allFilm.html";
+    public String filmByTitolo(@RequestParam String titolo, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByTitolo(titolo));
+            return "adminPages/allFilm.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byGenere")
-    public String filmByGenere(@RequestParam String genere, Model model) {
-        model.addAttribute("listaFilm", serviceFilm.findFilmByGenere(genere));
-        return "adminPages/allFilm.html";
+    public String filmByGenere(@RequestParam String genere, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByGenere(genere));
+            return "adminPages/allFilm.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byRating")
-    public String filmByRating(@RequestParam String voto, Model model) {
-        model.addAttribute("listaFilm", serviceFilm.findFilmByRating(voto));
-        return "adminPages/allFilm.html";
+    public String filmByRating(@RequestParam String voto, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByRating(voto));
+            return "adminPages/allFilm.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byAnno")
-    public String filmByAnno(@RequestParam String anno, Model model) {
-        model.addAttribute("listaFilm", serviceFilm.findFilmByAnno(anno));
-        return "adminPages/allFilm.html";
+    public String filmByAnno(@RequestParam String anno, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByAnno(anno));
+            return "adminPages/allFilm.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byAttore")
-    public String filmByAttore(@RequestParam String attore, Model model) {
-        model.addAttribute("listaFilm", serviceFilm.findFilmByAttore(attore));
-        return "adminPages/allFilm.html";
+    public String filmByAttore(@RequestParam String attore, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByAttore(attore));
+            return "adminPages/allFilm.html";
+        }
+        return "redirect:/home";
     }
+    // fine pagina admin
+
+    // pagina ricerca
+    @GetMapping("/Titolo")
+    public String filmTitolo(@RequestParam String titolo, Model model, HttpSession session) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByTitolo(titolo));
+            return "ricercaFilm";
+    }
+    
+    @GetMapping("/Genere")
+    public String filmGenere(@RequestParam String genere, Model model, HttpSession session) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByGenere(genere));
+            return "ricercaFilm";
+    }
+    
+    @GetMapping("/Rating")
+    public String filmRating(@RequestParam String voto, Model model, HttpSession session) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByRating(voto));
+            return "ricercaFilm";
+    }
+    
+    @GetMapping("/Anno")
+    public String filmAnno(@RequestParam String anno, Model model, HttpSession session) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByAnno(anno));
+            return "ricercaFilm";
+    }
+    
+    @GetMapping("/Attore")
+    public String filmAttore(@RequestParam String attore, Model model, HttpSession session) {
+            model.addAttribute("listaFilm", serviceFilm.findFilmByAttore(attore));
+            return "ricercaFilm";
+    }
+    // fine pagina ricerca
 
     // ----- per ora non utilizzati -----
 

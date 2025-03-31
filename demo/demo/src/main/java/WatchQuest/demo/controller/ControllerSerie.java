@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import WatchQuest.demo.service.ServiceSerie;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/serie")
@@ -45,46 +46,101 @@ public class ControllerSerie {
         return "redirect:/serie/all";
     }
 
+    public boolean isAdmin(HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            if (session.getAttribute("ruolo").equals("admin")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // pagina admin
     @GetMapping("/byTitolo")
-    public String serieByTitolo(@RequestParam String titolo, Model model) {
-        model.addAttribute("listaSerie", serviceSerie.findSerieByTitolo(titolo));
-        return "adminPages/allSerie.html";
+    public String serieByTitolo(@RequestParam String titolo, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaSerie", serviceSerie.findSerieByTitolo(titolo));
+            return "adminPages/allSerie.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byGenere")
-    public String serieByGenere(@RequestParam String genere, Model model) {
-        model.addAttribute("listaSerie", serviceSerie.findSerieByGenere(genere));
-        return "adminPages/allSerie.html";
+    public String serieByGenere(@RequestParam String genere, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaSerie", serviceSerie.findSerieByGenere(genere));
+            return "adminPages/allSerie.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byRating")
-    public String serieByRating(@RequestParam String voto, Model model) {
-        model.addAttribute("listaSerie", serviceSerie.findSerieByRating(voto));
-        return "adminPages/allSerie.html";
+    public String serieByRating(@RequestParam String voto, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaSerie", serviceSerie.findSerieByRating(voto));
+            return "adminPages/allSerie.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byAnno")
-    public String serieByAnno(@RequestParam String anno, Model model) {
-        model.addAttribute("listaSerie", serviceSerie.findSerieByAnno(anno));
-        return "adminPages/allSerie.html";
+    public String serieByAnno(@RequestParam String anno, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaSerie", serviceSerie.findSerieByAnno(anno));
+            return "adminPages/allSerie.html";
+        }
+        return "redirect:/home";
     }
 
     @GetMapping("/byAttore")
-    public String serieByAttore(@RequestParam String attore, Model model) {
-        model.addAttribute("listaSerie", serviceSerie.findSerieByAttore(attore));
-        return "adminPages/allSerie.html";
+    public String serieByAttore(@RequestParam String attore, Model model, HttpSession session) {
+        if (isAdmin(session)) {
+            model.addAttribute("listaSerie", serviceSerie.findSerieByAttore(attore));
+            return "adminPages/allSerie.html";
+        }
+        return "redirect:/home";
+    }
+    // fine pagina admin
+
+    // pagina ricerca
+    @GetMapping("/Titolo")
+    public String serieTitolo(@RequestParam String titolo, Model model, HttpSession session) {
+        model.addAttribute("listaSerie", serviceSerie.findSerieByTitolo(titolo));
+        return "ricercaSerie";
     }
 
-    
-    
-    
-    //----- per ora non utilizzati -----
+    @GetMapping("/Genere")
+    public String serieGenere(@RequestParam String genere, Model model, HttpSession session) {
+        model.addAttribute("listaSerie", serviceSerie.findSerieByGenere(genere));
+        return "ricercaSerie";
+    }
+
+    @GetMapping("/Rating")
+    public String serieRating(@RequestParam String voto, Model model, HttpSession session) {
+        model.addAttribute("listaSerie", serviceSerie.findSerieByRating(voto));
+        return "ricercaSerie";
+    }
+
+    @GetMapping("/Anno")
+    public String serieAnno(@RequestParam String anno, Model model, HttpSession session) {
+        model.addAttribute("listaSerie", serviceSerie.findSerieByAnno(anno));
+        return "ricercaSerie";
+    }
+
+    @GetMapping("/Attore")
+    public String serieAttore(@RequestParam String attore, Model model, HttpSession session) {
+        model.addAttribute("listaSerie", serviceSerie.findSerieByAttore(attore));
+        return "ricercaSerie";
+    }
+    // fine pagina ricerca
+
+    // ----- per ora non utilizzati -----
     @GetMapping("/tendenze")
-    public String filmTendenze(@RequestParam String attore, Model model) {
-        model.addAttribute("listaFilm", serviceSerie.find8());
+    public String serieTendenze(@RequestParam String attore, Model model) {
+        model.addAttribute("listaSerie", serviceSerie.find8());
         return "/home";
     }
-    
+
     @GetMapping("/genereOneUtente")
     public String genereUtente(@RequestParam Long id, @RequestParam String genere, Model model) {
         model.addAttribute("listaSerie", serviceSerie.findSerieByGenereAndUtente(genere, id));

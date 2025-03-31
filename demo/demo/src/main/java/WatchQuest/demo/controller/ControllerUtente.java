@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import WatchQuest.demo.entity.Utente;
 import WatchQuest.demo.service.ServiceUtente;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/utente")
@@ -26,15 +28,18 @@ public class ControllerUtente {
     }
 
     @PostMapping("/modifica")
-    public String modificaUtente(@RequestParam Map<String, String> parametri) {
+    public String modificaUtente(@RequestParam Map<String, String> parametri, Model model, HttpSession session) {
+        Utente u = new Utente();
+        u.fromMap(parametri);
+        session.setAttribute("utente", u);
         serviceUtente.update(parametri);
-        return "redirect:/utente/all";
+        return "redirect:/settings";
     }
 
     @PostMapping("/modificaUsername")
     public String modificaUsername(@RequestParam String username) {
-        System.out.println("-----------------"+username);
-        // @RequestParam Map<String, String> parametri, 
+        System.out.println("-----------------" + username);
+        // @RequestParam Map<String, String> parametri,
         // serviceUtente.update(parametri);
         return "redirect:settings";
     }
@@ -52,8 +57,6 @@ public class ControllerUtente {
         }
         return "redirect:/utente/all";
     }
-
-    
 
     @GetMapping("/profilo")
     public String profilo(Model model) {

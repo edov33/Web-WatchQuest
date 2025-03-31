@@ -1,0 +1,50 @@
+/*GLOBAL*/
+body {
+    background-image: url("../immagini/teatro.png");
+    background-size: cover;
+}
+/*MAIN*/
+.tendenza {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.tendenza h3 {
+    display: block;
+    width: 100vw;
+}
+.tendenza .card {
+    margin-left: 20px;
+    width: 150px;
+    min-width: 100px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.1em;
+    background-color: black;
+    color: white;
+}
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.media-name {
+    font-size: 9em;
+}
+.media-link {
+    width: 40px;
+    height: 30px;
+    font-size: 8.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    vertical-align: middle;
+}

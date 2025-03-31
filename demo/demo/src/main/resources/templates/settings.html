@@ -101,109 +101,76 @@
         </div>
     </header>
     <main th:object="${utente}">
-        <button th:attr="
-                    data-modifica-id = ${utente.id},
-                    data-modifica-nome = ${utente.nome},
-                    data-modifica-cognome = ${utente.cognome},
-                    data-modifica-data_nascita = ${utente.data_nascita},
-                    data-modifica-username = ${utente.username},
-                    data-modifica-password = ${utente.password},
-                    data-modifica-email = ${utente.email},
-                    data-modifica-lingua = ${utente.lingua}"
-            onclick="document.getElementById('modifica').style.display='flex' ; modificaUtente(this)">Modifica</button>
-        <!-- <form>
+        <div class="contenitore">
+            <div class="profilo-container">
+                <img id="img-profilo" class="profilo-img" th:src="${utente.foto_profilo}" alt="Foto profilo">
 
-            <table id="settings-table">
-
-                <tbody>
-
-                    <tr id="info-profilo">
-                        <td class="profilo"><img id="img-profilo" th:src="${utente.foto_profilo}"></td>
-                    </tr>
-                    <tr>
-
-                        <td>Nome</td>
-                        <td class="profilo" th:text="${utente.cognome}">NOME UTENTE</td>
-                        
-                    </tr>
-                    <tr>
-                        <th>Cognome</th>
-                        <td class="profilo" th:text="${utente.nome}">NOME UTENTE</td>
-
-                    </tr>
-                    <table id="results-table">
-                        <thead>
-                            <th>ID</th>
-                            <th>Data nascita</th>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Modifica</th>
-                            <th>Elimina</th>
-                        </thead>
-
+                <div class="profilo-info">
+                    <table>
                         <tbody>
                             <tr>
-                                <td th:text="${utente.id}"></td>
-                                <td th:text="${utente.nome}"></td>
-                                <td th:text="${utente.cognome}"></td>
-                                <td th:text="${utente.data_nascita}"></td>
-                                <td th:text="${utente.username}"></td>
-                                <td th:text="${utente.email}"></td>
-
-                                <td><button th:attr="
-                                    data-modifica-id = ${utente.id},
-                                    data-modifica-nome = ${utente.nome},
-                                    data-modifica-cognome = ${utente.cognome},
-                                    data-modifica-data_nascita = ${utente.data_nascita},
-                                    data-modifica-username = ${utente.username},
-                                    data-modifica-password = ${utente.password},
-                                    data-modifica-email = ${utente.email},
-                                    data-modifica-lingua = ${utente.lingua}"
-                                        onclick="document.getElementById('modifica').style.display='flex' ; modificaUtente(this)">Modifica</button>
-                                </td>
-
-                                <td><a
-                                        th:href="|/admin/eliminaUtente?idUtente=${utente.id}|"><button>Elimina</button></a>
-                                </td>
+                                <th>Nome:</th>
+                                <td class="profilo" th:text="${utente.nome}">NOME UTENTE</td>
+                            </tr>
+                            <tr>
+                                <th>Cognome:</th>
+                                <td class="profilo" th:text="${utente.cognome}">COGNOME UTENTE</td>
+                            </tr>
+                            <tr>
+                                <th>Data nascita:</th>
+                                <td class="profilo" th:text="${utente.data_nascita}">DATA NASCITA UTENTE</td>
+                            </tr>
+                            <tr>
+                                <th>Username:</th>
+                                <td class="profilo" th:text="${utente.username}">USERNAME UTENTE</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td class="profilo" th:text="${utente.email}">EMAIL UTENTE</td>
                             </tr>
                         </tbody>
                     </table>
-                     </tbody></table>
-                    <tr id="admin-sez">
-                        <td class="edit-info"> Edit Database: </td>
-                        <td></td>
-                        <td class="button-column"><button class="edit-data"><i class="bi bi-pencil-fill"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="reset-column"><button type="reset" class="reset-data"><i
-                                    class="bi bi-arrow-counterclockwise"></i></button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </form> -->
-        <div id="form-modifica" >
+
+                    <button class="profilo-btn" th:attr="
+                        data-modifica-id = ${utente.id},
+                        data-modifica-nome = ${utente.nome},
+                        data-modifica-cognome = ${utente.cognome},
+                        data-modifica-data_nascita = ${utente.data_nascita},
+                        data-modifica-username = ${utente.username},
+                        data-modifica-password = ${utente.password},
+                        data-modifica-email = ${utente.email},
+                        data-modifica-lingua = ${utente.lingua}"
+                        onclick="document.getElementById('modifica').style.display='flex' ; modificaUtente(this)">
+                        Modifica
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="form-modifica" hidden>
             <div class="modal" id="modifica" style="display:flex;">
                 <div id="modal-add" class="modal-content">
-                    
-                    <h4>Modifica utente</h4>
-                    <form action="/admin/modifica" method="post">
+
+                    <h4>Modifica</h4>
+                    <form action="/utente/modifica" method="post">
                         <label for="modifica-id">Id</label>
                         <input type="number" name="id" id="modifica-id" readonly> <br>
-                        <label for="modifica-nome">nome</label>
+                        <label for="modifica-nome">Nome:</label>
                         <input type="text" name="nome" id="modifica-nome"> <br>
-                        <label for="modifica-cognome">cognome</label>
+                        <label for="modifica-cognome">Cognome:</label>
                         <input type="text" name="cognome" id="modifica-cognome"> <br>
-                        <label for="modifica-data_nascita">data_nascita</label>
+                        <label for="modifica-data_nascita">Data nascita:</label>
                         <input type="date" name="data_nascita" id="modifica-data_nascita"> <br>
-                        <label for="modifica-username">username</label>
+                        <label for="modifica-username">Username:</label>
                         <input type="text" name="username" id="modifica-username"> <br>
-                        <label for="modifica-password">password</label>
+                        <label for="modifica-password">Password:</label>
                         <input type="password" name="password" id="modifica-password"> <br>
-                        <label for="modifica-email">email</label>
+                        <label for="modifica-email">E-mail:</label>
                         <input type="email" name="email" id="modifica-email"> <br>
-                        <label for="modifica-lingua">lingua</label>
+                        <label for="modifica-lingua">Lingua:</label>
                         <input type="text" name="lingua" id="modifica-lingua"> <br>
+                        <label for="modifica-foto_profilo">Foto profilo:</label>
+                        <input type="text" name="foto_profilo" id="modifica-foto_profilo"> <br>
 
                         <input type="submit" value="modifica">
                     </form>
@@ -226,6 +193,9 @@
             <h5 class="social-link">@watchquest</h5>
             <br><i class="bi bi-youtube social_img"></i>
             <h5 class="social-link">WatchQuest</h5>
+        </div>
+        <div>
+            <h6 class="otherlinks"><a href="/admin/all" class="text-decoration-none">Admin</a></h6>
         </div>
     </footer>
 </body>

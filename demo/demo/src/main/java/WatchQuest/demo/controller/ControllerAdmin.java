@@ -41,8 +41,13 @@ public class ControllerAdmin {
     @GetMapping("/all")
     public String allUtente(Model model, HttpSession session) {
         fotoETasti(model, session);
-        model.addAttribute("listaUtenti", serviceUtente.findAll());
-        return "adminPages/infoUtenti.html";
+        if (session.getAttribute("loggato") != null) {
+            if (session.getAttribute("ruolo").equals("admin")) {
+                model.addAttribute("listaUtenti", serviceUtente.findAll());
+                return "adminPages/infoUtenti.html";
+            }
+        }
+        return "redirect:/home";
     }
 
     @PostMapping("/modifica")

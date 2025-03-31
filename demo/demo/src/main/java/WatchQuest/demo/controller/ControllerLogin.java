@@ -66,6 +66,7 @@ public class ControllerLogin {
         } else if (username.equals("admin") && password.equals("admin")) {
             // admin
             session.setAttribute("ruolo", "admin");
+            session.setAttribute("utente", u);
             session.setAttribute("loggato", "ok");
             model.addAttribute("loggato", session.getId());
         } else {

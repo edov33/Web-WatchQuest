@@ -24,6 +24,9 @@ function modificaFilm(oggetto) {
     var cast = document.getElementById("modifica-cast");
     var regista = document.getElementById("modifica-regista");
     var lingua_originale = document.getElementById("modifica-lingua_originale");
+    var url = document.getElementById("modifica-url");
+    var trailer = document.getElementById("modifica-trailer");
+    var wiki = document.getElementById("modifica-wiki");
     var durata = document.getElementById("modifica-durata");
 
     id.value = oggetto.getAttribute("data-modifica-id");
@@ -36,6 +39,9 @@ function modificaFilm(oggetto) {
     cast.value = oggetto.getAttribute("data-modifica-cast");
     regista.value = oggetto.getAttribute("data-modifica-regista");
     lingua_originale.value = oggetto.getAttribute("data-modifica-lingua_originale");
+    url.value = oggetto.getAttribute("data-modifica-url");
+    trailer.value = oggetto.getAttribute("data-modifica-trailer");
+    wiki.value = oggetto.getAttribute("data-modifica-wiki");
     durata.value = oggetto.getAttribute("data-modifica-durata");
 
 }
@@ -81,6 +87,9 @@ function modificaSerie(oggetto) {
     var cast = document.getElementById("modifica-cast");
     var regista = document.getElementById("modifica-regista");
     var lingua_originale = document.getElementById("modifica-lingua_originale");
+    var url = document.getElementById("modifica-url");
+    var trailer = document.getElementById("modifica-trailer");
+    var wiki = document.getElementById("modifica-wiki");
     var episodi = document.getElementById("modifica-episodi");
     var stagioni = document.getElementById("modifica-stagioni");
 
@@ -94,6 +103,9 @@ function modificaSerie(oggetto) {
     cast.value = oggetto.getAttribute("data-modifica-cast");
     regista.value = oggetto.getAttribute("data-modifica-regista");
     lingua_originale.value = oggetto.getAttribute("data-modifica-lingua_originale");
+    url.value = oggetto.getAttribute("data-modifica-url");
+    trailer.value = oggetto.getAttribute("data-modifica-trailer");
+    wiki.value = oggetto.getAttribute("data-modifica-wiki");
     episodi.value = oggetto.getAttribute("data-modifica-episodi");
     stagioni.value = oggetto.getAttribute("data-modifica-stagioni");
 }

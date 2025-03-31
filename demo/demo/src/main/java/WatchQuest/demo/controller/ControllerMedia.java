@@ -45,19 +45,8 @@ public class ControllerMedia {
             // System.out.println("-----------like-----------");
             Object o = session.getAttribute("utente");
             Object ob = session.getAttribute("id");
-            Long id = 1L;
-            //TODO cambiare 11 con il numero max di film o serie nel DB
-            for (Long i = 1L; i < 11; i++) {
-                if (ob.equals(i)) {
-                    id = i;
-                    // System.out.println(ob);
-                    break;
-                }
-            }
-
-            System.out.println(ob);
             if (o instanceof Utente utente) {
-                serviceUtente.associaProgramma(utente.getId(), id);
+                serviceUtente.associaProgramma(utente.getId(), Long.parseLong(ob.toString()));
             }
             return "redirect:/media/utente";
         }
