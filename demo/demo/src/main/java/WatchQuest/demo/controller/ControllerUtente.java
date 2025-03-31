@@ -32,6 +32,7 @@ public class ControllerUtente {
         Utente u = new Utente();
         u.fromMap(parametri);
         session.setAttribute("utente", u);
+        System.out.println(u);
         serviceUtente.update(parametri);
         return "redirect:/settings";
     }

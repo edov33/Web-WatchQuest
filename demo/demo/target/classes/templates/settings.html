@@ -20,16 +20,20 @@
         </button>
         <img src="/immagini/watchquest-logo.png" id="watchquest" class="img-fluid">
         <h1 id="nome-progetto">WatchQuest</h1>
-        <form id="search-form">
-            <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
+        <div id="search-form">
+            <!-- <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
             <datalist id="cronologia">
                 <option value="Beccatevi sto trapezioh"></option>
-            </datalist>
-        </form>
-        <div id="search-b-div">
-            <button class="search-b"><i class="bi bi-search"></i></button>
-            <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
+            </datalist> -->
+            <!-- <a href="/ricerca"> -->
+               
+                <button onclick='window.location.href="/ricerca"' class="search-b"> <h6 class="ricerca">Ricerca &nbsp;</h6><i class="bi bi-search"></i></button>
+            <!-- </a> -->
         </div>
+        <!-- <div id="search-b-div">
+            <a href="/ricerca"><button class="search-b"><i class="bi bi-search"></i></button></a>
+            <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
+        </div> -->
 
         <div id="otherlinks-box">
             <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
@@ -139,7 +143,8 @@
                         data-modifica-username = ${utente.username},
                         data-modifica-password = ${utente.password},
                         data-modifica-email = ${utente.email},
-                        data-modifica-lingua = ${utente.lingua}"
+                        data-modifica-lingua = ${utente.lingua},
+                        data-modifica-foto_profilo = ${utente.foto_profilo}"
                         onclick="document.getElementById('modifica').style.display='flex' ; modificaUtente(this)">
                         Modifica
                     </button>
@@ -150,7 +155,8 @@
         <div id="form-modifica" hidden>
             <div class="modal" id="modifica" style="display:flex;">
                 <div id="modal-add" class="modal-content">
-
+                    <span onclick="document.getElementById('modifica').style.display='none'"
+                    style="cursor:pointer; font-size: 20px; margin-left: 10px;">&times;</span>
                     <h4>Modifica</h4>
                     <form action="/utente/modifica" method="post">
                         <label for="modifica-id">Id</label>

@@ -20,16 +20,22 @@
         </button>
         <img src="/immagini/watchquest-logo.png" id="watchquest" class="img-fluid">
         <h1 id="nome-progetto">WatchQuest</h1>
-        <form id="search-form">
-            <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
+        <div id="search-form">
+            <!-- <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
             <datalist id="cronologia">
                 <option value="Beccatevi sto trapezioh"></option>
-            </datalist>
-        </form>
-        <div id="search-b-div">
+            </datalist> -->
+            <!-- <a href="/ricerca"> -->
+
+            <button onclick='window.location.href="/ricerca"' class="search-b">
+                <h6 class="ricerca">Ricerca &nbsp;</h6><i class="bi bi-search"></i>
+            </button>
+            <!-- </a> -->
+        </div>
+        <!-- <div id="search-b-div">
             <a href="/ricerca"><button class="search-b"><i class="bi bi-search"></i></button></a>
             <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
-        </div>
+        </div> -->
 
         <div id="otherlinks-box">
             <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
@@ -102,8 +108,11 @@
     </header>
     <main>
         <div id="hero-img">
-            <img src="https://picsum.photos/600/300">
-        </div>
+            <!-- <img src="https://picsum.photos/500/200"> -->
+            <!-- <img
+                src="https://us.123rf.com/450wm/diy13/diy132212/diy13221200331/195711313-telecomando-sfocato-per-la-televisione-la-mano-di-un-uomo-tiene-il-telecomando-davanti-a-un-grande.jpg?ver=6"> -->
+            <img src="/immagini/hero-img2.png" >
+            </div>
         <div class="tendenza">
             <h3>FILM DI TENDENZA</h3>
             <div class="card" th:each="film : ${listaFilm}">
@@ -122,7 +131,6 @@
                 <div class="card-body">
                     <h5 class="media-name" th:text="${serie.titolo}">nome serie</h5>
                     <a th:href="|/media?titolo=${serie.titolo}&durata=${serie.stagioni}&genere=${serie.genere}&anno=${serie.anno_pubblicazione}&descrizione=${serie.descrizione}&wiki=${serie.wiki}&trailer=${serie.trailer}&image=${serie.url}&id=${serie.id}|"
- 
                         class="btn btn-primary media-link"><i class="bi bi-eye"></i></a>
                 </div>
             </div>

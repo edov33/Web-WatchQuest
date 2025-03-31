@@ -16,22 +16,88 @@
             </button>
             <img src="/immagini/watchquest-logo.png" id="watchquest" class="img-fluid">
             <h1 id="nome-progetto">WatchQuest</h1>
-            <form id="search-form">
-                <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
-                    <datalist id="cronologia">
-                        <option value="Beccatevi sto trapezioh"></option>
-                    </datalist>
-            </form>
-            <div id="search-b-div">
-                <button class="search-b"><i class="bi bi-search"></i></button>
-                <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
+            <div id="search-form">
+                <!-- <input class="form-control" list="cronologia" id="search" placeholder="Type to search...">
+                <datalist id="cronologia">
+                    <option value="Beccatevi sto trapezioh"></option>
+                </datalist> -->
+                <!-- <a href="/ricerca"> -->
+                   
+                    <button onclick='window.location.href="/ricerca"' class="search-b"> <h6 class="ricerca">Ricerca &nbsp;</h6><i class="bi bi-search"></i></button>
+                <!-- </a> -->
             </div>
-            
+            <!-- <div id="search-b-div">
+                <a href="/ricerca"><button class="search-b"><i class="bi bi-search"></i></button></a>
+                <button id="adv-src-b" class="search-b" onclick=""><i class="bi bi-chevron-down"></i></button>
+            </div> -->
+    
             <div id="otherlinks-box">
                 <h6 class="otherlinks"><a href="/aboutus" id="aboutus" class="text-decoration-none">About Us</a></h6>
                 <h6 class="otherlinks"><a href="/joinus" id="joinus" class="text-decoration-none">Join Us</a></h6>
                 <h6 class="otherlinks"><a href="/faq" class="text-decoration-none">FAQ</a></h6>
-                <img id="profile-icon" src="/immagini/profile-icon-no-bg.png">
+                <img id="profile-icon" th:src="${loggato} ? ${foto} : '/immagini/profile-icon-no-bg.png'">
+            </div>
+            <nav id="navBar">
+                <button onclick='window.location.href="/home"' id="home-nav" class="nav-option"><i
+                        class="bi bi-house nav-icon"></i>
+                    <h2 class="nav-link">Home</h2>
+                </button>
+                <button onclick='window.location.href="/myLists"' id="mylists-nav" class="nav-option"><i
+                        class="bi bi-heart  nav-icon"></i>
+                    <h2 class="nav-link">My Lists</h2>
+                </button>
+                <button onclick='window.location.href="/news"' id="news-nav" class="nav-option"><i
+                        class="bi bi-newspaper  nav-icon"></i>
+                    <h2 class="nav-link">News</h2>
+                </button>
+                <button onclick='window.location.href="/quiz"' id="quiz-nav" class="nav-option"><i
+                        class="bi bi-question-diamond  nav-icon"></i>
+                    <h2 class="nav-link">Quiz</h2>
+                </button>
+                <button onclick='window.location.href="/settings"' id="settings-nav" class="nav-option"><i
+                        class="bi bi-gear  nav-icon"></i>
+                    <h2 class="nav-link">Settings</h2>
+                </button>
+            </nav>
+            <div id="adv-search">
+                <form id="adv-src-form">
+                    <label id="find-by">Find by:
+                        <label>Film</label>
+                        <input id="fb-film" type="radio" name="find-by" value="film" class="fb-radio-opt">
+                        <label>Actor</label>
+                        <input id="fb-actor" type="radio" name="find-by" value="actor" class="fb-radio-opt">
+                    </label>
+                    <label class="adv-select-lbl">Categoria:
+                        <select id="categoria" class="adv-select">
+                            <option value=""></option>
+                        </select>
+                    </label>
+                    <label class="adv-select-lbl">Genere:
+                        <select id="genere" class="adv-select">
+                            <option value=""></option>
+                        </select>
+                    </label>
+                </form>
+            </div>
+            <div id="login-pop">
+                <form action="#" method="post" th:action="@{/login/attempt}">
+                    <input type="hidden" id="session" th:value="${loggato}">
+                    <label class="login-lb"> Username:
+                        <input type="text" class="login" name="username">
+                    </label>
+                    <label class="login-lb"> Password:
+                        <input type="password" class="login" name="password">
+                    </label>
+                    <div id="login-bgroup">
+                        <button type="submit" id="login-b" class="btn btn-primary login-b">Login</button>
+                        <a th:href="${loggato} ? '/logout' : '/registrazione'">
+                            <button type="button" id="signup-b" class="btn btn-primary login-b">
+                                <span th:text="${loggato} ? 'Logout' : 'Sign Up'"></span>
+                            </button>
+                        </a>
+                    </div>
+    
+                </form>
             </div>
         </header>
 

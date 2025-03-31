@@ -105,6 +105,12 @@ header {
     margin-left: 3vw;
     width: 8%;
     cursor: pointer;
+    margin-top: 28px;
+    display: flex;
+}
+
+.ricerca{
+    margin-right: 10px;
 }
 /*link a pagine statiche*/
 #otherlinks-box {
@@ -228,6 +234,11 @@ ul {
     border-left: 0px;
     cursor: pointer;
 }
+
+.bi.bi-search{
+    margin-top: -10px;
+}
+
 /*finestra di login*/
 #login-pop {
     position: absolute;
@@ -274,10 +285,11 @@ main {
 }
 #hero-img {
     max-width: 100%;
+    margin-bottom: 60px;
 }
 #hero-img img {
     width: 100vw;
-    height: 56vw;
+    height: 45vw;
 }
 
 /*FOOTER*/

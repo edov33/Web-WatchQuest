@@ -1,5 +1,6 @@
 package WatchQuest.demo.dao;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -67,6 +68,13 @@ public class DaoFilm extends DaoProgramma implements IDao<Long, Film> {
             ris.put(coppia.getKey(), context.getBean(Film.class, coppia.getValue()));
         }
         return ris;
+    }
+
+    // metodo che restituisce il numero di film visti per utente
+    public void filmVisti(){
+        String query = "SELECT COUNT(id_utente) FROM utente_programma up JOIN programma p ON up.id_programma = p.id JOIN film f ON p.id = f.id_programma GROUP BY id_utente HAVING id_utente = ?";
+        Map<Long, Map<String, String>> ris = databaseMySql.executeDQL(query);
+        // Map<Long, GenericEntity> ris = new HashMap<>();
     }
 
     // metodo che restituisce 8 film

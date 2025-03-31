@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import WatchQuest.demo.entity.Utente;
 import WatchQuest.demo.service.ServiceSerie;
 import jakarta.servlet.http.HttpSession;
 
@@ -46,6 +47,17 @@ public class ControllerSerie {
         return "redirect:/serie/all";
     }
 
+    private void fotoETasti(Model model, HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            // se è loggato
+            model.addAttribute("loggato", session.getId());
+            Object o = session.getAttribute("utente");
+            if (o instanceof Utente utente) {
+                model.addAttribute("foto", utente.getFoto_profilo());
+            }
+        }
+    }
+    
     public boolean isAdmin(HttpSession session) {
         if (session.getAttribute("loggato") != null) {
             if (session.getAttribute("ruolo").equals("admin")) {
@@ -60,6 +72,7 @@ public class ControllerSerie {
     public String serieByTitolo(@RequestParam String titolo, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaSerie", serviceSerie.findSerieByTitolo(titolo));
+            fotoETasti(model, session);
             return "adminPages/allSerie.html";
         }
         return "redirect:/home";
@@ -69,6 +82,7 @@ public class ControllerSerie {
     public String serieByGenere(@RequestParam String genere, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaSerie", serviceSerie.findSerieByGenere(genere));
+            fotoETasti(model, session);
             return "adminPages/allSerie.html";
         }
         return "redirect:/home";
@@ -78,6 +92,7 @@ public class ControllerSerie {
     public String serieByRating(@RequestParam String voto, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaSerie", serviceSerie.findSerieByRating(voto));
+            fotoETasti(model, session);
             return "adminPages/allSerie.html";
         }
         return "redirect:/home";
@@ -87,6 +102,7 @@ public class ControllerSerie {
     public String serieByAnno(@RequestParam String anno, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaSerie", serviceSerie.findSerieByAnno(anno));
+            fotoETasti(model, session);
             return "adminPages/allSerie.html";
         }
         return "redirect:/home";
@@ -96,6 +112,7 @@ public class ControllerSerie {
     public String serieByAttore(@RequestParam String attore, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaSerie", serviceSerie.findSerieByAttore(attore));
+            fotoETasti(model, session);
             return "adminPages/allSerie.html";
         }
         return "redirect:/home";
@@ -105,24 +122,28 @@ public class ControllerSerie {
     // pagina ricerca
     @GetMapping("/Titolo")
     public String serieTitolo(@RequestParam String titolo, Model model, HttpSession session) {
+        fotoETasti(model, session);
         model.addAttribute("listaSerie", serviceSerie.findSerieByTitolo(titolo));
         return "ricercaSerie";
     }
 
     @GetMapping("/Genere")
     public String serieGenere(@RequestParam String genere, Model model, HttpSession session) {
+        fotoETasti(model, session);
         model.addAttribute("listaSerie", serviceSerie.findSerieByGenere(genere));
         return "ricercaSerie";
     }
 
     @GetMapping("/Rating")
     public String serieRating(@RequestParam String voto, Model model, HttpSession session) {
+        fotoETasti(model, session);
         model.addAttribute("listaSerie", serviceSerie.findSerieByRating(voto));
         return "ricercaSerie";
     }
 
     @GetMapping("/Anno")
     public String serieAnno(@RequestParam String anno, Model model, HttpSession session) {
+        fotoETasti(model, session);
         model.addAttribute("listaSerie", serviceSerie.findSerieByAnno(anno));
         return "ricercaSerie";
     }
@@ -130,6 +151,7 @@ public class ControllerSerie {
     @GetMapping("/Attore")
     public String serieAttore(@RequestParam String attore, Model model, HttpSession session) {
         model.addAttribute("listaSerie", serviceSerie.findSerieByAttore(attore));
+        fotoETasti(model, session);
         return "ricercaSerie";
     }
     // fine pagina ricerca

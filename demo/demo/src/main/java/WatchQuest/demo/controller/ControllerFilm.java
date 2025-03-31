@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import WatchQuest.demo.entity.Utente;
 import WatchQuest.demo.service.ServiceFilm;
 import jakarta.servlet.http.HttpSession;
 
@@ -46,6 +47,17 @@ public class ControllerFilm {
         return "redirect:/film/all";
     }
 
+private void fotoETasti(Model model, HttpSession session) {
+        if (session.getAttribute("loggato") != null) {
+            // se è loggato
+            model.addAttribute("loggato", session.getId());
+            Object o = session.getAttribute("utente");
+            if (o instanceof Utente utente) {
+                model.addAttribute("foto", utente.getFoto_profilo());
+            }
+        }
+    }
+
     public boolean isAdmin(HttpSession session) {
         if (session.getAttribute("loggato") != null) {
             if (session.getAttribute("ruolo").equals("admin")) {
@@ -60,6 +72,7 @@ public class ControllerFilm {
     public String filmByTitolo(@RequestParam String titolo, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByTitolo(titolo));
+            fotoETasti(model, session);
             return "adminPages/allFilm.html";
         }
         return "redirect:/home";
@@ -69,6 +82,7 @@ public class ControllerFilm {
     public String filmByGenere(@RequestParam String genere, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByGenere(genere));
+            fotoETasti(model, session);
             return "adminPages/allFilm.html";
         }
         return "redirect:/home";
@@ -78,6 +92,7 @@ public class ControllerFilm {
     public String filmByRating(@RequestParam String voto, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByRating(voto));
+            fotoETasti(model, session);
             return "adminPages/allFilm.html";
         }
         return "redirect:/home";
@@ -87,6 +102,7 @@ public class ControllerFilm {
     public String filmByAnno(@RequestParam String anno, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByAnno(anno));
+            fotoETasti(model, session);
             return "adminPages/allFilm.html";
         }
         return "redirect:/home";
@@ -96,6 +112,7 @@ public class ControllerFilm {
     public String filmByAttore(@RequestParam String attore, Model model, HttpSession session) {
         if (isAdmin(session)) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByAttore(attore));
+            fotoETasti(model, session);
             return "adminPages/allFilm.html";
         }
         return "redirect:/home";
@@ -106,18 +123,21 @@ public class ControllerFilm {
     @GetMapping("/Titolo")
     public String filmTitolo(@RequestParam String titolo, Model model, HttpSession session) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByTitolo(titolo));
+            fotoETasti(model, session);
             return "ricercaFilm";
     }
     
     @GetMapping("/Genere")
     public String filmGenere(@RequestParam String genere, Model model, HttpSession session) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByGenere(genere));
+            fotoETasti(model, session);
             return "ricercaFilm";
     }
     
     @GetMapping("/Rating")
     public String filmRating(@RequestParam String voto, Model model, HttpSession session) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByRating(voto));
+            fotoETasti(model, session);
             return "ricercaFilm";
     }
     
@@ -130,6 +150,7 @@ public class ControllerFilm {
     @GetMapping("/Attore")
     public String filmAttore(@RequestParam String attore, Model model, HttpSession session) {
             model.addAttribute("listaFilm", serviceFilm.findFilmByAttore(attore));
+            fotoETasti(model, session);
             return "ricercaFilm";
     }
     // fine pagina ricerca
